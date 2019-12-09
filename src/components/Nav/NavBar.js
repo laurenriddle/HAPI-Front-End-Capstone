@@ -10,13 +10,14 @@ class Navbar extends Component {
         return (
 <>
   <NavBar bg="light" variant="light">
-    <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="125" height="55"/></NavBar.Brand>
+    <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40"/></NavBar.Brand>
     <Nav className="mr-auto">
      <Link className="nav-link" to="/">Home</Link>
      <Link className="nav-link" to="/resources">Resources</Link>
      <Link className="nav-link" to="/apisearch">API Search</Link>
      <Link className="nav-link" to="/login">Login</Link>
-     <Link className="nav-link nav-align-right" to="/logout">Logout</Link>
+     <Link className="nav-link" to="/Register">Register</Link>
+     <Link className="nav-link nav-align-right" to="/Login" onClick={this.props.clearUser}>Logout</Link>
     </Nav>
   </NavBar>
 </>

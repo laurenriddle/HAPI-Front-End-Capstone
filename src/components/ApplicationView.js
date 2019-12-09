@@ -1,5 +1,7 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import LogIn from "./Auth/Login";
+import Register from "./Auth/Registration";
 
 export default class ApplicationViews extends Component {
 
@@ -15,16 +17,27 @@ export default class ApplicationViews extends Component {
   
               return <Redirect to="/" />
               } else {
-              return <Login setUser={this.props.setUser} searchUsers={this.props.searchUsers}
+              return <LogIn setUser={this.props.setUser} searchUsers={this.props.searchUsers}
                {...props} {...this.props} />
               }}}
           />
-          <Route
+           <Route
+            exact path="/Register" render={props => {
+              // console.log("app view", this.props.user)
+              if (this.props.user) {
+  
+              return <Redirect to="/" />
+              } else {
+              return <Register setUser={this.props.setUser} searchUsers={this.props.searchUsers}
+               {...props} {...this.props} />
+              }}}
+          />
+          {/* <Route
             exact path="/" render={props => {
               
               return <Home />
               }}
-          />
+          /> */}
 
   
   
