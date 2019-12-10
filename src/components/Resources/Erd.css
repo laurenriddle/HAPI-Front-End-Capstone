@@ -1,0 +1,7 @@
+.erd-align-right {
+    text-align: right;
+}
+
+.crud:hover {
+    background-color: lightgray;
+}
