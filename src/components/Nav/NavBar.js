@@ -3,6 +3,7 @@ import NavBar from 'react-bootstrap/navbar'
 import { Link } from 'react-router-dom'
 import { Nav } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./NavBar.css"
 
 
 class Navbar extends Component {
@@ -10,8 +11,14 @@ class Navbar extends Component {
     if (this.props.user === true) {
       return (
         <>
+        <div className="LogoContainer">
+        <img src={require('./Logo.png')} width="30%" height="30%" />
+        </div>
+        <div className="NavBar">
           <NavBar bg="light" variant="light">
-            <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" /></NavBar.Brand>
+              {/* <Link className="nav-link" to="/">
+                <img src={require('./Logo.png')} width="100" height="40" />
+              </Link>   */}
             <Nav className="mr-auto">
               <Link className="nav-link" to="/">Home</Link>
               <Link className="nav-link" to="/resources">Resources</Link>
@@ -19,6 +26,7 @@ class Navbar extends Component {
               <Link className="nav-link nav-align-right" to="/Login" onClick={this.props.clearUser}>Logout</Link>
             </Nav>
           </NavBar>
+          </div>
         </>
       )
     } else {
