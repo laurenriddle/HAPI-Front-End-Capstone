@@ -5,6 +5,7 @@ import Register from "./Auth/Registration";
 import ResourceList from "./Resources/ResourceList";
 import ErdForm from "./Resources/ErdForm";
 import ErdEditForm from "./Resources/ErdEditForm";
+import ApiList from "./ApiSearch/ApiList";
 
 export default class ApplicationViews extends Component {
 
@@ -52,6 +53,11 @@ export default class ApplicationViews extends Component {
           <Route
           path="/erds/:erdId(\d+)/edit" render={props => {
             return <ErdEditForm {...props} {...this.props} />
+          }}
+        />
+         <Route
+          path="/apisearch" render={props => {
+            return <ApiList {...props} {...this.props} />
           }}
         />
         {/* <Route

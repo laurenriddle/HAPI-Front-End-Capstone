@@ -9,7 +9,7 @@ class ResourceList extends Component {
         erds: [],
         apis: []
     }
-    
+
     componentDidMount() {
         // get all friends for this user
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
@@ -18,17 +18,17 @@ class ResourceList extends Component {
                 this.setState({
                     erds: erds
                 })
-                
+
             })
     }
 
-    deleteErd = (id, endpoint)=> {
+    deleteErd = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
         APIManager.delete(`${endpoint}/${id}`)
             .then(() => {
                 APIManager.get(`${endpoint}?userId=${currentUser.id}`)
                     .then(erds => {
-                        this.setState({erds: erds})
+                        this.setState({ erds: erds })
 
                     })
             })
@@ -38,21 +38,24 @@ class ResourceList extends Component {
         return (
             <>
                 <section className="section-content">
-                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
                 </section>
                 <div className="erd-container-cards">
+                    <hr /><h2><span>APIs</span></h2><hr />
+                    <hr /><h2><span>Entity Relationship Diagrams<Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
+                    </span></h2><hr />
                     {
-                    this.state.erds.map((erd) => {
-                        // if the index of the event is equal to 0, render the card with the bold text and background color
-                        {console.log(erd)}
+                        this.state.erds.map((erd) => {
+                            // if the index of the event is equal to 0, render the card with the bold text and background color
+                            { console.log(erd) }
                             return <ErdCard
                                 key={erd.id}
                                 erd={erd}
                                 deleteErd={this.deleteErd}
                                 {...this.props}
                             />
-                    })}
-                </div>
+                        })
+                    }
+                </div >
             </>
         )
     }
