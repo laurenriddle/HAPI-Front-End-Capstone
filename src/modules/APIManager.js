@@ -1,21 +1,49 @@
 const remoteURL = "http://localhost:5002"
 
 export default {
-    searchUser(email){
-        return fetch(`${remoteURL}/users?q=${email}`)
-        .then(data => data.json());
+  // fetch calls for login and register
+  searchUser(email) {
+    return fetch(`${remoteURL}/users?q=${email}`)
+      .then(data => data.json());
+  },
+  postNewUser(newUser) {
+    return fetch(`${remoteURL}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
       },
-      postNewUser(newUser) {
-        return fetch(`${remoteURL}/users`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(newUser)
-        }).then(data => data.json())
+      body: JSON.stringify(newUser)
+    }).then(data => data.json())
+  },
+  getRegisteredUser(email) {
+    return fetch(`${remoteURL}/users?email=${email}`)
+      .then(data => data.json())
+  },
+  // fetch calls for entire application
+  get(route) {
+    return fetch(`${remoteURL}/${route}`).then(result => result.json());
+  },
+  delete(route) {
+    return fetch(`${remoteURL}/${route}`, {
+      method: "DELETE"
+    }).then(result => result.json());
+  },
+  post(route, newItem) {
+    return fetch(`${remoteURL}/${route}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
       },
-      getRegisteredUser(email) {
-        return fetch(`${remoteURL}/users?email=${email}`)
-          .then(data => data.json())
-      }
+      body: JSON.stringify(newItem)
+    }).then(data => data.json());
+  },
+  update(route, editedItem) {
+    return fetch(`${remoteURL}/${route}/${editedItem.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedItem)
+    }).then(data => data.json());
+  }
 }
