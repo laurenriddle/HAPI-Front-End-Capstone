@@ -39,8 +39,7 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
-          exact exact path="/Resources" render={props => {
-            // console.log("app view", this.props.user)
+          exact path="/Resources" render={props => {
 
             return <ResourceList {...props} />
           }}

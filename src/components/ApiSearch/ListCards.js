@@ -16,7 +16,7 @@ export class ListCard extends Component {
                                 <p>Cors: {this.props.result.Cors}</p>
                                 <p>Category: {this.props.result.Category}</p>
                                 <hr />
-                                <a href={this.props.result.Link} target="_blank">+ View Resource</a>
+                                <a href={this.props.result.Link} rel="noopener noreferrer" target="_blank">+ View Resource</a>
 
                             </Card.Body>
                         </div>

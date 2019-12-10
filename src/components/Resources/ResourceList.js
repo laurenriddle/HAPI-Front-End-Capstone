@@ -46,7 +46,6 @@ class ResourceList extends Component {
                     {
                         this.state.erds.map((erd) => {
                             // if the index of the event is equal to 0, render the card with the bold text and background color
-                            { console.log(erd) }
                             return <ErdCard
                                 key={erd.id}
                                 erd={erd}
