@@ -102,15 +102,14 @@ class ApiList extends Component {
                 <div className="erd-container-cards">
                     <hr /><h2>Search Results:</h2><hr />
                     {
-                        this.state.results.map((result, index) => {
-
-                            // if (index < 20) {
+                        this.state.results.map((result, index) => {if (index < 50) {
                             return <ListCard
                                 key={result.Link}
                                 result={result}
                                 {...this.props}
+                                keyId={index}
                             />
-                            // }
+                            }
                         })}
                 </div>
             </>

@@ -62,7 +62,7 @@ class ErdEditForm extends Component {
                             <Form.Label>Name:</Form.Label>
                             <Form.Control type="text" placeholder="Enter Name" id="name" value={this.state.name} onChange={this.handleFieldChange} />
                             <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="date" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
+                            <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
                             <Form.Label>Link:</Form.Label>
                             <Form.Control type="text" id="link" value={this.state.link} onChange={this.handleFieldChange} />
                         </Form.Group>
