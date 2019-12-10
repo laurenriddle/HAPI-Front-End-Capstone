@@ -105,7 +105,6 @@ class ApiList extends Component {
                             this.state.results.map((result, index) => {
 
                                 if(index < 20) {
-                                if(result.Link !== result.Link)
                                console.log("map",result)
                                console.log(index)
                                 return <ListCard
