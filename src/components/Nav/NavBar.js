@@ -1,8 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react"
 import NavBar from 'react-bootstrap/navbar'
 import { Link } from 'react-router-dom'
 import { Nav } from "react-bootstrap"
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "./NavBar.css"
 
 
@@ -11,15 +11,12 @@ class Navbar extends Component {
     if (this.props.user === true) {
       return (
         <>
-        <div className="LogoContainer">
-        <img src={require('./Logo.png')} width="30%" height="30%" />
-        </div>
         <div className="NavBar">
-          <NavBar bg="light" variant="light">
-              {/* <Link className="nav-link" to="/">
-                <img src={require('./Logo.png')} width="100" height="40" />
-              </Link>   */}
-            <Nav className="mr-auto">
+          <NavBar className="NavBarColor">
+              <Link className="nav-link" to="/">
+                <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo"/>
+              </Link>  
+            <Nav className="mr-auto nav-link">
               <Link className="nav-link" to="/">Home</Link>
               <Link className="nav-link" to="/resources">Resources</Link>
               <Link className="nav-link" to="/apisearch">API Search</Link>
@@ -33,7 +30,7 @@ class Navbar extends Component {
       return (
         <>
           <NavBar bg="light" variant="light">
-            <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" /></NavBar.Brand>
+            <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo"/></NavBar.Brand>
             <Nav className="mr-auto">
               <Link className="nav-link" to="/login">Login</Link>
               <Link className="nav-link" to="/Register">Register</Link>

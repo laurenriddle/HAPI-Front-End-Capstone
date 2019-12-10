@@ -1,8 +1,7 @@
-.LogoContainer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f37c0c;
+.NavBarColor {
+    background-color: #a3c738;
+   
 }
-.NavBar {
-    background-color: #f37c0c;
+.nav-link {
+    color: black;
 }
