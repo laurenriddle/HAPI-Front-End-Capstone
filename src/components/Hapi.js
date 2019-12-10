@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./Nav/NavBar";
 import ApplicationViews from "./ApplicationView";
+import '../index.css'
 
 class Hapi extends Component {
 
