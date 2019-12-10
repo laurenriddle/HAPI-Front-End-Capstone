@@ -11,17 +11,6 @@ class ApiList extends Component {
         loadingStatus: false
     }
 
-    // componentDidMount() {
-    //     // get all friends for this user
-    //     // const currentUser = JSON.parse(localStorage.getItem("credentials"))
-    //     // APIManager.get(`erds?userId=${currentUser.id}`)
-    //     //     .then(erds => {
-    //     //         this.setState({
-    //     //             erds: erds
-    //     //         })
-
-    //     //     })
-    // }
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
