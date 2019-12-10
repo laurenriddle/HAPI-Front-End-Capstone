@@ -7,6 +7,7 @@ import ErdForm from "./Resources/ErdForm";
 import ErdEditForm from "./Resources/ErdEditForm";
 import ApiList from "./ApiSearch/ApiList";
 import APISaveForm from "./ApiSearch/SaveForm";
+import ApiEditForm from "./Resources/ApiEditForm";
 
 export default class ApplicationViews extends Component {
 
@@ -71,9 +72,12 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/apisearch/:name/save" render={props => {
-            console.log(this.props)
-            console.log(props)
             return <APISaveForm {...props} {...this.props} />
+          }}
+        />
+        <Route
+          path="/apis/:apiId(\d+)/edit" render={props => {
+            return <ApiEditForm {...props} {...this.props} />
           }}
         />
 

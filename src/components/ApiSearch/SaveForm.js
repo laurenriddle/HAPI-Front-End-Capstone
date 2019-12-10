@@ -68,9 +68,9 @@ class APISaveForm extends Component {
                             <Form.Label>Name:</Form.Label>
                             <Form.Control type="text" placeholder="Enter Name" id="API" value={this.state.API} onChange={this.handleFieldChange} />
                             <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" value={this.state.Link} onChange={this.handleFieldChange} />
+                            <Form.Control type="text" id="Link" value={this.state.Link} onChange={this.handleFieldChange} />
                             <Form.Label>Description:</Form.Label>
-                            <Form.Control type="Description" id="link" value={this.state.Description} onChange={this.handleFieldChange} />
+                            <Form.Control type="Description" id="Description" value={this.state.Description} onChange={this.handleFieldChange} />
                             <Form.Label>API Key:</Form.Label>
                             <Form.Control type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
                             <Form.Label>Notes:</Form.Label>
