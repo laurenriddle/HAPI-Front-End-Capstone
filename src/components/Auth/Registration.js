@@ -81,8 +81,8 @@ class Register extends Component {
             <>
                 <header>
                     <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo" />
-                    <h2><span>Record.   Plan.   Create.</span></h2>
-                </header>            <center><h1>Create a New Account</h1></center>
+                    <h2><span>Filler. Text. Here.</span></h2>
+                </header>
                 <form onSubmit={this.handleRegistration}>
                     <fieldset>
                         <h3>Register Account</h3>

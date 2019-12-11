@@ -8,7 +8,7 @@ class Home extends Component {
             <>
                  <header>
                     <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo" />
-                    <h2><span>Record.   Plan.   Create.</span></h2>
+                    <h2><span>Filler. Text. Here.</span></h2>
                 </header> 
                 <section className="section-content welcome-message">
                     <div>Hello, {currentUser.firstName}! Welcome to Hapi!</div>
