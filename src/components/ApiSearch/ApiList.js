@@ -15,26 +15,30 @@ class ApiList extends Component {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
-        console.log(this.state.terms)
     }
 
+    // this function searches the array to make sure the object does not already exist
     pushEntry = (array, item) => {
+        // if the object does not already exist in the array, push the object into the array
         if (!array.find(({ Link }) => Link === item.Link)) {
             array.push(item);
         }
     }
 
-    searchExternalApi = userInput => {
+    searchExternalApi = () => {
+        // set results to an empty array
         results = []
+        // search external API by description, using user's search terms
         ExternalAPIManager.searchByDescription(this.state.terms)
             .then((response) => {
                 if (response.entries !== null) {
                     response.entries.forEach(entry => {
                         this.pushEntry(results, entry)
                     })
-                    // console.log("description", results)
                 }
             })
+
+        // search external API by category, using user's search terms
         ExternalAPIManager.searchByCategory(this.state.terms)
             .then(response => {
 
@@ -43,10 +47,10 @@ class ApiList extends Component {
                         this.pushEntry(results, entry)
                     })
                 }
-                // console.log("category", results)
 
             })
 
+        // search external API by title, using user's search terms
         ExternalAPIManager.searchByTitle(this.state.terms)
             .then(response => {
                 if (response.entries !== null) {
@@ -55,45 +59,24 @@ class ApiList extends Component {
 
                     })
                 }
-                // console.log("title", results)
 
-            }).then(() => {
+            })
+            // after search results come back and have been put in the results array, set the results key in state equal to the results array
+            .then(() => {
                 this.setState({
                     results: results,
                 })
-                // console.log("results after set state", this.state.results)
 
             })
     }
 
     render() {
-        // if (this.state.results.length === 0) {
-
-        //     return (
-        //         <>
-        //             <section className="section-content">
-        //                 <Form>
-        //                     <Form.Group>
-        //                         <Form.Label>Search for APIs:</Form.Label>
-        //                         <Form.Control type="text" placeholder="Enter Search Terms" id="terms" onChange={this.handleFieldChange} />
-        //                     </Form.Group>
-        //                 </Form>
-        //                 <Button disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button>
-        //             </section>
-        //             <div className="erd-container-cards">
-        //                 <hr /><h2>Search Results:</h2><hr />
-        //                 <h3>No search results</h3>
-        //             </div>
-        //         </>
-        //     )
-        // }
-        // else {
         return (
             <>
                 <section className="section-content">
                     <Form>
                         <Form.Group>
-                            <Form.Label><h3>Search for APIs:</h3></Form.Label>
+                            <Form.Label><h3>Search for an API:</h3></Form.Label>
                             <Form.Control type="text" placeholder="Enter Search Terms" id="terms" onChange={this.handleFieldChange} />
                         </Form.Group>
                         <Button disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button>
@@ -115,7 +98,6 @@ class ApiList extends Component {
             </>
         )
     }
-    // }
 }
 
 

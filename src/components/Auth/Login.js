@@ -40,9 +40,11 @@ class LogIn extends Component {
 
     render() {
         return (
+            <>
+            <h1>Welcome to Hapi!</h1>
             <form onSubmit={this.handleLogin}>
                 <fieldset>
-                    <h3>Login</h3>
+                    <h4>Login</h4>
                     <div className="formgrid">
                         <input onChange={this.handleFieldChange} type="email"
                             id="email"
@@ -59,10 +61,11 @@ class LogIn extends Component {
                     <button type="submit">
                         Log In
             </button>
-            <Link className="nav-link" to="/Register">Already Have An Account</Link>
+            <Link className="nav-link" to="/Register">Don't have an Account? Sign Up Here!</Link>
 
                 </fieldset>
             </form>
+            </>
         )
     }
 

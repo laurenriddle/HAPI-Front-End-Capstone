@@ -4,7 +4,6 @@ import { Form, Button } from 'react-bootstrap';
 import React, { Component } from "react"
 
 class APISaveForm extends Component {
-    //set the initial state
     state = {
         Description: "",
         API: "",
@@ -13,6 +12,36 @@ class APISaveForm extends Component {
         notes: "",
         loadingStatus: false,
     };
+
+    componentDidMount() {
+
+        ExternalAPIManager.searchByTitle(this.props.match.params.name)
+            .then(apis => {
+
+                apis.entries.forEach(api => {
+                    if (api.Link === this.props.history.location.state.url) {
+                        if (api.Auth === "") {
+                            this.setState({
+                                Description: api.Description,
+                                API: api.API,
+                                Link: api.Link,
+                                apiKey: "Not Required",
+                                loadingStatus: false,
+                            });
+                        } else {
+                            this.setState({
+                                Description: api.Description,
+                                API: api.API,
+                                Link: api.Link,
+                                apiKey: "Required",
+                                loadingStatus: false,
+                            });
+                        }
+
+                    }
+                });
+            });
+    }
 
     handleFieldChange = evt => {
         const stateToChange = {}
@@ -37,35 +66,6 @@ class APISaveForm extends Component {
 
         APIManager.post("apis", api)
             .then(() => this.props.history.push("/Resources"))
-    }
-
-    componentDidMount() {
-        // console.log("this.props.api", this.props.match.params.name)
-        // console.log("this.props LINK", this.props.history.location.state.url)
-        // console.log("passed prop", this.props.location.state.Link)
-
-        // console.log("The comp dod moiunt")
-        ExternalAPIManager.searchByTitle(this.props.match.params.name)
-            .then(apis => {
-                // console.log("response", apis)
-                // if (Object.keys(erd).length === 0) {
-                //     this.props.history.push("/events")
-                //     window.alert('The event you were trying to access does not exists.')
-                // } else {
-                apis.entries.forEach(api => {
-                    if (api.Link === this.props.history.location.state.url)
-                    {
-                        this.setState({
-                            Description: api.Description,
-                            API: api.API,
-                            Link: api.Link,
-                            loadingStatus: false,
-                        });
-
-                    }
-                });
-                // }
-            });
     }
 
     render() {

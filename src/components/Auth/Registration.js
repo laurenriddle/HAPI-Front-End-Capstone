@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
+import { Link } from "react-router-dom"
 
 
 class Register extends Component {
@@ -120,6 +121,8 @@ class Register extends Component {
                     </button>
                 </fieldset>
             </form>
+            <Link className="nav-link" to="/Login">Already Have An Account!</Link>
+
             </>
         )
     }

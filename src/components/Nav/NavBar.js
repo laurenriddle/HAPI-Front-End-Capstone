@@ -29,11 +29,11 @@ class Navbar extends Component {
     } else {
       return (
         <>
-          <NavBar bg="light" variant="light">
+          <NavBar className="NavBarColor">
             <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo"/></NavBar.Brand>
-            <Nav className="mr-auto">
+            <Nav className="mr-auto nav-link">
               <Link className="nav-link" to="/login">Login</Link>
-              <Link className="nav-link" to="/Register">Register</Link>
+              <Link className="nav-link" to="/Register">Sign Up</Link>
             </Nav>
           </NavBar>
         </>
