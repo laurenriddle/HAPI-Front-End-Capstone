@@ -71,8 +71,8 @@ export default class ApplicationViews extends Component {
           /> */}
 
         <Route
-          path="/apisearch/:name/save" render={props => {
-            return <APISaveForm {...props} {...this.props} />
+          path="/apisearch/:name/save" render={(props, link) => {
+            return <APISaveForm {...props} {...this.props} {...link}/>
           }}
         />
         <Route

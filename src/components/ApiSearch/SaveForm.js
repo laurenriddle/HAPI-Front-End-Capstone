@@ -40,20 +40,29 @@ class APISaveForm extends Component {
     }
 
     componentDidMount() {
-        console.log("this.props.api", this.props.match.params.name)
+        // console.log("this.props.api", this.props.match.params.name)
+        // console.log("this.props LINK", this.props.history.location.state.url)
+        // console.log("passed prop", this.props.location.state.Link)
+
         // console.log("The comp dod moiunt")
         ExternalAPIManager.searchByTitle(this.props.match.params.name)
-            .then(api => {
-                console.log("response", api.entries[0].API)
+            .then(apis => {
+                // console.log("response", apis)
                 // if (Object.keys(erd).length === 0) {
                 //     this.props.history.push("/events")
                 //     window.alert('The event you were trying to access does not exists.')
                 // } else {
-                this.setState({
-                    Description: api.entries[0].Description,
-                    API: api.entries[0].API,
-                    Link: api.entries[0].Link,
-                    loadingStatus: false,
+                apis.entries.forEach(api => {
+                    if (api.Link === this.props.history.location.state.url)
+                    {
+                        this.setState({
+                            Description: api.Description,
+                            API: api.API,
+                            Link: api.Link,
+                            loadingStatus: false,
+                        });
+
+                    }
                 });
                 // }
             });
