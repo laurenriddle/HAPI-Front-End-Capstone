@@ -3,7 +3,6 @@ import { Button, Form } from 'react-bootstrap';
 import ExternalAPIManager from '../../modules/ExternalAPIManager';
 import ListCard from './ListCards';
 
-let results = []
 class ApiList extends Component {
     state = {
         results: [],
@@ -27,7 +26,7 @@ class ApiList extends Component {
 
     searchExternalApi = () => {
         // set results to an empty array
-        results = []
+        let results = []
         // search external API by description, using user's search terms
         ExternalAPIManager.searchByDescription(this.state.terms)
             .then((response) => {
@@ -36,10 +35,7 @@ class ApiList extends Component {
                         this.pushEntry(results, entry)
                     })
                 }
-            })
-
-        // search external API by category, using user's search terms
-        ExternalAPIManager.searchByCategory(this.state.terms)
+            }).then(() => ExternalAPIManager.searchByCategory(this.state.terms))
             .then(response => {
 
                 if (response.entries !== null) {
@@ -47,11 +43,9 @@ class ApiList extends Component {
                         this.pushEntry(results, entry)
                     })
                 }
-
             })
 
-        // search external API by title, using user's search terms
-        ExternalAPIManager.searchByTitle(this.state.terms)
+            .then(() => ExternalAPIManager.searchByTitle(this.state.terms))
             .then(response => {
                 if (response.entries !== null) {
                     response.entries.forEach(entry => {
@@ -61,6 +55,10 @@ class ApiList extends Component {
                 }
 
             })
+
+
+
+            // search external API by title, using user's search terms
             // after search results come back and have been put in the results array, set the results key in state equal to the results array
             .then(() => {
                 this.setState({
@@ -71,6 +69,7 @@ class ApiList extends Component {
     }
 
     render() {
+        console.log(this.state.results)
         return (
             <>
                 <section className="section-content">
@@ -85,13 +84,15 @@ class ApiList extends Component {
                 <div className="erd-container-cards">
                     <hr /><h2>Search Results:</h2><hr />
                     {
-                        this.state.results.map((result, index) => {if (index < 50) {
-                            return <ListCard
-                                key={result.Link}
-                                result={result}
-                                {...this.props}
-                                keyId={index}
-                            />
+                        this.state.results.map((result, index) => {
+                            console.log("map")
+                            if (index < 50) {
+                                return <ListCard
+                                    key={result.Link}
+                                    result={result}
+                                    {...this.props}
+                                    keyId={index}
+                                />
                             }
                         })}
                 </div>
