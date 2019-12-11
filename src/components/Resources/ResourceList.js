@@ -57,9 +57,13 @@ class ResourceList extends Component {
         return (
             <>
                 <section className="section-content">
+                <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push("/api/new") }}>Create New API</Button>
+                <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
+                <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push("/technology/new") }}>Create New Technology</Button>
+                <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push("/wireframe/new") }}>Create New Wireframe</Button>
                 </section>
                     <hr /><h2><span>APIs</span></h2><hr />
-                <div className="erd-container-cards"> 
+                <div className="api-container-cards"> 
                     {
                         this.state.apis.map((api) => {
                             return <ApiCard
@@ -71,7 +75,7 @@ class ResourceList extends Component {
                         })
                     }
                 </div>
-                    <hr /><h2><span>Entity Relationship Diagrams<Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
+                    <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">
                     {

@@ -9,6 +9,7 @@ import ApiList from "./ApiSearch/ApiList";
 import APISaveForm from "./ApiSearch/SaveForm";
 import ApiEditForm from "./Resources/ApiEditForm";
 import Home from "./Home/Home";
+import ApiForm from "./Resources/APIForm";
 
 export default class ApplicationViews extends Component {
 
@@ -79,6 +80,11 @@ export default class ApplicationViews extends Component {
         <Route
           path="/apis/:apiId(\d+)/edit" render={props => {
             return <ApiEditForm {...props} {...this.props} />
+          }}
+        />
+        <Route
+          path="/api/new" render={props => {
+            return <ApiForm {...props} {...this.props} />
           }}
         />
 
