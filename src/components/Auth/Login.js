@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
 import { Link } from "react-router-dom"
+import "./Login.css"
 
 
 class LogIn extends Component {
@@ -41,27 +42,30 @@ class LogIn extends Component {
     render() {
         return (
             <>
-            <h1>Welcome to Hapi!</h1>
+            <header>
+            <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo"/>
+            <h2><span>Record.   Plan.   Create.</span></h2>
+            </header>
             <form onSubmit={this.handleLogin}>
                 <fieldset>
                     <h4>Login</h4>
                     <div className="formgrid">
+                        <label htmlFor="inputEmail">Email address</label>
                         <input onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email address"
                             required="" autoFocus="" />
-                        <label htmlFor="inputEmail">Email address</label>
 
+                        <label htmlFor="inputPassword">Password</label>
                         <input onChange={this.handleFieldChange} type="password"
                             id="password"
                             placeholder="Password"
                             required="" />
-                        <label htmlFor="inputPassword">Password</label>
                     </div>
                     <button type="submit">
                         Log In
             </button>
-            <Link className="nav-link" to="/Register">Don't have an Account? Sign Up Here!</Link>
+            <Link className="nav-link" to="/Register">Don't have an account? Click here to sign up!</Link>
 
                 </fieldset>
             </form>

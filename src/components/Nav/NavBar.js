@@ -16,12 +16,14 @@ class Navbar extends Component {
               <Link className="nav-link" to="/">
                 <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo"/>
               </Link>  
-            <Nav className="mr-auto nav-link">
-              <Link className="nav-link" to="/">Home</Link>
+            <Nav className="nav-link" >
+              {/* <Link className="nav-link" to="/">Home</Link> */}
               <Link className="nav-link" to="/resources">Resources</Link>
               <Link className="nav-link" to="/apisearch">API Search</Link>
-              <Link className="nav-link nav-align-right" to="/Login" onClick={this.props.clearUser}>Logout</Link>
             </Nav>
+            <Nav className="ml-auto">
+              <Link className="nav-link nav-align-right" to="/Login" onClick={this.props.clearUser}>Logout</Link>
+              </Nav>
           </NavBar>
           </div>
         </>
@@ -31,7 +33,7 @@ class Navbar extends Component {
         <>
           <NavBar className="NavBarColor">
             <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo"/></NavBar.Brand>
-            <Nav className="mr-auto nav-link">
+            <Nav className="ml-auto nav-link">
               <Link className="nav-link" to="/login">Login</Link>
               <Link className="nav-link" to="/Register">Sign Up</Link>
             </Nav>

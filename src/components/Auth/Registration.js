@@ -37,7 +37,7 @@ class Register extends Component {
         else if (this.state.password !== this.state.confirmPassword) {
             alert("Password did not match: Please try again...")
             return false;
-        } else 
+        } else
         // posts new user to database if the user does not already exist
         {
             // search for user in database
@@ -74,58 +74,60 @@ class Register extends Component {
                 )
         }
     }
-   
+
 
     render() {
         return (
             <>
-            <br/>
-            <center><h1>Create a New Account</h1></center>
-            <form onSubmit={this.handleRegistration}>
-                <fieldset>
-                    <h3>Register Account</h3>
-                    <div className="formgrid">
-                        <input onChange={this.handleFieldChange} type="text"
-                        
-                            id="firstName"
-                            placeholder="First Name"
-                            required="" autoFocus="" />
-                        <label htmlFor="inputFirstName">First Name</label>
-                        <input onChange={this.handleFieldChange} type="text"
-                        
-                            id="lastName"
-                            placeholder="Last Name"
-                            required="" autoFocus="" />
-                        <label htmlFor="inputLastName">Last Name</label>
+                <header>
+                    <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo" />
+                    <h2><span>Record.   Plan.   Create.</span></h2>
+                </header>            <center><h1>Create a New Account</h1></center>
+                <form onSubmit={this.handleRegistration}>
+                    <fieldset>
+                        <h3>Register Account</h3>
+                        <div className="formgrid">
+                            <label htmlFor="inputFirstName">First Name</label>
+                            <input onChange={this.handleFieldChange} type="text"
 
-                        <input onChange={this.handleFieldChange} type="email"
-                            id="email"
-                            placeholder="Email address"
-                            required="" autoFocus="" />
-                        <label htmlFor="inputEmail">Email address</label>
+                                id="firstName"
+                                placeholder="First Name"
+                                required="" autoFocus="" />
+                            <label htmlFor="inputLastName">Last Name</label>
+                            <input onChange={this.handleFieldChange} type="text"
 
-                        <input onChange={this.handleFieldChange} type="password"
-                            id="password"
-                            placeholder="Password"
-                            required="" />
-                        <label htmlFor="inputPassword">Password</label>
+                                id="lastName"
+                                placeholder="Last Name"
+                                required="" autoFocus="" />
 
-                        <input onChange={this.handleFieldChange} type="password"
-                            id="confirmPassword"
-                            placeholder="Confirm Password"
-                            required="" />
-                        <label htmlFor="inputPassword">Confirm Password</label>
-                    </div>
-                    <button type="submit">
-                        Register
+                            <label htmlFor="inputEmail">Email address</label>
+                            <input onChange={this.handleFieldChange} type="email"
+                                id="email"
+                                placeholder="Email address"
+                                required="" autoFocus="" />
+
+                            <label htmlFor="inputPassword">Password</label>
+                            <input onChange={this.handleFieldChange} type="password"
+                                id="password"
+                                placeholder="Password"
+                                required="" />
+
+                            <label htmlFor="inputPassword">Confirm Password</label>
+                            <input onChange={this.handleFieldChange} type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm Password"
+                                required="" />
+                        </div>
+                        <button type="submit">
+                            Register
                     </button>
-                </fieldset>
-            </form>
-            <Link className="nav-link" to="/Login">Already Have An Account!</Link>
+                    </fieldset>
+                </form>
+                <Link className="nav-link" to="/Login">Already have an account? Click here to sign in!</Link>
 
             </>
         )
     }
 }
 
-    export default Register
+export default Register
