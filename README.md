@@ -1,4 +1,4 @@
-# Welcome to Hapi 
+# Welcome to Hapi! 
 Have you ever come across a resource that would be great to use in a future project, but when you finally get to where you want to use that resource, you can't because you either wrote it down and lost the note, or you simply forgot the name of the technology? Would you like a way to keep track of these technologies when you find them, so that you can use them later on down the road? If you answered yes, look no futher than HAPI. The Hapi App eliminates these issues by giving users a central place to log the technologies that they might possibly want to use in future projects. 
 
 ## What does Hapi offer?
