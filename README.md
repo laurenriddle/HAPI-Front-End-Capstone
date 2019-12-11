@@ -10,8 +10,8 @@ Hapi is a React App that was designed for software developers to use to keep tra
 1. `cd` into the root directory of the app.
 1. Run `npm install` and wait for all dependencies to be installed.
 1. Run `npm start` to verify that installation was successful and start the application.
-1. In the root directory, run `mkdir api`. Then run `touch api/database.json`.
-1. `cd` into the api directory, and run `json-server -p 5002 -w database.json`.
+1. `cd` into the /api directory, and remove the .example extention from the database.json.example file. 
+1. In the api folder, run `json-server -p 5002 -w database.json`.
 1. Go to http://localhost:3000/ to view the app. 
 
 
