@@ -1,5 +1,5 @@
 # Welcome to Hapi 
-![nutshell ERD](./src/components/nav/Logo.png)
+![ Logo ](./Logo.png)
 Hapi is a 
 ## Want to use Hapi? Follow the instructions bellow to run the application.
 
