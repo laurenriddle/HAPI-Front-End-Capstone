@@ -8,6 +8,7 @@ import ErdEditForm from "./Resources/ErdEditForm";
 import ApiList from "./ApiSearch/ApiList";
 import APISaveForm from "./ApiSearch/SaveForm";
 import ApiEditForm from "./Resources/ApiEditForm";
+import Home from "./Home/Home";
 
 export default class ApplicationViews extends Component {
 
@@ -63,12 +64,12 @@ export default class ApplicationViews extends Component {
             return <ApiList {...props} {...this.props} />
           }}
         />
-        {/* <Route
+        <Route
             exact path="/" render={props => {
               
               return <Home />
               }}
-          /> */}
+          />
 
         <Route
           path="/apisearch/:name/save" render={(props, link) => {

@@ -1,0 +1,21 @@
+.welcome-message {
+    text-align: center;
+    margin-top: 2%;
+}
+.welcome-message div {
+    color: #f1810e;
+    font-size: 60px;
+    padding-bottom: 10px;
+
+}
+.welcome-message h3 {
+    padding-right: 10%;
+    padding-left: 10%;
+    font-size: 20px;
+    /* text-align: left; */
+}
+.welcome-message h2 {
+    color: #f1810e;
+    padding-top: 13px;
+    padding-bottom: 10px;
+}
