@@ -6,6 +6,8 @@ import ResourceList from "./Resources/ResourceList";
 import ErdForm from "./Resources/ErdForm";
 import ErdEditForm from "./Resources/ErdEditForm";
 import ApiList from "./ApiSearch/ApiList";
+import APISaveForm from "./ApiSearch/SaveForm";
+import ApiEditForm from "./Resources/ApiEditForm";
 
 export default class ApplicationViews extends Component {
 
@@ -39,24 +41,25 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
-          exact exact path="/Resources" render={props => {
-            // console.log("app view", this.props.user)
+          exact path="/Resources" render={props => {
 
             return <ResourceList {...props} />
           }}
         />
 
         <Route path="/erd/new" render={(props) => {
-         return <ErdForm {...props} {...this.props} />
+          return <ErdForm {...props} {...this.props} />
 
         }} />
-          <Route
+        <Route
           path="/erds/:erdId(\d+)/edit" render={props => {
+            console.log(this.props)
+            console.log(props)
             return <ErdEditForm {...props} {...this.props} />
           }}
         />
-         <Route
-          path="/apisearch" render={props => {
+        <Route
+          exact path="/apisearch" render={props => {
             return <ApiList {...props} {...this.props} />
           }}
         />
@@ -67,7 +70,16 @@ export default class ApplicationViews extends Component {
               }}
           /> */}
 
-
+        <Route
+          path="/apisearch/:name/save" render={(props, link) => {
+            return <APISaveForm {...props} {...this.props} {...link}/>
+          }}
+        />
+        <Route
+          path="/apis/:apiId(\d+)/edit" render={props => {
+            return <ApiEditForm {...props} {...this.props} />
+          }}
+        />
 
       </React.Fragment>
     );
