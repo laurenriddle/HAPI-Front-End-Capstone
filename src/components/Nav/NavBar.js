@@ -36,13 +36,16 @@ class Navigation extends Component {
     } else {
       return (
         <>
-          <NavBar className="NavBarColor">
+          <Navbar collapseOnSelect expand="lg" className="NavBarColor">
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
             <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo" /></NavBar.Brand>
             <Nav className="ml-auto nav-link">
               <Link className="nav-link" to="/login">Login</Link>
               <Link className="nav-link" to="/Register">Sign Up</Link>
             </Nav>
-          </NavBar>
+            </Navbar.Collapse>
+          </Navbar>
         </>
       )
     }
