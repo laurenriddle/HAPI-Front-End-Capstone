@@ -17,14 +17,13 @@ class ResourceList extends Component {
 
     componentDidMount() {
         // get all friends for this user
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        APIManager.get(`erds?userId=${currentUser.id}`)
+        APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
             .then(erds => {
-                this.setState({
-                    erds: erds
-                })
-
+                let erdArray = []
+                erdArray.push(erds.erd)
+                this.setState({ erds: erdArray })
             })
+
         APIManager.get(`apis?projectId=${this.props.match.params.projectId}`)
             .then(apis => {
                 this.setState({
@@ -52,7 +51,9 @@ class ResourceList extends Component {
                 .then(() => {
                     APIManager.get(`${endpoint}?userId=${currentUser.id}`)
                         .then(erds => {
-                            this.setState({ erds: erds })
+                           let erdArray = []
+                            erdArray.push(erds)
+                            this.setState({ erds: erdArray })
 
                         })
                 })
@@ -108,7 +109,7 @@ class ResourceList extends Component {
             <>
                 <section className="section-content">
                     <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>Create New API</Button>
-                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
+                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds.id, project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
                     <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>Create New Technology</Button>
                     <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>Create New Wireframe</Button>
                 </section>
@@ -128,18 +129,16 @@ class ResourceList extends Component {
                 <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">
-                    {
-                        this.state.erds.map((erd) => {
-                            // if the index of the event is equal to 0, render the card with the bold text and background color
-                            return <ErdCard
-                                key={erd.id}
-                                erd={erd}
-                                deleteErd={this.deleteErd}
-                                {...this.props}
-                            />
-                        })
-                    }
-                </div >
+                           {this.state.erds.map((erd) => {
+                              return <ErdCard
+                                   key={erd.id}
+                                   erd={erd}
+                                   deleteErd={this.deleteErd}
+                                   {...this.props}
+                               />
+                           })
+                           }
+                </div>
                 <hr /><h2><span>Wireframes</span></h2><hr />
                 <div className="wireframe-container-cards">
                     {

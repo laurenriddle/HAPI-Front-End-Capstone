@@ -17,19 +17,24 @@ class ErdForm extends Component {
         this.setState(stateToChange)
     }
     constructNewErd = evt => {
-        evt.preventDefault();
-            this.setState({ loadingStatus: true });
-            const currentUser = JSON.parse(localStorage.getItem("credentials"))
-            const erd = {
-                name: this.state.name,
-                link: this.state.link,
-                notes: this.state.notes,
-                userId: currentUser.id,
-                projectId: this.props.location.state.project
-            }
-            APIManager.post("erds", erd)
-                .then(() => this.props.history.push("/Resources"))
-        
+        if(this.state.erd !== undefined){
+            evt.preventDefault();
+                this.setState({ loadingStatus: true });
+                const currentUser = JSON.parse(localStorage.getItem("credentials"))
+                const erd = {
+                    name: this.state.name,
+                    link: this.state.link,
+                    notes: this.state.notes,
+                    userId: currentUser.id,
+                    projectId: this.props.location.state.project
+                }
+                APIManager.post("erds", erd)
+                    .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
+
+        } else {
+            alert("This project already has an ERD. There can only be one ERD for each project. Please delete the existing ERD before you create a new one.")
+        this.props.history.push(`/project/${this.props.location.state.project}`)
+        }
     }
     render() {
         return (

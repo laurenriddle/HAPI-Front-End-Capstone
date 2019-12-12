@@ -27,7 +27,6 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/login" render={props => {
-            // console.log("app view", this.props.user)
             if (this.props.user) {
 
               return <Redirect to="/" />
@@ -39,7 +38,6 @@ export default class ApplicationViews extends Component {
         />
         <Route
           exact path="/Register" render={props => {
-            // console.log("app view", this.props.user)
             if (this.props.user) {
 
               return <Redirect to="/" />
