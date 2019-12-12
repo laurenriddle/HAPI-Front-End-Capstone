@@ -3,12 +3,14 @@ import APIManager from '../../modules/APIManager'
 import { Button } from 'react-bootstrap';
 import ErdCard from './ErdCards';
 import ApiCard from './APICard';
+import WireframeCard from './WireframeCard';
 
 
 class ResourceList extends Component {
     state = {
         erds: [],
-        apis: []
+        apis: [],
+        wireframes: []
     }
 
     componentDidMount() {
@@ -25,6 +27,12 @@ class ResourceList extends Component {
         .then(apis => {
             this.setState({
                 apis: apis
+            })
+        })
+        APIManager.get(`wireframes?userId=${currentUser.id}`)
+        .then(wireframes => {
+            this.setState({
+                wireframes: wireframes
             })
         })
     }
@@ -48,6 +56,18 @@ class ResourceList extends Component {
                 APIManager.get(`${endpoint}?userId=${currentUser.id}`)
                     .then(apis => {
                         this.setState({ apis: apis })
+
+                    })
+            })
+    }
+
+    deleteWireframe = (id, endpoint) => {
+        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        APIManager.delete(`${endpoint}/${id}`)
+            .then(() => {
+                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    .then(wireframes => {
+                        this.setState({ wireframes: wireframes })
 
                     })
             })
@@ -85,6 +105,20 @@ class ResourceList extends Component {
                                 key={erd.id}
                                 erd={erd}
                                 deleteErd={this.deleteErd}
+                                {...this.props}
+                            />
+                        })
+                    }
+                </div >
+                <hr /><h2><span>Wireframes</span></h2><hr />
+                <div className="wireframe-container-cards">
+                    {
+                        this.state.wireframes.map((wireframe) => {
+                            // if the index of the event is equal to 0, render the card with the bold text and background color
+                            return <WireframeCard
+                                key={wireframe.id}
+                                wireframe={wireframe}
+                                deleteWireframe={this.deleteWireframe}
                                 {...this.props}
                             />
                         })

@@ -10,6 +10,8 @@ import APISaveForm from "./ApiSearch/SaveForm";
 import ApiEditForm from "./Resources/ApiEditForm";
 import Home from "./Home/Home";
 import ApiForm from "./Resources/APIForm";
+import WireframeForm from "./Resources/WireframeForm";
+import WireframeEditForm from "./Resources/WireframeEditForm";
 
 export default class ApplicationViews extends Component {
 
@@ -85,6 +87,15 @@ export default class ApplicationViews extends Component {
         <Route
           path="/api/new" render={props => {
             return <ApiForm {...props} {...this.props} />
+          }}
+        />
+         <Route path="/wireframe/new" render={(props) => {
+          return <WireframeForm {...props} {...this.props} />
+
+        }} />
+        <Route
+          path="/wireframe/:wireframeId(\d+)/edit" render={props => {
+            return <WireframeEditForm {...props} {...this.props} />
           }}
         />
 
