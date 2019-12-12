@@ -25,81 +25,81 @@ class ResourceList extends Component {
                 })
 
             })
-        APIManager.get(`apis?userId=${currentUser.id}`)
-        .then(apis => {
-            this.setState({
-                apis: apis
+        APIManager.get(`apis?projectId=${this.props.match.params.projectId}`)
+            .then(apis => {
+                this.setState({
+                    apis: apis
+                })
             })
-        })
-        APIManager.get(`wireframes?userId=${currentUser.id}`)
-        .then(wireframes => {
-            this.setState({
-                wireframes: wireframes
+        APIManager.get(`wireframes?projectId=${this.props.match.params.projectId}`)
+            .then(wireframes => {
+                this.setState({
+                    wireframes: wireframes
+                })
             })
-        })
-        APIManager.get(`technologies?userId=${currentUser.id}`)
-        .then(technologies => {
-            this.setState({
-                technologies: technologies
+        APIManager.get(`technologies?projectId=${this.props.match.params.projectId}`)
+            .then(technologies => {
+                this.setState({
+                    technologies: technologies
+                })
             })
-        })
     }
 
     deleteErd = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if(window.confirm("Are you sure you want to delete this ERD?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(erds => {
-                        this.setState({ erds: erds })
+        if (window.confirm("Are you sure you want to delete this ERD?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                        .then(erds => {
+                            this.setState({ erds: erds })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
     deleteApi = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
         // confirm()
-        if(window.confirm("Are you sure you want to delete this API?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(apis => {
-                        this.setState({ apis: apis })
+        if (window.confirm("Are you sure you want to delete this API?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                        .then(apis => {
+                            this.setState({ apis: apis })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
     deleteWireframe = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if(window.confirm("Are you sure you want to delete this wireframe?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(wireframes => {
-                        this.setState({ wireframes: wireframes })
+        if (window.confirm("Are you sure you want to delete this wireframe?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                        .then(wireframes => {
+                            this.setState({ wireframes: wireframes })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
 
     deleteTechnology = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if(window.confirm("Are you sure you want to delete this technology?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(technologies => {
-                        this.setState({ technologies: technologies })
+        if (window.confirm("Are you sure you want to delete this technology?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                        .then(technologies => {
+                            this.setState({ technologies: technologies })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
@@ -107,13 +107,13 @@ class ResourceList extends Component {
         return (
             <>
                 <section className="section-content">
-                <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push("/api/new") }}>Create New API</Button>
-                <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
-                <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push("/technology/new") }}>Create New Technology</Button>
-                <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push("/wireframe/new") }}>Create New Wireframe</Button>
+                    <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>Create New API</Button>
+                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
+                    <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>Create New Technology</Button>
+                    <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>Create New Wireframe</Button>
                 </section>
-                    <hr /><h2><span>APIs</span></h2><hr />
-                <div className="api-container-cards"> 
+                <hr /><h2><span>APIs</span></h2><hr />
+                <div className="api-container-cards">
                     {
                         this.state.apis.map((api) => {
                             return <ApiCard
@@ -125,7 +125,7 @@ class ResourceList extends Component {
                         })
                     }
                 </div>
-                    <hr /><h2><span>Entity Relationship Diagrams
+                <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">
                     {

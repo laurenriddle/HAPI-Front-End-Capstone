@@ -11,6 +11,7 @@ class ApiEditForm extends Component {
         description: "",
         apiKey: "",
         name: "",
+        projectId: "",
         loadingStatus: false,
     };
 
@@ -33,11 +34,12 @@ class ApiEditForm extends Component {
             userId: currentUser.id,
             description: this.state.description,
             apiKey: this.state.apiKey,
-            id: this.props.match.params.apiId
+            id: this.props.match.params.apiId,
+            projectId: this.state.projectId
         }
 
         APIManager.update("apis", editedApi)
-            .then(() => this.props.history.push("/Resources"))
+            .then(() => this.props.history.push(`/project/${this.state.projectId}`))
     }
 
     componentDidMount() {
@@ -54,6 +56,7 @@ class ApiEditForm extends Component {
                     apiKey: api.apiKey,
                     description: api.description,
                     loadingStatus: false,
+                    projectId: api.projectId
                 });
                 // }
             });

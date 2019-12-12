@@ -24,7 +24,8 @@ class ErdForm extends Component {
                 name: this.state.name,
                 link: this.state.link,
                 notes: this.state.notes,
-                userId: currentUser.id
+                userId: currentUser.id,
+                projectId: this.props.location.state.project
             }
             APIManager.post("erds", erd)
                 .then(() => this.props.history.push("/Resources"))

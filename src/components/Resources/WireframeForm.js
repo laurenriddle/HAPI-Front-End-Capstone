@@ -25,10 +25,11 @@ class WireframeForm extends Component {
                 link: this.state.link,
                 notes: this.state.notes,
                 userId: currentUser.id,
-                imageUrl: this.state.img
+                imageUrl: this.state.img,
+                projectId: this.props.location.state.project
             }
             APIManager.post("wireframes", wireframe)
-                .then(() => this.props.history.push("/Resources"))
+                .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
         
     }
 

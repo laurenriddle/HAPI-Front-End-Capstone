@@ -10,6 +10,7 @@ class WireframeEditForm extends Component {
         link: "",
         notes: "",
         img: "",
+        projectId: "",
         loadingStatus: false,
     };
     
@@ -22,7 +23,8 @@ class WireframeEditForm extends Component {
                     notes: wireframe.notes,
                     link: wireframe.link,
                     loadingStatus: false,
-                    img: wireframe.imageUrl
+                    img: wireframe.imageUrl,
+                    projectId: wireframe.projectId
                 });
     
             });
@@ -45,11 +47,13 @@ class WireframeEditForm extends Component {
             link: this.state.link,
             userId: currentUser.id,
             id: this.props.match.params.wireframeId,
-            imageUrl: this.state.img
+            imageUrl: this.state.img,
+            projectId: this.state.projectId
+
         }
         console.log(editedWireframe)
         APIManager.update("wireframes", editedWireframe)
-            .then(() => this.props.history.push("/Resources"))
+            .then(() => this.props.history.push(`/project/${this.state.projectId}`))
     }
 
     openCloudinaryWidget = () => {

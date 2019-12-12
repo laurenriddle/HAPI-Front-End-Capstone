@@ -9,6 +9,7 @@ class TechnologyEditForm extends Component {
         name: "",
         notes: "",
         link: "",
+        projectId: "",
         loadingStatus: false,
     };
 
@@ -29,11 +30,12 @@ class TechnologyEditForm extends Component {
             notes: this.state.notes,
             link: this.state.link,
             userId: currentUser.id,
-            id: this.props.match.params.technologyId
+            id: this.props.match.params.technologyId,
+            projectId: this.state.projectId
         }
 
         APIManager.update("technologies", editedTechnology)
-            .then(() => this.props.history.push("/Resources"))
+            .then(() => this.props.history.push(`/project/${this.state.projectId}`))
     }
 
     componentDidMount() {
@@ -44,6 +46,8 @@ class TechnologyEditForm extends Component {
                     notes: technology.notes,
                     link: technology.link,
                     loadingStatus: false,
+                    projectId: technology.projectId
+
 
                 })
             });

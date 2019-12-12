@@ -137,6 +137,11 @@ export default class ApplicationViews extends Component {
           return <ProjectEditForm {...props} {...this.props} />
         }}
       />
+       <Route exact
+        path="/project/:projectId(\d+)" render={props => {
+          return <ResourceList {...props} {...this.props} />
+        }}
+      />
 
       </React.Fragment>
     );

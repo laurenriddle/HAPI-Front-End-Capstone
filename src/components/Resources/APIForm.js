@@ -30,10 +30,12 @@ class ApiForm extends Component {
                     userId: currentUser.id,
                     description: this.state.description,
                     apiKey: this.state.apiKey,
+                    projectId: this.props.location.state.project
+
                 }
             
             APIManager.post("apis", Api)
-                .then(() => this.props.history.push("/Resources"))
+                .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
         
     }
     render() {
