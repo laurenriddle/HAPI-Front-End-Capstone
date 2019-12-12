@@ -43,8 +43,11 @@ export default class ApplicationViews extends Component {
         />
         <Route
           exact path="/Resources" render={props => {
-
+            if (this.props.user) {
             return <ResourceList {...props} />
+          } else {
+            return <Redirect to="/login"/>
+          }
           }}
         />
 
@@ -61,13 +64,20 @@ export default class ApplicationViews extends Component {
         />
         <Route
           exact path="/apisearch" render={props => {
+            if (this.props.user) {
             return <ApiList {...props} {...this.props} />
+          } else {
+            return <Redirect to="/login"/>
+          }
           }}
         />
         <Route
             exact path="/" render={props => {
-              
-              return <Home />
+              if (this.props.user) {
+                return <Home />
+              } else {
+                return <Redirect to="/login"/>
+              }
               }}
           />
 
