@@ -25,6 +25,7 @@ class ProjectList extends Component {
     deleteProject = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
         console.log(id)
+        if(window.confirm("Are you sure you want to delete this project?")){
         APIManager.delete(`${endpoint}/${id}`)
             .then(() => {
                 APIManager.get(`${endpoint}?userId=${currentUser.id}`)
@@ -33,6 +34,7 @@ class ProjectList extends Component {
 
                     })
             })
+        }
     }
 
 

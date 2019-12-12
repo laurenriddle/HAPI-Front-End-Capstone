@@ -62,7 +62,7 @@ class Register extends Component {
                                             // call the set user function from nutshell.js to set local storage.
                                             this.props.setUser(user)
                                         });
-                                        // then once the local storage is set, then take the user to the articles page
+                                        // then once the local storage is set, then take the user to the home page
                                         this.props.history.push("/")
                                     })
                             })
