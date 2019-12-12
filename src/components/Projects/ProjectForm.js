@@ -3,13 +3,11 @@ import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
 
 
-class ApiForm extends Component {
+class ProjectForm extends Component {
     state = {
-        notes: "",
-        link: "",
-        description: "",
-        apiKey: "",
         name: "",
+        githubUrl: "",
+        description: "",
         loadingStatus: false,
     }
 
@@ -18,46 +16,40 @@ class ApiForm extends Component {
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange)
     }
-    constructNewApi = evt => {
+    constructNewProject = evt => {
         evt.preventDefault();
             this.setState({ loadingStatus: true });
             const currentUser = JSON.parse(localStorage.getItem("credentials"))
             
-                const Api = {
+                const project = {
                     name: this.state.name,
-                    notes: this.state.notes,
-                    link: this.state.link,
-                    userId: currentUser.id,
+                    githubUrl: this.state.githubUrl,
                     description: this.state.description,
-                    apiKey: this.state.apiKey,
+                    userId: currentUser.id
                 }
             
-            APIManager.post("apis", Api)
-                .then(() => this.props.history.push("/Resources"))
+            APIManager.post("projects", project)
+                .then(() => this.props.history.push("/projects"))
         
     }
     render() {
         return (
 
             <>
-            <div id="apiSaveForm">
+            <div id="projectSaveForm">
                 <Form>
                     <Form.Group>
                         <Form.Label>Name:</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                        <Form.Label>Link:</Form.Label>
-                        <Form.Control type="text" id="link" onChange={this.handleFieldChange} />
                         <Form.Label>Description:</Form.Label>
                         <Form.Control type="text" id="description" onChange={this.handleFieldChange} />
-                        <Form.Label>API Key:</Form.Label>
-                        <Form.Control type="text" id="apiKey" onChange={this.handleFieldChange} />
-                        <Form.Label>Notes:</Form.Label>
-                        <Form.Control type="text" id="notes" onChange={this.handleFieldChange} />
+                        <Form.Label>GitHub Link:</Form.Label>
+                        <Form.Control type="text" id="githubUrl" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Button
                         type="button"
                         disabled={this.state.loadingStatus}
-                        onClick={this.constructNewApi}
+                        onClick={this.constructNewProject}
                     >Save</Button>
                 </Form>
             </div>
@@ -66,4 +58,4 @@ class ApiForm extends Component {
         )
     }
 }
-export default ApiForm
+export default ProjectForm

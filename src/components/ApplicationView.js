@@ -14,6 +14,9 @@ import WireframeForm from "./Resources/WireframeForm";
 import WireframeEditForm from "./Resources/WireframeEditForm";
 import TechnologyForm from "./Resources/TechnologyForm";
 import TechnologyEditForm from "./Resources/TechnologyEditForm";
+import ProjectList from "./Projects/ProjectList";
+import ProjectForm from "./Projects/ProjectForm";
+import ProjectEditForm from "./Projects/ProjectEdtForm";
 
 export default class ApplicationViews extends Component {
 
@@ -109,6 +112,21 @@ export default class ApplicationViews extends Component {
             return <TechnologyEditForm {...props} {...this.props} />
           }}
         />
+        <Route
+          path="/projects" render={props => {
+            return <ProjectList {...props} {...this.props} />
+          }}
+        />
+        <Route
+          path="/project/new" render={props => {
+            return <ProjectForm {...props} {...this.props} />
+          }}
+        /> 
+        <Route
+        path="/project/:projectId(\d+)/edit" render={props => {
+          return <ProjectEditForm {...props} {...this.props} />
+        }}
+      />
 
       </React.Fragment>
     );
