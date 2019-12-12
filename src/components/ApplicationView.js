@@ -12,6 +12,8 @@ import Home from "./Home/Home";
 import ApiForm from "./Resources/APIForm";
 import WireframeForm from "./Resources/WireframeForm";
 import WireframeEditForm from "./Resources/WireframeEditForm";
+import TechnologyForm from "./Resources/TechnologyForm";
+import TechnologyEditForm from "./Resources/TechnologyEditForm";
 
 export default class ApplicationViews extends Component {
 
@@ -96,6 +98,15 @@ export default class ApplicationViews extends Component {
         <Route
           path="/wireframe/:wireframeId(\d+)/edit" render={props => {
             return <WireframeEditForm {...props} {...this.props} />
+          }}
+        />
+         <Route path="/technology/new" render={(props) => {
+          return <TechnologyForm {...props} {...this.props} />
+
+        }} />
+        <Route
+          path="/technology/:technologyId(\d+)/edit" render={props => {
+            return <TechnologyEditForm {...props} {...this.props} />
           }}
         />
 

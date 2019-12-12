@@ -4,13 +4,15 @@ import { Button } from 'react-bootstrap';
 import ErdCard from './ErdCards';
 import ApiCard from './APICard';
 import WireframeCard from './WireframeCard';
+import TechnologyCard from './TechnologyCard';
 
 
 class ResourceList extends Component {
     state = {
         erds: [],
         apis: [],
-        wireframes: []
+        wireframes: [],
+        technologies: []
     }
 
     componentDidMount() {
@@ -33,6 +35,12 @@ class ResourceList extends Component {
         .then(wireframes => {
             this.setState({
                 wireframes: wireframes
+            })
+        })
+        APIManager.get(`technologies?userId=${currentUser.id}`)
+        .then(technologies => {
+            this.setState({
+                technologies: technologies
             })
         })
     }
@@ -68,6 +76,19 @@ class ResourceList extends Component {
                 APIManager.get(`${endpoint}?userId=${currentUser.id}`)
                     .then(wireframes => {
                         this.setState({ wireframes: wireframes })
+
+                    })
+            })
+    }
+
+
+    deleteTechnology = (id, endpoint) => {
+        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        APIManager.delete(`${endpoint}/${id}`)
+            .then(() => {
+                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    .then(technologies => {
+                        this.setState({ technologies: technologies })
 
                     })
             })
@@ -119,6 +140,20 @@ class ResourceList extends Component {
                                 key={wireframe.id}
                                 wireframe={wireframe}
                                 deleteWireframe={this.deleteWireframe}
+                                {...this.props}
+                            />
+                        })
+                    }
+                </div >
+                <hr /><h2><span>Other Technologies</span></h2><hr />
+                <div className="technologies-container-cards">
+                    {
+                        this.state.technologies.map((technology) => {
+                            // if the index of the event is equal to 0, render the card with the bold text and background color
+                            return <TechnologyCard
+                                key={technology.id}
+                                technology={technology}
+                                deleteTechnology={this.deleteTechnology}
                                 {...this.props}
                             />
                         })
