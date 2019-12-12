@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Navbar from "./Nav/NavBar";
 import ApplicationViews from "./ApplicationView";
 import '../index.css'
+import Navigation from "./Nav/NavBar";
 
 class Hapi extends Component {
 
@@ -34,7 +34,7 @@ class Hapi extends Component {
 
     render() {
        return( <>
-        <Navbar clearUser = {this.clearUser} user={this.state.user}/>
+        <Navigation clearUser = {this.clearUser} user={this.state.user}/>
         <ApplicationViews setUser = {this.setUser} user={this.state.user}/>
         </>
        )

@@ -3,12 +3,16 @@ import APIManager from '../../modules/APIManager'
 import { Button } from 'react-bootstrap';
 import ErdCard from './ErdCards';
 import ApiCard from './APICard';
+import WireframeCard from './WireframeCard';
+import TechnologyCard from './TechnologyCard';
 
 
 class ResourceList extends Component {
     state = {
         erds: [],
-        apis: []
+        apis: [],
+        wireframes: [],
+        technologies: []
     }
 
     componentDidMount() {
@@ -25,6 +29,18 @@ class ResourceList extends Component {
         .then(apis => {
             this.setState({
                 apis: apis
+            })
+        })
+        APIManager.get(`wireframes?userId=${currentUser.id}`)
+        .then(wireframes => {
+            this.setState({
+                wireframes: wireframes
+            })
+        })
+        APIManager.get(`technologies?userId=${currentUser.id}`)
+        .then(technologies => {
+            this.setState({
+                technologies: technologies
             })
         })
     }
@@ -53,13 +69,42 @@ class ResourceList extends Component {
             })
     }
 
+    deleteWireframe = (id, endpoint) => {
+        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        APIManager.delete(`${endpoint}/${id}`)
+            .then(() => {
+                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    .then(wireframes => {
+                        this.setState({ wireframes: wireframes })
+
+                    })
+            })
+    }
+
+
+    deleteTechnology = (id, endpoint) => {
+        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        APIManager.delete(`${endpoint}/${id}`)
+            .then(() => {
+                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    .then(technologies => {
+                        this.setState({ technologies: technologies })
+
+                    })
+            })
+    }
+
     render() {
         return (
             <>
                 <section className="section-content">
+                <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push("/api/new") }}>Create New API</Button>
+                <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
+                <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push("/technology/new") }}>Create New Technology</Button>
+                <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push("/wireframe/new") }}>Create New Wireframe</Button>
                 </section>
                     <hr /><h2><span>APIs</span></h2><hr />
-                <div className="erd-container-cards"> 
+                <div className="api-container-cards"> 
                     {
                         this.state.apis.map((api) => {
                             return <ApiCard
@@ -71,7 +116,7 @@ class ResourceList extends Component {
                         })
                     }
                 </div>
-                    <hr /><h2><span>Entity Relationship Diagrams<Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
+                    <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">
                     {
@@ -81,6 +126,34 @@ class ResourceList extends Component {
                                 key={erd.id}
                                 erd={erd}
                                 deleteErd={this.deleteErd}
+                                {...this.props}
+                            />
+                        })
+                    }
+                </div >
+                <hr /><h2><span>Wireframes</span></h2><hr />
+                <div className="wireframe-container-cards">
+                    {
+                        this.state.wireframes.map((wireframe) => {
+                            // if the index of the event is equal to 0, render the card with the bold text and background color
+                            return <WireframeCard
+                                key={wireframe.id}
+                                wireframe={wireframe}
+                                deleteWireframe={this.deleteWireframe}
+                                {...this.props}
+                            />
+                        })
+                    }
+                </div >
+                <hr /><h2><span>Other Technologies</span></h2><hr />
+                <div className="technologies-container-cards">
+                    {
+                        this.state.technologies.map((technology) => {
+                            // if the index of the event is equal to 0, render the card with the bold text and background color
+                            return <TechnologyCard
+                                key={technology.id}
+                                technology={technology}
+                                deleteTechnology={this.deleteTechnology}
                                 {...this.props}
                             />
                         })

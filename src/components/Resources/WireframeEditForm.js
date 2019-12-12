@@ -3,56 +3,78 @@ import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
 
 
-class ErdEditForm extends Component {
+class WireframeEditForm extends Component {
     //set the initial state
     state = {
         name: "",
-        notes: "",
         link: "",
+        notes: "",
+        img: "",
         loadingStatus: false,
     };
-
+    
+    componentDidMount() {
+        APIManager.get(`wireframes/${this.props.match.params.wireframeId}`)
+            .then(wireframe => {
+    
+                this.setState({
+                    name: wireframe.name,
+                    notes: wireframe.notes,
+                    link: wireframe.link,
+                    loadingStatus: false,
+                    img: wireframe.imageUrl
+                });
+    
+            });
+    }
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
 
-    updateExistingErd = evt => {
+    updateExistingWireframe = evt => {
         evt.preventDefault()
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
 
-        const editedErd = {
+        const editedWireframe = {
             name: this.state.name,
             notes: this.state.notes,
             link: this.state.link,
             userId: currentUser.id,
-            id: this.props.match.params.erdId
+            id: this.props.match.params.wireframeId,
+            imageUrl: this.state.img
         }
-
-        APIManager.update("erds", editedErd)
+        console.log(editedWireframe)
+        APIManager.update("wireframes", editedWireframe)
             .then(() => this.props.history.push("/Resources"))
     }
 
-    componentDidMount() {
-        APIManager.get(`erds/${this.props.match.params.erdId}`)
-            .then(erd => {
+    openCloudinaryWidget = () => {
+        let widget = window.cloudinary.createUploadWidget({
+            cloudName: 'dkjfqmbsu',
+            uploadPreset: 'tzfrbmjg'
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                console.log('Done! Here is the image info: ', result.info);
+                // newImage = 
                 this.setState({
-                    name: erd.name,
-                    notes: erd.notes,
-                    link: erd.link,
-                    loadingStatus: false,
-
+                    img: result.info.url
                 })
-            });
+                console.log(this.state.img)
+            }
+        }
+        )
+        widget.open();
+        // console.log("new image", this.state)
     }
 
     render() {
         return (
             <>
-                <div id="erdEditForm">
+                <div id="wireframeEditForm">
                     <Form>
                         <Form.Group>
                             <Form.Label>Name:</Form.Label>
@@ -61,11 +83,12 @@ class ErdEditForm extends Component {
                             <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
                             <Form.Label>Link:</Form.Label>
                             <Form.Control type="text" id="link" value={this.state.link} onChange={this.handleFieldChange} />
+                            <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Upload files</Button>
                         </Form.Group>
                         <Button
                             type="button"
                             disabled={this.state.loadingStatus}
-                            onClick={this.updateExistingErd}
+                            onClick={this.updateExistingWireframe}
                         >Save</Button>
                     </Form>
                 </div>
@@ -74,4 +97,4 @@ class ErdEditForm extends Component {
     }
 }
 
-export default ErdEditForm
+export default WireframeEditForm

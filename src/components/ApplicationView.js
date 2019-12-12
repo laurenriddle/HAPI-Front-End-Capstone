@@ -9,6 +9,14 @@ import ApiList from "./ApiSearch/ApiList";
 import APISaveForm from "./ApiSearch/SaveForm";
 import ApiEditForm from "./Resources/ApiEditForm";
 import Home from "./Home/Home";
+import ApiForm from "./Resources/APIForm";
+import WireframeForm from "./Resources/WireframeForm";
+import WireframeEditForm from "./Resources/WireframeEditForm";
+import TechnologyForm from "./Resources/TechnologyForm";
+import TechnologyEditForm from "./Resources/TechnologyEditForm";
+import ProjectList from "./Projects/ProjectList";
+import ProjectForm from "./Projects/ProjectForm";
+import ProjectEditForm from "./Projects/ProjectEdtForm";
 
 export default class ApplicationViews extends Component {
 
@@ -91,6 +99,44 @@ export default class ApplicationViews extends Component {
             return <ApiEditForm {...props} {...this.props} />
           }}
         />
+        <Route
+          path="/api/new" render={props => {
+            return <ApiForm {...props} {...this.props} />
+          }}
+        />
+         <Route path="/wireframe/new" render={(props) => {
+          return <WireframeForm {...props} {...this.props} />
+
+        }} />
+        <Route
+          path="/wireframe/:wireframeId(\d+)/edit" render={props => {
+            return <WireframeEditForm {...props} {...this.props} />
+          }}
+        />
+         <Route path="/technology/new" render={(props) => {
+          return <TechnologyForm {...props} {...this.props} />
+
+        }} />
+        <Route
+          path="/technology/:technologyId(\d+)/edit" render={props => {
+            return <TechnologyEditForm {...props} {...this.props} />
+          }}
+        />
+        <Route
+          path="/projects" render={props => {
+            return <ProjectList {...props} {...this.props} />
+          }}
+        />
+        <Route
+          path="/project/new" render={props => {
+            return <ProjectForm {...props} {...this.props} />
+          }}
+        /> 
+        <Route
+        path="/project/:projectId(\d+)/edit" render={props => {
+          return <ProjectEditForm {...props} {...this.props} />
+        }}
+      />
 
       </React.Fragment>
     );

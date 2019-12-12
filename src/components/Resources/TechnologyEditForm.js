@@ -3,7 +3,7 @@ import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
 
 
-class ErdEditForm extends Component {
+class TechnologyEditForm extends Component {
     //set the initial state
     state = {
         name: "",
@@ -18,31 +18,31 @@ class ErdEditForm extends Component {
         this.setState(stateToChange)
     }
 
-    updateExistingErd = evt => {
+    updateExistingTechnology = evt => {
         evt.preventDefault()
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
 
-        const editedErd = {
+        const editedTechnology = {
             name: this.state.name,
             notes: this.state.notes,
             link: this.state.link,
             userId: currentUser.id,
-            id: this.props.match.params.erdId
+            id: this.props.match.params.technologyId
         }
 
-        APIManager.update("erds", editedErd)
+        APIManager.update("technologies", editedTechnology)
             .then(() => this.props.history.push("/Resources"))
     }
 
     componentDidMount() {
-        APIManager.get(`erds/${this.props.match.params.erdId}`)
-            .then(erd => {
+        APIManager.get(`technologies/${this.props.match.params.technologyId}`)
+            .then(technology => {
                 this.setState({
-                    name: erd.name,
-                    notes: erd.notes,
-                    link: erd.link,
+                    name: technology.name,
+                    notes: technology.notes,
+                    link: technology.link,
                     loadingStatus: false,
 
                 })
@@ -52,7 +52,7 @@ class ErdEditForm extends Component {
     render() {
         return (
             <>
-                <div id="erdEditForm">
+                <div id="TechnologyEditForm">
                     <Form>
                         <Form.Group>
                             <Form.Label>Name:</Form.Label>
@@ -65,7 +65,7 @@ class ErdEditForm extends Component {
                         <Button
                             type="button"
                             disabled={this.state.loadingStatus}
-                            onClick={this.updateExistingErd}
+                            onClick={this.updateExistingTechnology}
                         >Save</Button>
                     </Form>
                 </div>
@@ -74,4 +74,4 @@ class ErdEditForm extends Component {
     }
 }
 
-export default ErdEditForm
+export default TechnologyEditForm
