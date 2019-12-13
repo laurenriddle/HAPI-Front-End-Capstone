@@ -24,7 +24,7 @@ class ProjectEditForm extends Component {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
-        if(this.state.erdId === "") {
+        if (this.state.erdId === "") {
             const project = {
                 name: this.state.name,
                 githubUrl: this.state.githubUrl,
@@ -32,7 +32,7 @@ class ProjectEditForm extends Component {
                 userId: currentUser.id,
                 id: this.props.match.params.projectId,
             }
-    
+
             APIManager.update("projects", project)
                 .then(() => this.props.history.push("/projects"))
         } else {
@@ -44,11 +44,17 @@ class ProjectEditForm extends Component {
                 userId: currentUser.id,
                 id: this.props.match.params.projectId,
                 erdId: this.state.erdId
-    
+
             }
-    
+
             APIManager.update("projects", project)
-                .then(() => this.props.history.push("/projects"))
+                .then(() => {
+                    if (this.props.location.state !== undefined) {
+                     this.props.history.push({ pathname: `/project/${this.props.match.params.projectId}`, state: {project: this.props.location.state.project}}) 
+                } else { 
+                    this.props.history.push("/projects") 
+                }
+                })
         }
     }
 
@@ -56,7 +62,7 @@ class ProjectEditForm extends Component {
         APIManager.get(`projects/${this.props.match.params.projectId}`)
             .then(project => {
                 console.log("project", project.erdId)
-                if(project.erdId === undefined) {
+                if (project.erdId === undefined) {
                     this.setState({
                         name: project.name,
                         description: project.description,
@@ -64,18 +70,19 @@ class ProjectEditForm extends Component {
                         loadingStatus: false,
                     });
                 } else {
-                this.setState({
-                    name: project.name,
-                    description: project.description,
-                    githubUrl: project.githubUrl,
-                    loadingStatus: false,
-                    erdId: project.erdId
-                });
-            }
+                    this.setState({
+                        name: project.name,
+                        description: project.description,
+                        githubUrl: project.githubUrl,
+                        loadingStatus: false,
+                        erdId: project.erdId
+                    });
+                }
             });
     }
 
     render() {
+
         return (
             <>
                 <div id="projectSaveForm">

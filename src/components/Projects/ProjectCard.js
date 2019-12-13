@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 export class ProjectCard extends Component {
 
     render() {
-        console.log(this.props.project.id)
+        console.log(this.props.project)
         return (
             <div className="projectCard card">
                 <Card>
@@ -13,7 +13,7 @@ export class ProjectCard extends Component {
                             <h6>{this.props.project.description}</h6>
                             <a href={this.props.project.githubUrl} rel="noopener noreferrer" target="_blank"><Button>View Git Hub</Button> </a>
                             <hr />
-                            <a onClick={() => { this.props.history.push(`/project/${this.props.project.id}`) }}>View Project</a>
+                            <a onClick={() => { this.props.history.push({ pathname: `/project/${this.props.project.id}`, state: { project: this.props.project} }) }}>View Project</a>
 
                         </Card.Body>
                     </div>
