@@ -9,6 +9,9 @@ Hapi is a React App that was designed for software developers to use to keep tra
 1. Clone down this repository by clicking the "Clone or Download" button above, copying the SSH key, and running the following command in your terminal `git clone SSH KEY GOES HERE`.
 1. `cd` into the root directory of the app.
 1. Run `npm install` and wait for all dependencies to be installed.
+1. `cd` into /src/modules and open Credentials.js.example.
+1. You must sign up for a Cloudinary account and get your own Cloudname and Upload preset to use the image upload functionality in the Hapi app. Once you have these, put them into the appropriate spot in the Credentials.js.example file.
+1. Remove the .example from the Credentials.js.example file.
 1. Run `npm start` to verify that installation was successful and start the application.
 1. `cd` into the /api directory, and remove the .example extention from the database.json.example file. 
 1. In the api folder, run `json-server -p 5002 -w database.json`.

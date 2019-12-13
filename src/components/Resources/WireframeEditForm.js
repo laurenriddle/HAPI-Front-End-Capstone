@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
+import { cloudName, uploadPreset } from "../../modules/Credentials";
 
 
 class WireframeEditForm extends Component {
@@ -58,8 +59,8 @@ class WireframeEditForm extends Component {
 
     openCloudinaryWidget = () => {
         let widget = window.cloudinary.createUploadWidget({
-            cloudName: 'dkjfqmbsu',
-            uploadPreset: 'tzfrbmjg'
+            cloudName: cloudName,
+            uploadPreset: uploadPreset
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log('Done! Here is the image info: ', result.info);
