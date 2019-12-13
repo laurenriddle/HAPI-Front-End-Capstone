@@ -24,16 +24,15 @@ class ProjectList extends Component {
 
     deleteProject = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        console.log(id)
-        if(window.confirm("Are you sure you want to delete this project?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(projects => {
-                        this.setState({ projects: projects })
+        if (window.confirm("Are you sure you want to delete this project?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                        .then(projects => {
+                            this.setState({ projects: projects })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
@@ -42,10 +41,10 @@ class ProjectList extends Component {
         return (
             <>
                 <section className="section-content">
-                <Button type="button" className="newProjectBtn" onClick={() => { this.props.history.push("/project/new") }}>Create New Project</Button>
+                    <Button type="button" className="newProjectBtn" onClick={() => { this.props.history.push("/project/new") }}>Create New Project</Button>
                 </section>
-                    <hr /><h2><span>Projects</span></h2><hr />
-                <div className="api-container-cards"> 
+                <hr /><h2><span>Projects</span></h2><hr />
+                <div className="api-container-cards">
                     {
                         this.state.projects.map((project) => {
                             return <ProjectCard
@@ -57,8 +56,8 @@ class ProjectList extends Component {
                         })
                     }
                 </div>
-                
-             
+
+
             </>
         )
     }

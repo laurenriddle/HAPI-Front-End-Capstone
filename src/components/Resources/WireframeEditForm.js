@@ -52,7 +52,6 @@ class WireframeEditForm extends Component {
             projectId: this.state.projectId
 
         }
-        console.log(editedWireframe)
         APIManager.update("wireframes", editedWireframe)
             .then(() => this.props.history.push(`/project/${this.state.projectId}`))
     }
@@ -63,17 +62,14 @@ class WireframeEditForm extends Component {
             uploadPreset: uploadPreset
         }, (error, result) => {
             if (!error && result && result.event === "success") {
-                console.log('Done! Here is the image info: ', result.info);
                 // newImage = 
                 this.setState({
                     img: result.info.url
                 })
-                console.log(this.state.img)
             }
         }
         )
         widget.open();
-        // console.log("new image", this.state)
     }
 
     render() {

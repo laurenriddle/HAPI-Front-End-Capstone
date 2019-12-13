@@ -17,11 +17,10 @@ class ResourceList extends Component {
         githubUrl: "",
         description: "",
         project: []
-       
+
     }
 
     componentDidMount() {
-        console.log("COMPONENT MOUNT", this.state.erds)
         // get all friends for this user
         APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
             .then(erds => {
@@ -50,7 +49,7 @@ class ResourceList extends Component {
                     technologies: technologies
                 })
             })
-            APIManager.get(`projects/${this.props.match.params.projectId}`)
+        APIManager.get(`projects/${this.props.match.params.projectId}`)
             .then((project) => {
                 this.setState({
                     project: project
@@ -67,8 +66,8 @@ class ResourceList extends Component {
                         name: project.name,
                         githubUrl: project.githubUrl,
                         description: project.description,
-                    })   
-                }) 
+                    })
+                })
                 .then(() => {
                     const editedProject = {
                         name: this.state.name,
@@ -83,7 +82,6 @@ class ResourceList extends Component {
                     APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
                 })
                 .then(erds => {
-                    console.log("DELETE", erds)
                     let erdArray = []
                     if (erds !== undefined) {
                         erdArray.push(erds.erd)
@@ -142,11 +140,18 @@ class ResourceList extends Component {
     render() {
         return (
             <>
-            <div>
-            <hr /><span><h1>{this.state.project.name}</h1><a href={this.state.project.githubUrl} rel="noopener noreferrer" target="_blank">+ View Resource</a><p>{this.state.project.description} </p><img src={require('./EditSymbol.png')} width="20" height="20" className="erd-align-right crud" alt="edit symbol" onClick={() => { this.props.history.push({ pathname: `/project/${this.props.match.params.projectId}/edit`, state: {boolean: true,
-            project: this.props.location.state.project}}) }} /></span><hr />
+                <Button onClick={() => this.props.history.push("/projects")}>Back to Projects List</Button>
+                <div>
+                    <hr /><span><h1>{this.state.project.name}</h1><a href={this.state.project.githubUrl} rel="noopener noreferrer" target="_blank">+ View Resource</a><p>{this.state.project.description} </p><img src={require('./EditSymbol.png')} width="20" height="20" className="erd-align-right crud" alt="edit symbol" onClick={() => {
+                        this.props.history.push({
+                            pathname: `/project/${this.props.match.params.projectId}/edit`, state: {
+                                boolean: true,
+                                project: this.props.location.state.project
+                            }
+                        })
+                    }} /></span><hr />
 
-            </div>
+                </div>
                 <section className="section-content">
                     <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>Create New API</Button>
                     <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds[0], project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
@@ -185,7 +190,6 @@ class ResourceList extends Component {
                 <div className="wireframe-container-cards">
                     {
                         this.state.wireframes.map((wireframe) => {
-                            // if the index of the event is equal to 0, render the card with the bold text and background color
                             return <WireframeCard
                                 key={wireframe.id}
                                 wireframe={wireframe}
@@ -199,7 +203,6 @@ class ResourceList extends Component {
                 <div className="technologies-container-cards">
                     {
                         this.state.technologies.map((technology) => {
-                            // if the index of the event is equal to 0, render the card with the bold text and background color
                             return <TechnologyCard
                                 key={technology.id}
                                 technology={technology}

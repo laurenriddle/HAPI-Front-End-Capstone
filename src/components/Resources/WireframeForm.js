@@ -40,8 +40,6 @@ class WireframeForm extends Component {
             uploadPreset: uploadPreset
         }, (error, result) => {
             if (!error && result && result.event === "success") {
-                console.log('Done! Here is the image info: ', result.info);
-                // newImage = 
                 this.setState({
                     img: result.info.url
                 })
@@ -49,7 +47,6 @@ class WireframeForm extends Component {
         }
         )
         widget.open();
-        // console.log("new image", this.state)
     }
 
     render() {

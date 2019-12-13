@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap';
 export class ProjectCard extends Component {
 
     render() {
-        console.log(this.props.project)
         return (
             <div className="projectCard card">
                 <Card>

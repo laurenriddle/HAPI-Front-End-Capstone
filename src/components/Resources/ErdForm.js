@@ -29,7 +29,6 @@ class ErdForm extends Component {
             }
             APIManager.post("erds", erd)
                 .then((newErd) => {
-                    console.log(newErd.id)
                     APIManager.patch(`projects/${this.props.location.state.project}`, {erdId: newErd.id})
                     .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
                 })
@@ -41,7 +40,6 @@ class ErdForm extends Component {
         }
     }
     render() {
-        console.log(this.props.location.state.project)
         return (
             <>
                 <div id="newErdForm">

@@ -55,8 +55,6 @@ export default class ApplicationViews extends Component {
         }} />
         <Route
           path="/erds/:erdId(\d+)/edit" render={props => {
-            console.log(this.props)
-            console.log(props)
             return <ErdEditForm {...props} {...this.props} />
           }}
         />

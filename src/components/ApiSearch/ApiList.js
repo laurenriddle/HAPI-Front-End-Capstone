@@ -69,7 +69,6 @@ class ApiList extends Component {
     }
 
     render() {
-        console.log(this.state.results)
         return (
             <>
                 <section className="section-content">
@@ -85,7 +84,6 @@ class ApiList extends Component {
                     <hr /><h2>Search Results:</h2><hr />
                     {
                         this.state.results.map((result, index) => {
-                            console.log("map")
                             if (index < 50) {
                                 return <ListCard
                                     key={result.Link}

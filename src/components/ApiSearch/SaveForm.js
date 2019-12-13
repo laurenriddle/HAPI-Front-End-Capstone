@@ -55,27 +55,31 @@ class APISaveForm extends Component {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
-        console.log(stateToChange)
     }
 
     saveApi = evt => {
         evt.preventDefault()
-        this.setState({ loadingStatus: true });
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+
+        if (this.state.projectId !== "") {
+            this.setState({ loadingStatus: true });
+            const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
 
-        const api = {
-            name: this.state.API,
-            notes: this.state.notes,
-            link: this.state.Link,
-            userId: currentUser.id,
-            description: this.state.Description,
-            apiKey: this.state.apiKey,
-            projectId: Number(this.state.projectId)
+            const api = {
+                name: this.state.API,
+                notes: this.state.notes,
+                link: this.state.Link,
+                userId: currentUser.id,
+                description: this.state.Description,
+                apiKey: this.state.apiKey,
+                projectId: Number(this.state.projectId)
+            }
+
+            APIManager.post("apis", api)
+                .then(() => this.props.history.push(`/project/${this.state.projectId}`))
+        } else {
+            alert("Please assign this API to a project.")
         }
-
-        APIManager.post("apis", api)
-            .then(() => this.props.history.push("/Resources"))
     }
 
     render() {
@@ -94,12 +98,15 @@ class APISaveForm extends Component {
                             <Form.Control type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
                             <Form.Label>Notes:</Form.Label>
                             <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
-                            
-                                <select id="projectId" onChange={this.handleFieldChange}>
-                                    {this.state.projects.map((project) => {
-                                        return <option value={project.id} >{project.name}</option>
-                                    })}
-                                </select>
+
+                  
+                            <select id="projectId" onChange={this.handleFieldChange}>
+                                <option value="">Select a Project</option>
+
+                                {this.state.projects.map((project) => {
+                                    return <option key={project.id} value={project.id} >{project.name}</option>
+                                })}
+                            </select>
 
                         </Form.Group>
                         <Button
