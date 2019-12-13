@@ -24,10 +24,11 @@ class TechnologyForm extends Component {
                 name: this.state.name,
                 link: this.state.link,
                 notes: this.state.notes,
-                userId: currentUser.id
+                userId: currentUser.id,
+                projectId: this.props.location.state.project
             }
             APIManager.post("technologies", technology)
-                .then(() => this.props.history.push("/Resources"))
+                .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
         
     }
     render() {

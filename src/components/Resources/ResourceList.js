@@ -12,108 +12,138 @@ class ResourceList extends Component {
         erds: [],
         apis: [],
         wireframes: [],
-        technologies: []
+        technologies: [],
+        name: "",
+        githubUrl: "",
+        description: "",
+       
     }
 
     componentDidMount() {
+        console.log("COMPONENT MOUNT", this.state.erds)
         // get all friends for this user
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        APIManager.get(`erds?userId=${currentUser.id}`)
+        APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
             .then(erds => {
-                this.setState({
-                    erds: erds
-                })
+                let erdArray = []
+                if (erds.erd !== undefined) {
+                    erdArray.push(erds.erd)
+                    this.setState({ erds: erdArray })
+                }
+            })
 
+        APIManager.get(`apis?projectId=${this.props.match.params.projectId}`)
+            .then(apis => {
+                this.setState({
+                    apis: apis
+                })
             })
-        APIManager.get(`apis?userId=${currentUser.id}`)
-        .then(apis => {
-            this.setState({
-                apis: apis
+        APIManager.get(`wireframes?projectId=${this.props.match.params.projectId}`)
+            .then(wireframes => {
+                this.setState({
+                    wireframes: wireframes
+                })
             })
-        })
-        APIManager.get(`wireframes?userId=${currentUser.id}`)
-        .then(wireframes => {
-            this.setState({
-                wireframes: wireframes
+        APIManager.get(`technologies?projectId=${this.props.match.params.projectId}`)
+            .then(technologies => {
+                this.setState({
+                    technologies: technologies
+                })
             })
-        })
-        APIManager.get(`technologies?userId=${currentUser.id}`)
-        .then(technologies => {
-            this.setState({
-                technologies: technologies
-            })
-        })
     }
 
     deleteErd = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if(window.confirm("Are you sure you want to delete this ERD?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(erds => {
-                        this.setState({ erds: erds })
-
-                    })
-            })
+        if (window.confirm("Are you sure you want to delete this ERD?")) {
+            APIManager.get(`projects/${this.props.match.params.projectId}`)
+                .then((project) => {
+                    this.setState({
+                        name: project.name,
+                        githubUrl: project.githubUrl,
+                        description: project.description,
+                    })   
+                }) 
+                .then(() => {
+                    const editedProject = {
+                        name: this.state.name,
+                        githubUrl: this.state.githubUrl,
+                        description: this.state.description,
+                        userId: currentUser.id,
+                        id: this.props.match.params.projectId,
+                    }
+                    APIManager.update("projects", editedProject)
+                })
+                .then(() => {
+                    APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
+                })
+                .then(erds => {
+                    console.log("DELETE", erds)
+                    let erdArray = []
+                    if (erds !== undefined) {
+                        erdArray.push(erds.erd)
+                        this.setState({ erds: erdArray })
+                    } else {
+                        this.setState({ erds: [] })
+                    }
+                })
         }
     }
 
     deleteApi = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
         // confirm()
-        if(window.confirm("Are you sure you want to delete this API?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(apis => {
-                        this.setState({ apis: apis })
+        if (window.confirm("Are you sure you want to delete this API?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`apis?projectId=${this.props.match.params.projectId}`)
+                        .then(apis => {
+                            this.setState({ apis: apis })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
     deleteWireframe = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if(window.confirm("Are you sure you want to delete this wireframe?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(wireframes => {
-                        this.setState({ wireframes: wireframes })
+        if (window.confirm("Are you sure you want to delete this wireframe?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`wireframes?projectId=${this.props.match.params.projectId}`)
+                        .then(wireframes => {
+                            this.setState({ wireframes: wireframes })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
 
     deleteTechnology = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if(window.confirm("Are you sure you want to delete this technology?")){
-        APIManager.delete(`${endpoint}/${id}`)
-            .then(() => {
-                APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                    .then(technologies => {
-                        this.setState({ technologies: technologies })
+        if (window.confirm("Are you sure you want to delete this technology?")) {
+            APIManager.delete(`${endpoint}/${id}`)
+                .then(() => {
+                    APIManager.get(`technologies?projectId=${this.props.match.params.projectId}`)
+                        .then(technologies => {
+                            this.setState({ technologies: technologies })
 
-                    })
-            })
+                        })
+                })
         }
     }
 
     render() {
+        console.log("RENDER", this.state.erds)
         return (
             <>
                 <section className="section-content">
-                <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push("/api/new") }}>Create New API</Button>
-                <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push("/erd/new") }}>Create New ERD</Button>
-                <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push("/technology/new") }}>Create New Technology</Button>
-                <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push("/wireframe/new") }}>Create New Wireframe</Button>
+                    <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>Create New API</Button>
+                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds[0], project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
+                    <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>Create New Technology</Button>
+                    <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>Create New Wireframe</Button>
                 </section>
-                    <hr /><h2><span>APIs</span></h2><hr />
-                <div className="api-container-cards"> 
+                <hr /><h2><span>APIs</span></h2><hr />
+                <div className="api-container-cards">
                     {
                         this.state.apis.map((api) => {
                             return <ApiCard
@@ -125,21 +155,21 @@ class ResourceList extends Component {
                         })
                     }
                 </div>
-                    <hr /><h2><span>Entity Relationship Diagrams
+                <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">
-                    {
-                        this.state.erds.map((erd) => {
-                            // if the index of the event is equal to 0, render the card with the bold text and background color
-                            return <ErdCard
-                                key={erd.id}
-                                erd={erd}
-                                deleteErd={this.deleteErd}
-                                {...this.props}
-                            />
-                        })
+                    {this.state.erds.map((erd) => {
+                        return <ErdCard
+                            key={erd.id}
+                            erd={erd}
+                            deleteErd={this.deleteErd}
+                            {...this.props}
+                            projectId={this.props.match.params.projectId}
+                        />
+
+                    })
                     }
-                </div >
+                </div>
                 <hr /><h2><span>Wireframes</span></h2><hr />
                 <div className="wireframe-container-cards">
                     {

@@ -42,33 +42,33 @@ class LogIn extends Component {
     render() {
         return (
             <>
-            <header>
-            <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo"/>
-            <h2><span>Filler. Text. Here.</span></h2>
-            </header>
-            <form onSubmit={this.handleLogin}>
-                <fieldset>
-                    <h4>Login</h4>
-                    <div className="formgrid">
-                        <label htmlFor="inputEmail">Email address</label>
-                        <input onChange={this.handleFieldChange} type="email"
-                            id="email"
-                            placeholder="Email address"
-                            required="" autoFocus="" />
+                <header>
+                    <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo" />
+                    <h2><span>Filler. Text. Here.</span></h2>
+                </header>
+                <form onSubmit={this.handleLogin}>
+                    <fieldset>
+                        <h4>Login</h4>
+                        <div className="formgrid">
+                            <label htmlFor="inputEmail">Email address</label>
+                            <input onChange={this.handleFieldChange} type="email"
+                                id="email"
+                                placeholder="Email address"
+                                required="" autoFocus="" />
 
-                        <label htmlFor="inputPassword">Password</label>
-                        <input onChange={this.handleFieldChange} type="password"
-                            id="password"
-                            placeholder="Password"
-                            required="" />
-                    </div>
-                    <button type="submit">
-                        Log In
+                            <label htmlFor="inputPassword">Password</label>
+                            <input onChange={this.handleFieldChange} type="password"
+                                id="password"
+                                placeholder="Password"
+                                required="" />
+                        </div>
+                        <button type="submit">
+                            Log In
             </button>
-            <Link className="nav-link" to="/Register">Don't have an account? Click here to sign up!</Link>
+                        <Link className="nav-link" to="/Register">Don't have an account? Click here to sign up!</Link>
 
-                </fieldset>
-            </form>
+                    </fieldset>
+                </form>
             </>
         )
     }

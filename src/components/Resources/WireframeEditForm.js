@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
+import { cloudName, uploadPreset } from "../../modules/Credentials";
 
 
 class WireframeEditForm extends Component {
@@ -10,6 +11,7 @@ class WireframeEditForm extends Component {
         link: "",
         notes: "",
         img: "",
+        projectId: "",
         loadingStatus: false,
     };
     
@@ -22,7 +24,8 @@ class WireframeEditForm extends Component {
                     notes: wireframe.notes,
                     link: wireframe.link,
                     loadingStatus: false,
-                    img: wireframe.imageUrl
+                    img: wireframe.imageUrl,
+                    projectId: wireframe.projectId
                 });
     
             });
@@ -45,17 +48,19 @@ class WireframeEditForm extends Component {
             link: this.state.link,
             userId: currentUser.id,
             id: this.props.match.params.wireframeId,
-            imageUrl: this.state.img
+            imageUrl: this.state.img,
+            projectId: this.state.projectId
+
         }
         console.log(editedWireframe)
         APIManager.update("wireframes", editedWireframe)
-            .then(() => this.props.history.push("/Resources"))
+            .then(() => this.props.history.push(`/project/${this.state.projectId}`))
     }
 
     openCloudinaryWidget = () => {
         let widget = window.cloudinary.createUploadWidget({
-            cloudName: 'dkjfqmbsu',
-            uploadPreset: 'tzfrbmjg'
+            cloudName: cloudName,
+            uploadPreset: uploadPreset
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log('Done! Here is the image info: ', result.info);

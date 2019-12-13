@@ -29,11 +29,11 @@ class ErdEditForm extends Component {
             notes: this.state.notes,
             link: this.state.link,
             userId: currentUser.id,
-            id: this.props.match.params.erdId
+            id: this.props.match.params.erdId,
         }
 
         APIManager.update("erds", editedErd)
-            .then(() => this.props.history.push("/Resources"))
+            .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
     }
 
     componentDidMount() {

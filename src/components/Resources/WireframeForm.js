@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
+import { cloudName, uploadPreset } from '../../modules/Credentials';
 
 class WireframeForm extends Component {
     state = {
@@ -25,17 +26,18 @@ class WireframeForm extends Component {
                 link: this.state.link,
                 notes: this.state.notes,
                 userId: currentUser.id,
-                imageUrl: this.state.img
+                imageUrl: this.state.img,
+                projectId: this.props.location.state.project
             }
             APIManager.post("wireframes", wireframe)
-                .then(() => this.props.history.push("/Resources"))
+                .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
         
     }
 
     openCloudinaryWidget = () => {
         let widget = window.cloudinary.createUploadWidget({
-            cloudName: 'dkjfqmbsu',
-            uploadPreset: 'tzfrbmjg'
+            cloudName: cloudName,
+            uploadPreset: uploadPreset
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log('Done! Here is the image info: ', result.info);
