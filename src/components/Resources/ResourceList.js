@@ -16,12 +16,15 @@ class ResourceList extends Component {
     }
 
     componentDidMount() {
+        console.log("COMPONENT MOUNT", this.state.erds)
         // get all friends for this user
         APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
             .then(erds => {
                 let erdArray = []
+                if(erds.erd !== undefined){
                 erdArray.push(erds.erd)
                 this.setState({ erds: erdArray })
+                }
             })
 
         APIManager.get(`apis?projectId=${this.props.match.params.projectId}`)
@@ -105,11 +108,12 @@ class ResourceList extends Component {
     }
 
     render() {
+        console.log("RENDER", this.state.erds)
         return (
             <>
                 <section className="section-content">
                     <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>Create New API</Button>
-                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds.id, project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
+                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds[0], project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
                     <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>Create New Technology</Button>
                     <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>Create New Wireframe</Button>
                 </section>
@@ -136,6 +140,7 @@ class ResourceList extends Component {
                                    deleteErd={this.deleteErd}
                                    {...this.props}
                                />
+                               
                            })
                            }
                 </div>

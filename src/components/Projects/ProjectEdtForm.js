@@ -10,6 +10,7 @@ class ProjectEditForm extends Component {
         githubUrl: "",
         description: "",
         loadingStatus: false,
+        erdId: "",
     };
 
     handleFieldChange = evt => {
@@ -28,7 +29,8 @@ class ProjectEditForm extends Component {
             githubUrl: this.state.githubUrl,
             description: this.state.description,
             userId: currentUser.id,
-            id: this.props.match.params.projectId
+            id: this.props.match.params.projectId,
+            erdId: this.state.erdId
 
         }
 
@@ -44,6 +46,7 @@ class ProjectEditForm extends Component {
                     description: project.description,
                     githubUrl: project.githubUrl,
                     loadingStatus: false,
+                    erId: project.erdId
                 });
             });
     }
