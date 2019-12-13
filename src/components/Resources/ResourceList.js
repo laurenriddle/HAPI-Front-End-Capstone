@@ -21,9 +21,9 @@ class ResourceList extends Component {
         APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
             .then(erds => {
                 let erdArray = []
-                if(erds.erd !== undefined){
-                erdArray.push(erds.erd)
-                this.setState({ erds: erdArray })
+                if (erds.erd !== undefined) {
+                    erdArray.push(erds.erd)
+                    this.setState({ erds: erdArray })
                 }
             })
 
@@ -50,15 +50,19 @@ class ResourceList extends Component {
     deleteErd = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
         if (window.confirm("Are you sure you want to delete this ERD?")) {
-            APIManager.delete(`${endpoint}/${id}`)
+            APIManager.patch(`projects/${this.props.match.params.projectId}`, { erdId: "" })
                 .then(() => {
-                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
-                        .then(erds => {
-                           let erdArray = []
-                            erdArray.push(erds)
-                            this.setState({ erds: erdArray })
-
-                        })
+                    APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
+                })
+                .then(erds => {
+                    console.log("DELETE", erds)
+                    let erdArray = []
+                    if (erds !== undefined) {
+                        erdArray.push(erds.erd)
+                        this.setState({ erds: erdArray })
+                    } else {
+                        this.setState({ erds: [] })
+                    }
                 })
         }
     }
@@ -133,16 +137,17 @@ class ResourceList extends Component {
                 <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">
-                           {this.state.erds.map((erd) => {
-                              return <ErdCard
-                                   key={erd.id}
-                                   erd={erd}
-                                   deleteErd={this.deleteErd}
-                                   {...this.props}
-                               />
-                               
-                           })
-                           }
+                    {this.state.erds.map((erd) => {
+                        return <ErdCard
+                            key={erd.id}
+                            erd={erd}
+                            deleteErd={this.deleteErd}
+                            {...this.props}
+                            projectId={this.props.match.params.projectId}
+                        />
+
+                    })
+                    }
                 </div>
                 <hr /><h2><span>Wireframes</span></h2><hr />
                 <div className="wireframe-container-cards">

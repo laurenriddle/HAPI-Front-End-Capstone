@@ -46,7 +46,7 @@ class ProjectEditForm extends Component {
                     description: project.description,
                     githubUrl: project.githubUrl,
                     loadingStatus: false,
-                    erId: project.erdId
+                    erdId: project.erdId
                 });
             });
     }
