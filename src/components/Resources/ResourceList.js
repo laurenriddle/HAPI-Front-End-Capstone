@@ -12,7 +12,11 @@ class ResourceList extends Component {
         erds: [],
         apis: [],
         wireframes: [],
-        technologies: []
+        technologies: [],
+        name: "",
+        githubUrl: "",
+        description: "",
+       
     }
 
     componentDidMount() {
@@ -50,7 +54,24 @@ class ResourceList extends Component {
     deleteErd = (id, endpoint) => {
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
         if (window.confirm("Are you sure you want to delete this ERD?")) {
-            APIManager.patch(`projects/${this.props.match.params.projectId}`, { erdId: "" })
+            APIManager.get(`projects/${this.props.match.params.projectId}`)
+                .then((project) => {
+                    this.setState({
+                        name: project.name,
+                        githubUrl: project.githubUrl,
+                        description: project.description,
+                    })   
+                }) 
+                .then(() => {
+                    const editedProject = {
+                        name: this.state.name,
+                        githubUrl: this.state.githubUrl,
+                        description: this.state.description,
+                        userId: currentUser.id,
+                        id: this.props.match.params.projectId,
+                    }
+                    APIManager.update("projects", editedProject)
+                })
                 .then(() => {
                     APIManager.get(`projects/${this.props.match.params.projectId}?_expand=erd`)
                 })
@@ -73,7 +94,7 @@ class ResourceList extends Component {
         if (window.confirm("Are you sure you want to delete this API?")) {
             APIManager.delete(`${endpoint}/${id}`)
                 .then(() => {
-                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    APIManager.get(`apis?projectId=${this.props.match.params.projectId}`)
                         .then(apis => {
                             this.setState({ apis: apis })
 
@@ -87,7 +108,7 @@ class ResourceList extends Component {
         if (window.confirm("Are you sure you want to delete this wireframe?")) {
             APIManager.delete(`${endpoint}/${id}`)
                 .then(() => {
-                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    APIManager.get(`wireframes?projectId=${this.props.match.params.projectId}`)
                         .then(wireframes => {
                             this.setState({ wireframes: wireframes })
 
@@ -102,7 +123,7 @@ class ResourceList extends Component {
         if (window.confirm("Are you sure you want to delete this technology?")) {
             APIManager.delete(`${endpoint}/${id}`)
                 .then(() => {
-                    APIManager.get(`${endpoint}?userId=${currentUser.id}`)
+                    APIManager.get(`technologies?projectId=${this.props.match.params.projectId}`)
                         .then(technologies => {
                             this.setState({ technologies: technologies })
 

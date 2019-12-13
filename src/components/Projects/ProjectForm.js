@@ -26,7 +26,6 @@ class ProjectForm extends Component {
                     githubUrl: this.state.githubUrl,
                     description: this.state.description,
                     userId: currentUser.id,
-                    erdId: ""
                 }
             
             APIManager.post("projects", project)
