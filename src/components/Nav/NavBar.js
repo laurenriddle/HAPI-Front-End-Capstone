@@ -21,7 +21,6 @@ class Navigation extends Component {
                 <Nav className="nav-link" >
                   {/* <Link className="nav-link" to="/">Home</Link> */}
                   <Link className="nav-link" to="/projects">Projects</Link>
-                  <Link className="nav-link" to="/resources">Resources</Link>
                   <Link className="nav-link" to="/apisearch">API Search</Link>
                 </Nav>
                 <Nav className="ml-auto">

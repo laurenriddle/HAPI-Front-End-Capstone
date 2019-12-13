@@ -1,6 +1,6 @@
 import APIManager from "../../modules/APIManager";
 import ExternalAPIManager from "../../modules/ExternalAPIManager";
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import React, { Component } from "react"
 
 class APISaveForm extends Component {
@@ -11,6 +11,8 @@ class APISaveForm extends Component {
         apiKey: "",
         notes: "",
         loadingStatus: false,
+        projects: [],
+        projectId: ""
     };
 
     componentDidMount() {
@@ -41,12 +43,19 @@ class APISaveForm extends Component {
                     }
                 });
             });
+        APIManager.get("projects")
+            .then((projects) => {
+                this.setState({
+                    projects: projects
+                })
+            })
     }
 
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
+        console.log(stateToChange)
     }
 
     saveApi = evt => {
@@ -61,7 +70,8 @@ class APISaveForm extends Component {
             link: this.state.Link,
             userId: currentUser.id,
             description: this.state.Description,
-            apiKey: this.state.apiKey
+            apiKey: this.state.apiKey,
+            projectId: Number(this.state.projectId)
         }
 
         APIManager.post("apis", api)
@@ -84,6 +94,13 @@ class APISaveForm extends Component {
                             <Form.Control type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
                             <Form.Label>Notes:</Form.Label>
                             <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
+                            
+                                <select id="projectId" onChange={this.handleFieldChange}>
+                                    {this.state.projects.map((project) => {
+                                        return <option value={project.id} >{project.name}</option>
+                                    })}
+                                </select>
+
                         </Form.Group>
                         <Button
                             type="button"
