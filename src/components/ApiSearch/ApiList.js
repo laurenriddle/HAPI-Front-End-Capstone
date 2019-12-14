@@ -2,18 +2,83 @@ import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import ExternalAPIManager from '../../modules/ExternalAPIManager';
 import ListCard from './ListCards';
+import { Typeahead } from "react-bootstrap-typeahead";
+import "react-bootstrap-typeahead/css/Typeahead.css";
+
 
 class ApiList extends Component {
     state = {
         results: [],
         terms: "",
-        loadingStatus: false
+        loadingStatus: false,
+        categories: []
     }
 
+    componentDidMount() {
+        let categories = [
+            "Animals",
+            "Anime",
+            "Anti-Malware",
+            "Art",
+            "Design",
+            "Books",
+            "Business",
+            "Calendar",
+            "Cloud Storage",
+            "File Sharing",
+            "Continuous Integration",
+            "Cryptocurrency",
+            "Currency Exchange",
+            "Data Validation",
+            "Development",
+            "Dictionaries",
+            "Documents",
+            "Productivity",
+            "Environment",
+            "Events",
+            "Finance",
+            "Drink",
+            "Food",
+            "Fraud Prevention",
+            "Games",
+            "Comics",
+            "Geocoding",
+            "Government",
+            "Health",
+            "Jobs",
+            "Machine Learning",
+            "Music",
+            "News",
+            "Open Data",
+            "Open Source Projects",
+            "Patent",
+            "Personality",
+            "Photography",
+            "Science",
+            "Math",
+            "Security",
+            "Shopping",
+            "Social",
+            "Sports",
+            "Fitness",
+            "Test Data",
+            "Text Analysis",
+            "Tracking",
+            "Transportation",
+            "URL Shorteners",
+            "Vehicle",
+            "Video",
+            "Weather"
+        ]
+        this.setState(
+            { categories: categories }
+        )
+    }
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
+        console.log(stateToChange)
     }
 
     // this function searches the array to make sure the object does not already exist
@@ -75,9 +140,16 @@ class ApiList extends Component {
                     <Form>
                         <Form.Group>
                             <Form.Label><h3>Search for an API:</h3></Form.Label>
-                            <Form.Control type="text" placeholder="Enter Search Terms" id="terms" onChange={this.handleFieldChange} />
+                            <span><Typeahead
+                                //   ref="search-friends-typeahead"
+                                id="terms"
+                                labelKey="api"
+                                options={this.state.categories}
+                                onChange={input => {
+                                    this.setState({ terms: input });
+                                }}></Typeahead>                       
+                        <Button disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button></span>
                         </Form.Group>
-                        <Button disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button>
                     </Form>
                 </section>
                 <div className="erd-container-cards">
