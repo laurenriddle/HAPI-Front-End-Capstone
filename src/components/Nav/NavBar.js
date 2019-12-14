@@ -22,6 +22,7 @@ class Navigation extends Component {
                   {/* <Link className="nav-link" to="/">Home</Link> */}
                   <Link className="nav-link" to="/projects">Projects</Link>
                   <Link className="nav-link" to="/apisearch">API Search</Link>
+                  <Link className="nav-link" to="/random">Random</Link>
                 </Nav>
                 <Nav className="ml-auto">
                   <Link className="nav-link nav-align-right" to="/Login" onClick={this.props.clearUser}>Logout</Link>
