@@ -1,9 +1,18 @@
 .NavBarColor {
     background-color: #a3c738;
 }
-.nav-link {
+.nav-link:hover {
     color: black;
 }
-/* .nav-align-right {
-    margin-left: 200%;
-} */
+
+.logo {
+    border-radius: 50%;
+
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition:         transform .8s ease-in-out;
+}
+.logo:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg) scale(1.2);
+  }
+ 

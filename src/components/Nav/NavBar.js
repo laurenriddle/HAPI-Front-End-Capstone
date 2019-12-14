@@ -16,7 +16,7 @@ class Navigation extends Component {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Link className="nav-link" to="/">
-                  <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo" />
+                  <img src={require('./Logo.png')} class="logo" width="100" height="40" alt="Hapi Logo" />
                 </Link>
                 <Nav className="nav-link" >
                   {/* <Link className="nav-link" to="/">Home</Link> */}
@@ -36,7 +36,7 @@ class Navigation extends Component {
     } else {
       return (
         <>
-          <Navbar collapseOnSelect expand="lg" className="NavBarColor">
+          {/* <Navbar collapseOnSelect expand="lg" className="NavBarColor">
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
             <NavBar.Brand href="#home"> <img src={require('./Logo.png')} width="100" height="40" alt="Hapi Logo" /></NavBar.Brand>
@@ -45,7 +45,7 @@ class Navigation extends Component {
               <Link className="nav-link" to="/Register">Sign Up</Link>
             </Nav>
             </Navbar.Collapse>
-          </Navbar>
+          </Navbar> */}
         </>
       )
     }

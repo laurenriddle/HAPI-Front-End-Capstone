@@ -2,10 +2,34 @@ header {
     background-color: #a3c738;
     text-align: center;
     padding-bottom: 10px;
-    /* margin-top: 30px; */
-    border-bottom: 2px inset #78971b;
+    box-shadow: 3px 3px  lightgray;
 
 }
 header h2 {
     padding-top: 10px;
+}
+.login-form {
+    /* border: 2px outset lightgray; */
+    margin: 20px;
+    box-shadow: 4px 4px 4px 4px lightgray;
+    padding: 20px;
+    margin-top: 38%;
+}
+.body-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.body-element {
+    flex-basis: 50%;
+    height: 97vh;
+
+}
+
+.header {
+    margin-top: 40%;
+
+}
+.header-container {
+    margin-top: 10px;
+    margin-left: 10px;
 }

@@ -1,7 +1,9 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
 import { Link } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Login.css"
+import { Form, Button, InputGroup } from "react-bootstrap"
 
 
 class LogIn extends Component {
@@ -42,33 +44,45 @@ class LogIn extends Component {
     render() {
         return (
             <>
-                <header>
-                    <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo" />
-                    <h2><span>Filler. Text. Here.</span></h2>
-                </header>
-                <form onSubmit={this.handleLogin}>
-                    <fieldset>
-                        <h4>Login</h4>
-                        <div className="formgrid">
-                            <label htmlFor="inputEmail">Email address</label>
-                            <input onChange={this.handleFieldChange} type="email"
-                                id="email"
-                                placeholder="Email address"
-                                required="" autoFocus="" />
+                <div className="body-container">
+                    <header className="body-element header-container">
+                        <img src={require('../Nav/Logo.png')} className="header" width="330" height="150" alt="Hapi Logo" />
+                        <h2 >Filler. Text. Here.</h2>
+                    </header>
+                    <div className="formgrid body-element">
+                        <Form className="login-form" onSubmit={this.handleLogin}>
+                            <Form.Group>
+                                <h4>Login</h4>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control onChange={this.handleFieldChange} type="email"
+                                        id="email"
+                                        placeholder="Email address"
+                                        required="" autoFocus="" />
+                                </InputGroup>
 
-                            <label htmlFor="inputPassword">Password</label>
-                            <input onChange={this.handleFieldChange} type="password"
-                                id="password"
-                                placeholder="Password"
-                                required="" />
-                        </div>
-                        <button type="submit">
-                            Log In
-            </button>
-                        <Link className="nav-link" to="/Register">Don't have an account? Click here to sign up!</Link>
 
-                    </fieldset>
-                </form>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1"><img width="15" src={require('./baseline_lock_black_18dp.png')}></img></InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control onChange={this.handleFieldChange} type="password"
+                                        id="password"
+                                        placeholder="Password"
+                                        required="" />
+                                </InputGroup>
+
+                                <Button variant="primary" type="submit">
+                                    Log In
+                         </Button>
+                                <Link className="nav-link" to="/Register">Don't have an account? Click here to sign up!</Link>
+
+                            </Form.Group>
+                        </Form>
+                    </div>
+                </div>
             </>
         )
     }
