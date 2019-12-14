@@ -11,6 +11,11 @@ export default {
   }, searchByCategory(userInput) {
     return fetch(`https://api.publicapis.org/entries?category=${userInput}`)
       .then(data => data.json());
+  },
+  getRandomApi(userInput) {
+    return fetch(`https://api.publicapis.org/random`)
+      .then(data => data.json());
   }
+  
 
 }

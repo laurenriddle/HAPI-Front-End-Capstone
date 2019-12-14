@@ -17,6 +17,8 @@ import TechnologyEditForm from "./Resources/TechnologyEditForm";
 import ProjectList from "./Projects/ProjectList";
 import ProjectForm from "./Projects/ProjectForm";
 import ProjectEditForm from "./Projects/ProjectEdtForm";
+import RandomList from "./Random/RandomList";
+import RandomApiSaveForm from "./Random/RandomForm"
 
 export default class ApplicationViews extends Component {
 
@@ -47,7 +49,7 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
-    
+
 
         <Route path="/erd/new" render={(props) => {
           return <ErdForm {...props} {...this.props} />
@@ -61,25 +63,40 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/apisearch" render={props => {
             if (this.props.user) {
-            return <ApiList {...props} {...this.props} />
-          } else {
-            return <Redirect to="/login"/>
-          }
+              return <ApiList {...props} {...this.props} />
+            } else {
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
-            exact path="/" render={props => {
-              if (this.props.user) {
-                return <Home />
-              } else {
-                return <Redirect to="/login"/>
-              }
-              }}
-          />
+          exact path="/" render={props => {
+            if (this.props.user) {
+              return <Home />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}
+        />
+        <Route
+          exact path="/random" render={props => {
+            if (this.props.user) {
+              return <RandomList {...props} {...this.props} />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}
+        />
 
         <Route
           path="/apisearch/:name/save" render={(props, link) => {
-            return <APISaveForm {...props} {...this.props} {...link}/>
+            return <APISaveForm {...props} {...this.props} {...link} />
+          }}
+        />
+
+        <Route
+          path="/random/:name/save" render={(props, link) => {
+            return <RandomApiSaveForm {...props} {...this.props} {...link} />
           }}
         />
         <Route
@@ -92,7 +109,7 @@ export default class ApplicationViews extends Component {
             return <ApiForm {...props} {...this.props} />
           }}
         />
-         <Route path="/wireframe/new" render={(props) => {
+        <Route path="/wireframe/new" render={(props) => {
           return <WireframeForm {...props} {...this.props} />
 
         }} />
@@ -101,7 +118,7 @@ export default class ApplicationViews extends Component {
             return <WireframeEditForm {...props} {...this.props} />
           }}
         />
-         <Route path="/technology/new" render={(props) => {
+        <Route path="/technology/new" render={(props) => {
           return <TechnologyForm {...props} {...this.props} />
 
         }} />
@@ -119,17 +136,17 @@ export default class ApplicationViews extends Component {
           path="/project/new" render={props => {
             return <ProjectForm {...props} {...this.props} />
           }}
-        /> 
+        />
         <Route
-        path="/project/:projectId(\d+)/edit" render={props => {
-          return <ProjectEditForm {...props} {...this.props} />
-        }}
-      />
-       <Route exact
-        path="/project/:projectId(\d+)" render={props => {
-          return <ResourceList {...props} {...this.props} />
-        }}
-      />
+          path="/project/:projectId(\d+)/edit" render={props => {
+            return <ProjectEditForm {...props} {...this.props} />
+          }}
+        />
+        <Route exact
+          path="/project/:projectId(\d+)" render={props => {
+            return <ResourceList {...props} {...this.props} />
+          }}
+        />
 
       </React.Fragment>
     );
