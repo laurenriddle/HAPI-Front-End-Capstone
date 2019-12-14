@@ -45,10 +45,7 @@ class ApiEditForm extends Component {
     componentDidMount() {
         APIManager.get(`apis/${this.props.match.params.apiId}`)
             .then(api => {
-                // if (Object.keys(api).length === 0) {
-                //     this.props.history.push("/events")
-                //     window.alert('The event you were trying to access does not exists.')
-                // } else {
+             
                 this.setState({
                     name: api.name,
                     notes: api.notes,
@@ -58,7 +55,6 @@ class ApiEditForm extends Component {
                     loadingStatus: false,
                     projectId: api.projectId
                 });
-                // }
             });
     }
 

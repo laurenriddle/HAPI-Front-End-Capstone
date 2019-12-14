@@ -5,9 +5,7 @@ import './Erd.css'
 export class ErdCard extends Component {
 
     render() {
-       
-        console.log("card", this.props.erd.id)
-            return (
+                   return (
                 <div className="erdCard card">
                     <Card>
                         <div className="card-contentnext">

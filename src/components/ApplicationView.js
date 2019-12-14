@@ -47,15 +47,7 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
-        <Route
-          exact path="/Resources" render={props => {
-            if (this.props.user) {
-            return <ResourceList {...props} />
-          } else {
-            return <Redirect to="/login"/>
-          }
-          }}
-        />
+    
 
         <Route path="/erd/new" render={(props) => {
           return <ErdForm {...props} {...this.props} />
@@ -63,8 +55,6 @@ export default class ApplicationViews extends Component {
         }} />
         <Route
           path="/erds/:erdId(\d+)/edit" render={props => {
-            console.log(this.props)
-            console.log(props)
             return <ErdEditForm {...props} {...this.props} />
           }}
         />

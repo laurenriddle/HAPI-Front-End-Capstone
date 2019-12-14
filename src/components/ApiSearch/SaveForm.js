@@ -1,6 +1,6 @@
 import APIManager from "../../modules/APIManager";
 import ExternalAPIManager from "../../modules/ExternalAPIManager";
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import React, { Component } from "react"
 
 class APISaveForm extends Component {
@@ -11,6 +11,8 @@ class APISaveForm extends Component {
         apiKey: "",
         notes: "",
         loadingStatus: false,
+        projects: [],
+        projectId: ""
     };
 
     componentDidMount() {
@@ -41,6 +43,12 @@ class APISaveForm extends Component {
                     }
                 });
             });
+        APIManager.get("projects")
+            .then((projects) => {
+                this.setState({
+                    projects: projects
+                })
+            })
     }
 
     handleFieldChange = evt => {
@@ -51,21 +59,27 @@ class APISaveForm extends Component {
 
     saveApi = evt => {
         evt.preventDefault()
-        this.setState({ loadingStatus: true });
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+
+        if (this.state.projectId !== "") {
+            this.setState({ loadingStatus: true });
+            const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
 
-        const api = {
-            name: this.state.API,
-            notes: this.state.notes,
-            link: this.state.Link,
-            userId: currentUser.id,
-            description: this.state.Description,
-            apiKey: this.state.apiKey
+            const api = {
+                name: this.state.API,
+                notes: this.state.notes,
+                link: this.state.Link,
+                userId: currentUser.id,
+                description: this.state.Description,
+                apiKey: this.state.apiKey,
+                projectId: Number(this.state.projectId)
+            }
+
+            APIManager.post("apis", api)
+                .then(() => this.props.history.push(`/project/${this.state.projectId}`))
+        } else {
+            alert("Please assign this API to a project.")
         }
-
-        APIManager.post("apis", api)
-            .then(() => this.props.history.push("/Resources"))
     }
 
     render() {
@@ -84,6 +98,16 @@ class APISaveForm extends Component {
                             <Form.Control type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
                             <Form.Label>Notes:</Form.Label>
                             <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
+
+                  
+                            <select id="projectId" onChange={this.handleFieldChange}>
+                                <option value="">Select a Project</option>
+
+                                {this.state.projects.map((project) => {
+                                    return <option key={project.id} value={project.id} >{project.name}</option>
+                                })}
+                            </select>
+
                         </Form.Group>
                         <Button
                             type="button"

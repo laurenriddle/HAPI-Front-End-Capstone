@@ -61,7 +61,6 @@ class ProjectEditForm extends Component {
     componentDidMount() {
         APIManager.get(`projects/${this.props.match.params.projectId}`)
             .then(project => {
-                console.log("project", project.erdId)
                 if (project.erdId === undefined) {
                     this.setState({
                         name: project.name,
