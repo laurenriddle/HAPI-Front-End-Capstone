@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import ExternalAPIManager from '../../modules/ExternalAPIManager';
 import RandomCard from './RandomCard';
 

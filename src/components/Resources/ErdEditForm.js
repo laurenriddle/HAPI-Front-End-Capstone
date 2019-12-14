@@ -47,6 +47,7 @@ class ErdEditForm extends Component {
 
                 })
             });
+           
     }
 
     render() {

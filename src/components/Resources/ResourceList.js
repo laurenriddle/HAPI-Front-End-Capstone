@@ -94,8 +94,6 @@ class ResourceList extends Component {
     }
 
     deleteApi = (id, endpoint) => {
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        // confirm()
         if (window.confirm("Are you sure you want to delete this API?")) {
             APIManager.delete(`${endpoint}/${id}`)
                 .then(() => {
@@ -109,7 +107,6 @@ class ResourceList extends Component {
     }
 
     deleteWireframe = (id, endpoint) => {
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
         if (window.confirm("Are you sure you want to delete this wireframe?")) {
             APIManager.delete(`${endpoint}/${id}`)
                 .then(() => {
@@ -124,7 +121,6 @@ class ResourceList extends Component {
 
 
     deleteTechnology = (id, endpoint) => {
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
         if (window.confirm("Are you sure you want to delete this technology?")) {
             APIManager.delete(`${endpoint}/${id}`)
                 .then(() => {
