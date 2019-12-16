@@ -1,58 +1,97 @@
-header {
-    background-color: #8cbd32;
-    text-align: center;
-    padding-bottom: 10px;
-    box-shadow: 3px 3px  lightgray;
-    /* background-image: url('https://images.pexels.com/photos/3335697/pexels-photo-3335697.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); */
-    z-index: -1;
-
-}
-header h2 {
-    padding-top: 10px;
-}
-.login-form {
-    /* border: 2px outset lightgray; */
-    margin: 20px;
-    box-shadow: 4px 4px 4px 4px darkgray;
-    padding: 20px;
-    margin-top: 38%;
-    background-color: white;
-}
+@import url('https://fonts.googleapis.com/css?family=Bungee+Hairline|Bungee+Inline|Bungee+Outline|Bungee+Shade|Iceland|Londrina+Sketch|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
 .body-container {
     display: flex;
     justify-content: space-evenly;
-    /* background-color: lightgrey; */
+    /* background-color: rgb(226, 226, 226); */
 }
+.header-container {
+    background-color: #222629;
+    text-align: center;
+    padding-bottom: 10px;
+    z-index: -1;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 15px 0px 0px 15px;
+}
+header h2 {
+    /* padding-top: 10px; */
+    color: #61892F;
+
+
+}
+.login-form {
+    margin: 20px;
+    padding: 20px;
+    margin-top: 32%;
+    background-color: white;
+}
+
 .body-element {
     flex-basis: 50%;
     height: 97vh;
-
 }
 
 .header {
     margin-top: 40%;
+    font-family: 'Bungee Hairline', cursive;
+    font-size: 150px;
+    color: #61892F;
+    font-weight: bolder;
+}
 
-}
-.header-container {
-    margin-top: 10px;
-    margin-left: 10px;
-}
 .blob {
     position: absolute;
     top: 0;
     left: 0;
-    fill: rgb(214, 153, 39);
+    fill: #61892F;
     width: 20vmax;
     z-index: -1;
     animation: move 10s ease-in-out infinite;
     transform-origin: 50% 50%;
   }
   
-  @keyframes move {
+@keyframes move {
     /* 0%   { transform: scale(1)   translate(10px, -30px); } */
     /* 38%  { transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg); } */
     40%  { transform: scale(0.8, 1) translate(30vw, 15vh) rotate(30deg); }
     78%  { transform: scale(1.3) translate(10vw, 30vh) rotate(-8deg); }
     /* 80%  { transform: scale(1.3) translate(5vw, 30vh) rotate(-10deg); } */
     /* 100% { transform: scale(1)   translate(5px, -10px); } */
-  }
+}
+.form-container {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius:  0px 15px 15px 0px;
+}
+.register-form {
+    margin: 20px;
+    padding: 20px;
+    margin-top: 19%;
+    background-color: rgb(255, 255, 255);
+}
+.register-button, .login-button {
+      border-radius: 20px;
+      padding-right: 20px;      
+      padding-left: 20px;
+      margin: 0 auto;
+      background-color: #474B4F;
+      border: 1px solid #474B4F;
+
+}
+.register-button:hover, .login-button:hover {
+    background-color: white;
+    border: 1px solid #474B4F;
+    color: #474B4F;
+}
+.register-button-container, .form-header, .login-button-container {
+      text-align: center;
+      /* padding-bottom: 10px; */
+}
+.register-link, .login-link {
+     color: #61892F;
+}
+.input {
+padding-top: 10px;
+padding-bottom: 10px;
+}

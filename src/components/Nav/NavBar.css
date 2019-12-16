@@ -1,12 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monoton|Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Monoton|Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Iceland|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Outline|Bungee+Shade|Iceland|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Outline|Bungee+Shade|Iceland|Londrina+Sketch|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Hairline|Bungee+Inline|Bungee+Outline|Bungee+Shade|Iceland|Londrina+Sketch|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
 .NavBarColor {
-    background-color: #a3c738;
+    background-color: #222629;
+    color: white;
 }
 .nav-link:hover {
-    color: black;
+    color: green;
+}
+.link {
+    color: white;
+
 }
 
 .logo {
-    border-radius: 50%;
+    /* border-radius: 50%; */
 
     -webkit-transition: -webkit-transform .8s ease-in-out;
     transition:         transform .8s ease-in-out;
@@ -14,5 +27,12 @@
 .logo:hover {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg) scale(1.2);
-  }
+}
+.logo-letters {
+    color: #61892F;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Bungee Hairline', cursive;
+}
+
  
