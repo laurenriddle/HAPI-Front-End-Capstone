@@ -5,7 +5,7 @@ import ErdCard from './ErdCards';
 import ApiCard from './APICard';
 import WireframeCard from './WireframeCard';
 import TechnologyCard from './TechnologyCard';
-
+import "./API.css"
 
 class ResourceList extends Component {
     state = {

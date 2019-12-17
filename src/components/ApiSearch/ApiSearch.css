@@ -1,0 +1,24 @@
+.api-search {
+    margin: 50px;
+}
+.terms {
+    width: 50%;
+    flex-basis: 50%;
+}
+
+.search-form {
+    display: flex;
+justify-content: center;
+}
+
+.terms-button {
+    background-color: #86C232;
+    border: 1px solid #86C232;
+    color: white;
+}
+
+.terms-button:hover {
+    background-color: white;
+    border: 1px solid #86C232;
+    color: #86C232;
+}

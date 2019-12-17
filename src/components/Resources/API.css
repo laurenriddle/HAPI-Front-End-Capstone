@@ -1,0 +1,9 @@
+
+.card {
+    flex-basis: 33%;
+ }
+.api-container-cards {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+}

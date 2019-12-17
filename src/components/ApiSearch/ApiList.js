@@ -4,6 +4,7 @@ import ExternalAPIManager from '../../modules/ExternalAPIManager';
 import ListCard from './ListCards';
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
+import "./ApiSearch.css"
 
 
 class ApiList extends Component {
@@ -136,24 +137,26 @@ class ApiList extends Component {
     render() {
         return (
             <>
-                <section className="section-content">
+                <section className="section-content api-search">
                     <Form>
-                        <Form.Group>
-                            <Form.Label><h3>Search for an API:</h3></Form.Label>
-                            <span><Typeahead
+                        <Form.Group className="search-form">
+                            <Typeahead
                                 //   ref="search-friends-typeahead"
                                 id="terms"
+                                className="terms"
                                 labelKey="api"
+                                placeholder="Search for an API"
                                 options={this.state.categories}
                                 onChange={input => {
                                     this.setState({ terms: input });
-                                }}></Typeahead>                       
-                        <Button disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button></span>
+                                }}></Typeahead>
+                                <Button className="terms-button" variant="light"
+                                    disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button>
                         </Form.Group>
                     </Form>
                 </section>
                 <div className="erd-container-cards">
-                    <hr /><h2>Search Results:</h2><hr />
+                    <hr /><h3>Search Results:</h3><hr />
                     {
                         this.state.results.map((result, index) => {
                             if (index < 50) {
