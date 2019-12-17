@@ -7,7 +7,7 @@ class Home extends Component {
         return (
             <>
                  <header>
-                    <img src={require('../Nav/Logo.png')} width="330" height="150" alt="Hapi Logo" />
+                    {/* <img src={require('')} width="330" height="150" alt="Hapi Logo" /> */}
                     <h2><span>Filler. Text. Here.</span></h2>
                 </header> 
                 <section className="section-content welcome-message">
