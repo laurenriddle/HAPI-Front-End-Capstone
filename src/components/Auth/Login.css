@@ -2,41 +2,42 @@
 .body-container {
     display: flex;
     justify-content: space-evenly;
-    /* background-color: rgb(226, 226, 226); */
+    background-image: url('./Centered background robot.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    z-index: -1;
+    border-right: 5px solid #61892F;
 }
 .header-container {
-    background-color: #222629;
     text-align: center;
     padding-bottom: 10px;
-    z-index: -1;
     margin-top: 10px;
     margin-left: 10px;
-    border-radius: 15px 0px 0px 15px;
 }
 header h2 {
-    /* padding-top: 10px; */
     color: #61892F;
-
-
 }
 .login-form {
     margin: 20px;
     padding: 20px;
-    margin-top: 32%;
-    background-color: white;
+    margin-top: 25%;
+    margin-right: 20%;
+    margin-left: 40%;  
 }
 
 .body-element {
     flex-basis: 50%;
-    height: 97vh;
+    height: 99vh;
 }
 
 .header {
-    margin-top: 40%;
+    margin-top: 25%;
     font-family: 'Bungee Hairline', cursive;
     font-size: 150px;
     color: #61892F;
     font-weight: bolder;
+    margin-right: 15%;
 }
 
 .blob {
@@ -61,14 +62,15 @@ header h2 {
 .form-container {
     margin-top: 10px;
     margin-right: 10px;
-    background-color: rgb(255, 255, 255);
-    border-radius:  0px 15px 15px 0px;
+    color: #61892F;
 }
 .register-form {
     margin: 20px;
     padding: 20px;
-    margin-top: 19%;
-    background-color: rgb(255, 255, 255);
+    margin-top: 15%;
+    background-color: #222629;
+    margin-right: 20%;
+    margin-left: 40%;
 }
 .register-button, .login-button {
       border-radius: 20px;
@@ -77,21 +79,30 @@ header h2 {
       margin: 0 auto;
       background-color: #474B4F;
       border: 1px solid #474B4F;
+      color: #61892F;
 
 }
 .register-button:hover, .login-button:hover {
     background-color: white;
     border: 1px solid #474B4F;
-    color: #474B4F;
+    color: #61892F;
 }
 .register-button-container, .form-header, .login-button-container {
       text-align: center;
-      /* padding-bottom: 10px; */
 }
 .register-link, .login-link {
      color: #61892F;
 }
 .input {
-padding-top: 10px;
-padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.slogan {
+    margin-right: 15%;
+}
+hr {
+    background-color: #61892F;
+}
+.register-link:hover, .login-link:hover {
+    color: white;
 }

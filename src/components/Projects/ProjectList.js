@@ -42,7 +42,7 @@ class ProjectList extends Component {
         return (
             <>
                 <section className="project-content">
-                    <Button type="button" className="newProjectBtn" onClick={() => { this.props.history.push("/project/new") }}>Create New Project</Button>
+                    <Button type="button"  variant="light" className="newProjectBtn" onClick={() => { this.props.history.push("/project/new") }}>Create New Project</Button>
                 </section>
                 {/* <hr /><h2><span>Projects</span></h2><hr /> */}
                 <div className="project-container-cards">

@@ -1,10 +1,13 @@
 .project-container-cards {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .projectCard {
-    flex-basis: 33%;
-    /* background-color: #474B4F; */
+    flex-basis: 29%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
 }
 .project-content {
     text-align: center;
@@ -13,14 +16,23 @@
 }
 .newProjectBtn {
     background-color: #86C232;
-    border: 1px solid #86C232
+    border: 1px solid #86C232;
+    color: white;
+    flex-basis: 30%;
+}
+
+.newProjectBtn:hover {
+    background-color: white;
+    border: 1px solid #86C232;
+    color: #86C232;
+}
+.projectImage {
+    width: 100%;
+    height: 100%;
 }
 
 
-.project-card-content {
-/* background-color: #474B4F; */
-color: white;
-}
+/* this flips the project cards */
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
@@ -28,9 +40,10 @@ color: white;
 .flip-card {
     background-color: transparent;
     width: 300px;
-    height: 200px;
-    border: 1px solid #f1f1f1;
+    height: 325px;
+    border: 1px solid white;
     perspective: 1000px; 
+    /* box-shadow: 0 4px 8px 0 #474B4F; */
 
 }
 .flip-card-inner {
@@ -50,8 +63,74 @@ color: white;
 .flip-card-back {
     color: white;
     transform: rotateY(180deg);
+    background-color: #222629;
+    box-shadow: 0 4px 8px 0 #474B4F;
+    color: #61892F;
 } 
 .flip-card-front {
     background-color: #474B4F;
+    font-size: 40px;
+    box-shadow: 0 4px 8px 0 #474B4F;
+    color: #61892F;
+    background-image: url('./Robot.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card-projectname {
+    margin-top: 5%;
+}
+.projectCard-button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4%;
+}
+.crud {
+    background-color: #86C232;
+    border-radius: 10px;
+}
+.crud:hover {
+    background-color: white;
+}
+.edit-delete {
+    margin-top: 20px;
+}
+.project-description {
+    margin-top: 10px;
+    overflow-y: auto;
+    height: 60%;
+    margin-right: 15px;
+    margin-left: 15px;
+    /* transform: translate(-0%, +50%); */
 
-  }
+}
+
+
+/* new project form */
+.new-project-form-input {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#projectSaveForm {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    background-color: #474B4F;
+    padding: 20px;
+    text-align: center;
+}
+.new-project-header {
+    color: #61892F;
+    font-size: 30px;
+}
+.create-project-button {
+    background-color: #86C232;
+    border: 1px solid #86C232;
+    color: white;
+}
+.create-project-button:hover {
+    background-color: white;
+    border: 1px solid #86C232;
+    color: #86C232;
+}

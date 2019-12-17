@@ -90,7 +90,7 @@ class Register extends Component {
                         </div> */}
                         {/* <img src={require('../Nav/Logo.png')} className="header" width="330" height="150" alt="Hapi Logo" /> */}
                         <p className="header">HAPI</p>
-                        <h2><span>Filler. Text. Here.</span></h2>
+                        <h2 className="slogan"><span>Filler. Text. Here.</span></h2>
                     </header>
                     <div className="formgrid body-element form-container">
                         <Form className="register-form" onSubmit={this.handleRegistration}>
@@ -102,7 +102,7 @@ class Register extends Component {
                                             <InputGroup.Text>First Name</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Form.Control onChange={this.handleFieldChange} type="text" id="firstName"
-                                            placeholder="First Name"
+                                            // placeholder="First Name"
                                             required="" autoFocus="" />
                                     </InputGroup>
 
@@ -113,7 +113,7 @@ class Register extends Component {
                                         <Form.Control onChange={this.handleFieldChange} type="text"
 
                                             id="lastName"
-                                            placeholder="Last Name"
+                                            // placeholder="Last Name"
                                             required="" autoFocus="" />
                                     </InputGroup>
 
@@ -150,10 +150,10 @@ class Register extends Component {
                                 </div>
                             </Form.Group>
                             <div className="register-button-container "><hr />
-                                <Button className="register-button" variant="primary" type="submit">
+                                <Button className="register-button" variant="light" type="submit">
                                     Register
                             </Button>
-                                <Link className="nav-link login-link" to="/Login">Already have an account? Click here to sign in!</Link>
+                                <Link className="nav-link login-link" to="/Login">Already have an Account</Link>
                             </div>
                         </Form>
                     </div>
