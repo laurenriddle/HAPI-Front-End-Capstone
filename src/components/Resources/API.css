@@ -1,9 +1,30 @@
 
 .card {
-    flex-basis: 33%;
+    flex-basis: 40%;
  }
 .api-container-cards {
 display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
+
+}
+
+.Api-label {
+    background-color: #86C232;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.apiCard {
+    background-color: #474B4F;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.781);
+    text-align: center;
+}
+
+.symbols {
+    background-color: #86C232;
+    padding: 2px;
+    border-radius: 5px;
 }

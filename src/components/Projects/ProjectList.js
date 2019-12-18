@@ -58,6 +58,9 @@ class ProjectList extends Component {
                     }
                 </div>
 
+{/* <div>
+    <img src={require('./Robot transparent.png')} className="robototo" width="60" height="100"></img>
+</div> */}
 
             </>
         )

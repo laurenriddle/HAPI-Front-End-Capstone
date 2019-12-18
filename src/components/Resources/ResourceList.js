@@ -155,7 +155,7 @@ class ResourceList extends Component {
                     <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>Create New Wireframe</Button>
                 </section>
                 <hr /><h2><span>APIs</span></h2><hr />
-                <div className="api-container-cards">
+                <div className="api-container-cards slideshow-container">
                     {
                         this.state.apis.map((api) => {
                             return <ApiCard
@@ -166,7 +166,9 @@ class ResourceList extends Component {
                             />
                         })
                     }
+                    
                 </div>
+                
                 <hr /><h2><span>Entity Relationship Diagrams
                     </span></h2><hr />
                 <div className="erd-container-cards">

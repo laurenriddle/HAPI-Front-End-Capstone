@@ -12,9 +12,9 @@ export class RandomCard extends Component {
     render() {
         return (
             <>
-                <div className="listCard">
+                <div className="random">
                     <Card className="list-card-content">
-                        <div className="list-card-content">
+                        <div className="list-card-content ">
                             <Card.Body className="list-card-body">
                                 <h2><span className="card-erdname">{this.props.result.API}</span></h2>                                
                                 <hr className="list-card-hr"/>

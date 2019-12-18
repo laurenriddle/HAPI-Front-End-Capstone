@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Hairline|Bungee+Inline|Bungee+Outline|Bungee+Shade|Iceland|Londrina+Sketch|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
 /* @import url('https://fonts.googleapis.com/css?family=Comfortaa|Londrina+Shadow|Mina|Share+Tech|Sirin+Stencil&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Londrina+Shadow|Mina|Roboto+Mono|Share+Tech|Sirin+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Londrina+Shadow|Mina|Roboto+Condensed|Roboto+Mono|Share+Tech|Sirin+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Londrina+Shadow|Mina|Rajdhani:300|Roboto+Condensed|Roboto+Mono|Share+Tech|Sirin+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Comfortaa|Londrina+Shadow|Mina|Rajdhani:300|Roboto+Condensed|Roboto+Mono|Share+Tech|Sirin+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee|Bungee+Outline|Comfortaa|Londrina+Shadow|Mina|Rajdhani:300|Roboto+Condensed|Roboto+Mono|Share+Tech|Sirin+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee|Bungee+Outline|Comfortaa|Inconsolata|Londrina+Shadow|Mina|Rajdhani:300|Roboto+Condensed|Roboto+Mono|Share+Tech|Sirin+Stencil&display=swap');
 .project-container-cards {
     display: flex;
     justify-content: space-around;
@@ -47,7 +53,6 @@
     height: 325px;
     border: 1px solid white;
     perspective: 1000px; 
-    /* box-shadow: 0 4px 8px 0 #474B4F; */
 
 }
 .flip-card-inner {
@@ -65,33 +70,28 @@
     backface-visibility: hidden;
 }
 .flip-card-back {
-    color: white;
+    color: rgba(255, 255, 255, 0.781);
     transform: rotateY(180deg);
     background-color: #474B4F;
     box-shadow: 0 4px 8px 0 #474B4F;
-    color: white;
     border-radius: 10px;
-    font-family: 'Share Tech', sans-serif;
-    /* font-family: 'Bungee Hairline', cursive;
-    font-weight: bolder; */
-
 } 
 .flip-card-front {
-    background-color: #474B4F;
     font-size: 40px;
     box-shadow: 0 4px 8px 0 #474B4F;
-    color: #86C232;
-    /* background-image: url('./Robot.png'); */
+    /* color: #61892F; */
+    /* color: #86C232; */
+    color: rgba(255, 255, 255, 0.753);
+    background-image: url('./RobotBackground.png');
     background-color: #474B4F;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
-    /* border: 2px solid white; */
 }
 .card-projectname {
     margin-top: 5%;
-    font-family: 'Bungee Hairline', cursive;
-    font-weight: bolder;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 1px;
 }
 .projectCard-button-container {
     display: flex;
@@ -156,4 +156,9 @@
 
 .robo {
     margin: 300px
+}
+
+.robototo {
+    margin: 300px
+
 }
