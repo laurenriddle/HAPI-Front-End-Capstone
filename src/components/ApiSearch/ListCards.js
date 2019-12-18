@@ -26,7 +26,7 @@ export class ListCard extends Component {
                                 <hr className="list-card-hr"/>
                             </Card.Body>
                             <Card.Footer>
-                                <Button className="search-results-save-btn"><a href={this.props.result.Link} rel="noopener noreferrer" target="_blank" className="list-card-link"></a> View Resource</Button>
+                            <a href={this.props.result.Link} rel="noopener noreferrer" target="_blank" className="list-card-link"><Button variant="light" className="search-results-save-btn">View Resource</Button></a> 
                                 <Button className="search-results-save-btn" onClick={() => {
                                     this.props.history.push({
                                         pathname: `/apisearch/${this.props.result.API}/save`,
