@@ -63,7 +63,7 @@ class LogIn extends Component {
 
                                 <InputGroup className="mb-3 input">
                                     <InputGroup.Prepend>
-                                        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                                        <InputGroup.Text id="basic-addon1"><img width="15" alt="password symbol" src={require('./EmailIcon.png')}></img></InputGroup.Text>
                                     </InputGroup.Prepend>
                                     <Form.Control onChange={this.handleFieldChange} type="email"
                                         id="email"

@@ -27,6 +27,7 @@ class Register extends Component {
     // the logic to handle registration. This calls functions from API manager.
     handleRegistration = (e) => {
         e.preventDefault()
+        
         // if statements for validating password
         if (this.state.password === '') {
             alert("Please enter Password");
@@ -99,27 +100,27 @@ class Register extends Component {
                                 <div className="formgrid">
                                     <InputGroup className="mb-3 input">
                                         <InputGroup.Prepend>
-                                            <InputGroup.Text>First Name</InputGroup.Text>
+                                            <InputGroup.Text><img width="20" alt="password symbol" src={require('./UserIcon.png')}></img></InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Form.Control onChange={this.handleFieldChange} type="text" id="firstName"
-                                            // placeholder="First Name"
+                                            placeholder="First Name"
                                             required="" autoFocus="" />
                                     </InputGroup>
 
                                     <InputGroup className="mb-3 input">
                                         <InputGroup.Prepend>
-                                            <InputGroup.Text>Last Name</InputGroup.Text>
+                                            <InputGroup.Text><img width="20" alt="password symbol" src={require('./UserIcon.png')}></img></InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Form.Control onChange={this.handleFieldChange} type="text"
 
                                             id="lastName"
-                                            // placeholder="Last Name"
+                                            placeholder="Last Name"
                                             required="" autoFocus="" />
                                     </InputGroup>
 
                                     <InputGroup className="mb-3 input">
                                         <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                                            <InputGroup.Text id="basic-addon1"><img width="15" alt="password symbol" src={require('./EmailIcon.png')}></img></InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Form.Control onChange={this.handleFieldChange} type="email"
                                             id="email"

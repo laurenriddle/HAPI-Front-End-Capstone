@@ -91,6 +91,7 @@ class ApiList extends Component {
     }
 
     searchExternalApi = () => {
+        if (this.state.terms !== ""){
         // set results to an empty array
         let results = []
         // search external API by description, using user's search terms
@@ -132,6 +133,9 @@ class ApiList extends Component {
                 })
 
             })
+        } else {
+            window.alert("Please enter search terms below.")
+        }
     }
 
     render() {
@@ -150,13 +154,12 @@ class ApiList extends Component {
                                 onChange={input => {
                                     this.setState({ terms: input });
                                 }}></Typeahead>
-                                <Button className="terms-button" variant="light"
-                                    disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button>
+                            <Button className="terms-button" variant="light"
+                                disabled={this.state.loadingStatus} onClick={this.searchExternalApi}><img alt="Search Icon" src={require('./SearchIcon.png')} width="25" height="25"></img></Button>
                         </Form.Group>
                     </Form>
                 </section>
-                <div className="erd-container-cards">
-                    <hr /><h3>Search Results:</h3><hr />
+                <div className="api-search-container-cards">
                     {
                         this.state.results.map((result, index) => {
                             if (index < 50) {
@@ -167,7 +170,8 @@ class ApiList extends Component {
                                     keyId={index}
                                 />
                             }
-                        })}
+                        })
+                        }
                 </div>
             </>
         )

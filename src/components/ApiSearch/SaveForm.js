@@ -2,6 +2,7 @@ import APIManager from "../../modules/APIManager";
 import ExternalAPIManager from "../../modules/ExternalAPIManager";
 import { Form, Button } from 'react-bootstrap';
 import React, { Component } from "react"
+import "./ApiSearch.css"
 
 class APISaveForm extends Component {
     state = {
@@ -85,22 +86,24 @@ class APISaveForm extends Component {
     render() {
         return (
             <>
-                <div id="apiSaveForm">
+                <div id="apiResultSaveForm">
+                <h3 className="save-result-header">Save API</h3><hr />
+
                     <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="API" value={this.state.API} onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="Link" value={this.state.Link} onChange={this.handleFieldChange} />
-                            <Form.Label>Description:</Form.Label>
-                            <Form.Control type="Description" id="Description" value={this.state.Description} onChange={this.handleFieldChange} />
-                            <Form.Label>API Key:</Form.Label>
-                            <Form.Control type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
+                            {/* <Form.Label className="save-result-form-labels">Name:</Form.Label> */}
+                            <Form.Control className="save-search-result-form-input" type="text" placeholder="Enter Name" id="API" value={this.state.API} onChange={this.handleFieldChange} />
+                            {/* <Form.Label className="save-result-form-labels">Link:</Form.Label> */}
+                            <Form.Control className="save-search-result-form-input" type="text" id="Link" value={this.state.Link} onChange={this.handleFieldChange} />
+                            {/* <Form.Label className="save-result-form-labels">Description:</Form.Label> */}
+                            <Form.Control className="save-search-result-form-input" type="Description" id="Description" value={this.state.Description} onChange={this.handleFieldChange} />
+                            {/* <Form.Label className="save-result-form-labels">API Key:</Form.Label> */}
+                            <Form.Control className="save-search-result-form-input" type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
+                            {/* <Form.Label className="save-result-form-labels">Notes:</Form.Label> */}
+                            <Form.Control className="save-search-result-form-input" placeholder="Enter notes here..." type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
 
                   
-                            <select id="projectId" onChange={this.handleFieldChange}>
+                            <select className="save-search-result-form-dropdown" id="projectId" onChange={this.handleFieldChange}>
                                 <option value="">Select a Project</option>
 
                                 {this.state.projects.map((project) => {
@@ -108,8 +111,9 @@ class APISaveForm extends Component {
                                 })}
                             </select>
 
-                        </Form.Group>
+                        </Form.Group><hr />
                         <Button
+                        className="save-result-form-button"
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.saveApi}

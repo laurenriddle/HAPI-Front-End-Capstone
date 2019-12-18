@@ -1,14 +1,16 @@
+/* API search and Search result cards */
 .api-search {
     margin: 50px;
 }
 .terms {
-    width: 50%;
-    flex-basis: 50%;
+    flex-basis: 30%;
+    border: 1px solid #86C232;
+    border-radius: 5px;
 }
 
 .search-form {
     display: flex;
-justify-content: center;
+    justify-content: center;
 }
 
 .terms-button {
@@ -22,3 +24,114 @@ justify-content: center;
     border: 1px solid #86C232;
     color: #86C232;
 }
+
+.search-results-save-btn {
+    background-color: #86C232;
+    border: 1px solid #86C232;
+    color: white; 
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+
+}
+
+.search-results-save-btn:hover {
+    background-color: white;
+    border: 1px solid #86C232;
+    color: #86C232;
+}
+
+.listCard {
+    margin: 20px 20px ;
+    flex-basis: 40%;
+
+}
+
+.card-listname > .search-results-save-btn {
+    margin-left: 10px;
+}
+
+.list-card-content {
+    padding-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    background-color: #474B4F;
+    /* color: #61892F; */
+    /* color: white; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 #474B4F;
+    color: #86C232;
+    
+}
+.list-card-body {
+    padding-top: 0;
+    background-color: #474B4F;
+    padding-bottom: 0;
+}
+.api-search-container-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.list-card-link {
+    color: #86C232;
+}
+.list-card-link:hover {
+    color: #61892F;
+}
+.list-card-hr {
+    background-color: white;
+}
+
+/* API Save Result Form */
+
+.save-search-result-form-input {
+    margin-top: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.save-search-result-form-dropdown {
+    /* margin-right: 37%; */
+    /* margin-top: 20px; */
+    background-color: white;
+    color: dimgray;
+    height: 30px;
+    width: 80%;
+    margin-bottom: 5px;
+
+}
+
+.save-result-form-button {
+    background-color: #86C232;
+    border: 1px solid #86C232;
+    color: white;
+    border-radius: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 10px;
+}
+.save-result-form-button:hover {
+    background-color: white;
+    border: 1px solid #86C232;
+    color: #86C232;
+}
+#apiResultSaveForm {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    background-color: #474B4F;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    color: #86C232;
+}
+/* .save-result-form-labels {
+    margin-top: 20px;
+}
+#apiResultSaveForm > .save-result-form-labels {
+    text-align: left;
+
+} */
