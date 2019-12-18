@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Hairline|Bungee+Inline|Bungee+Outline|Bungee+Shade|Iceland|Londrina+Sketch|Monoton|Saira+Stencil+One|Wallpoet&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Comfortaa|Londrina+Shadow|Mina|Share+Tech|Sirin+Stencil&display=swap'); */
 .project-container-cards {
     display: flex;
     justify-content: space-around;
@@ -69,13 +71,16 @@
     box-shadow: 0 4px 8px 0 #474B4F;
     color: white;
     border-radius: 10px;
+    font-family: 'Share Tech', sans-serif;
+    /* font-family: 'Bungee Hairline', cursive;
+    font-weight: bolder; */
 
 } 
 .flip-card-front {
     background-color: #474B4F;
     font-size: 40px;
     box-shadow: 0 4px 8px 0 #474B4F;
-    color: #61892F;
+    color: #86C232;
     /* background-image: url('./Robot.png'); */
     background-color: #474B4F;
     background-repeat: no-repeat;
@@ -85,6 +90,8 @@
 }
 .card-projectname {
     margin-top: 5%;
+    font-family: 'Bungee Hairline', cursive;
+    font-weight: bolder;
 }
 .projectCard-button-container {
     display: flex;

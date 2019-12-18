@@ -44,7 +44,7 @@ class ProjectForm extends Component {
                 <Form>
                     <div className="new-project-header">New Project</div><hr />
                     <Form.Group>
-                        <Form.Control type="text" maxlength = "70" className="new-project-form-input" placeholder="Project Name" id="name" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" maxLength = "70" className="new-project-form-input" placeholder="Project Name" id="name" onChange={this.handleFieldChange} />
                         <Form.Control type="text" as="textarea" rows="3" id="description" className="new-project-form-input"  placeholder="Project Description" onChange={this.handleFieldChange} />
                         <Form.Control type="text" id="githubUrl" className="new-project-form-input"   placeholder="Project GitHub URL" onChange={this.handleFieldChange} />
                     </Form.Group><hr />
