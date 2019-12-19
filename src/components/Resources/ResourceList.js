@@ -1,14 +1,17 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
-import { Button } from 'react-bootstrap';
+import { Button, Jumbotron, ButtonGroup, Tabs, Tab } from 'react-bootstrap';
 import ErdCard from './ErdCards';
 import ApiCard from './APICard';
 import WireframeCard from './WireframeCard';
 import TechnologyCard from './TechnologyCard';
+
 import "./API.css"
 import "./Erd.css"
 import "./Wireframe.css"
 import "./Technology.css"
+import "./ResourceList.css"
 
 
 class ResourceList extends Component {
@@ -140,79 +143,100 @@ class ResourceList extends Component {
     render() {
         return (
             <>
-                <Button onClick={() => this.props.history.push("/projects")}>Back to Projects List</Button>
-                <div>
-                    <hr /><span><h1>{this.state.project.name}</h1><a href={this.state.project.githubUrl} rel="noopener noreferrer" target="_blank">+ View Resource</a><p>{this.state.project.description} </p><img src={require('./EditSymbol.png')} width="20" height="20" className="erd-align-right crud" alt="edit symbol" onClick={() => {
+
+                <Jumbotron className="Jumbotron">
+                    <h1 className="align-button-right">{this.state.project.name} 
+                    {/* <img src={require('../Projects/EditSymbol.png')} width="25" height="25" className="erd-align-right symbols" alt="edit symbol" onClick={() => {
                         this.props.history.push({
                             pathname: `/project/${this.props.match.params.projectId}/edit`, state: {
                                 boolean: true,
                                 project: this.props.location.state.project
                             }
                         })
-                    }} /></span><hr />
+                    }} /> */}
+
+                    </h1>  <p>{this.state.project.description} </p>
+                    <p>
+                        <a href={this.state.project.githubUrl} rel="noopener noreferrer" target="_blank"><Button variant="secondary" type="button" className="newProjectBtn">View Github</Button></a>
+                    </p>
+                </Jumbotron>
+                <div className="ButtonGroup">
+                    <ButtonGroup aria-label="Basic example">
+
+                        <Button type="button" variant="secondary" className="newAPIBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>New API</Button>
+                        <Button type="button" variant="secondary" className="newErdBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds[0], project: this.props.match.params.projectId } }) }}>New ERD</Button>
+                        <Button type="button" variant="secondary" className="newTechBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>New Technology</Button>
+                        <Button type="button" variant="secondary" className="newWireframeBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>New Wireframe</Button>
+                    </ButtonGroup>
+                </div>
+                {/* <Button onClick={() => this.props.history.push("/projects")}>Back to Projects List</Button> */}
+                <div>
+                    {/* <hr /><span ></span><hr /> */}
 
                 </div>
-                <section className="section-content">
-                    <Button type="button" className="newAPIBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>Create New API</Button>
-                    <Button type="button" className="newErdBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds[0], project: this.props.match.params.projectId } }) }}>Create New ERD</Button>
-                    <Button type="button" className="newTechBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>Create New Technology</Button>
-                    <Button type="button" className="newWireframeBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>Create New Wireframe</Button>
-                </section>
-                <hr /><h2><span>APIs</span></h2><hr />
-                <div className="api-container-cards slideshow-container">
-                    {
-                        this.state.apis.map((api) => {
-                            return <ApiCard
-                                key={api.id}
-                                api={api}
-                                deleteApi={this.deleteApi}
-                                {...this.props}
-                            />
-                        })
-                    }
-                    
-                </div>
-                
-                <hr /><h2><span>Entity Relationship Diagrams</span></h2><hr />
-                <div className="erd-container-cards">
-                    {this.state.erds.map((erd) => {
-                        return <ErdCard
-                            key={erd.id}
-                            erd={erd}
-                            deleteErd={this.deleteErd}
-                            {...this.props}
-                            projectId={this.props.match.params.projectId}
-                        />
 
-                    })
-                    }
-                </div>
-                <hr /><h2><span>Wireframes</span></h2><hr />
-                <div className="wireframe-container-cards">
-                    {
-                        this.state.wireframes.map((wireframe) => {
-                            return <WireframeCard
-                                key={wireframe.id}
-                                wireframe={wireframe}
-                                deleteWireframe={this.deleteWireframe}
-                                {...this.props}
-                            />
-                        })
-                    }
-                </div >
-                <hr /><h2><span>Other Technologies</span></h2><hr />
-                <div className="technologies-container-cards">
-                    {
-                        this.state.technologies.map((technology) => {
-                            return <TechnologyCard
-                                key={technology.id}
-                                technology={technology}
-                                deleteTechnology={this.deleteTechnology}
-                                {...this.props}
-                            />
-                        })
-                    }
-                </div >
+                <Tabs defaultactivekey="First" className="Tabs" id="uncontrolled-tab-example">
+                    <Tab  className="Tab" eventKey="First" title="APIs" >
+                        <div className="api-container-cards slideshow-container">
+
+                            {
+                                this.state.apis.map((api) => {
+                                    return <ApiCard
+                                        key={api.id}
+                                        api={api}
+                                        deleteApi={this.deleteApi}
+                                        {...this.props}
+                                    />
+                                })
+                            }
+                        </div>
+                    </Tab>
+                    <Tab  className="Tab" eventKey="Second" title="Entity Relationship Diagrams">
+
+                        <div className="erd-container-cards">
+                            {this.state.erds.map((erd) => {
+                                return <ErdCard
+                                    key={erd.id}
+                                    erd={erd}
+                                    deleteErd={this.deleteErd}
+                                    {...this.props}
+                                    projectId={this.props.match.params.projectId}
+                                />
+
+                            })
+                            }
+                        </div>
+                    </Tab>
+                    <Tab  className="Tab" eventKey="Third" title="Wireframes">
+                        <div className="wireframe-container-cards">
+                            {
+                                this.state.wireframes.map((wireframe) => {
+                                    return <WireframeCard
+                                        key={wireframe.id}
+                                        wireframe={wireframe}
+                                        deleteWireframe={this.deleteWireframe}
+                                        {...this.props}
+                                    />
+                                })
+                            }
+                        </div >
+                    </Tab>
+                    <Tab  className="Tab" eventKey="Fourth" title="Other Technologies">
+                        <div className="technologies-container-cards">
+                            {
+                                this.state.technologies.map((technology) => {
+                                    return <TechnologyCard
+                                        key={technology.id}
+                                        technology={technology}
+                                        deleteTechnology={this.deleteTechnology}
+                                        {...this.props}
+                                    />
+                                })
+                            }
+                        </div >
+                    </Tab>
+                </Tabs>
+           
             </>
         )
     }

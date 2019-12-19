@@ -85,15 +85,17 @@ class ProjectEditForm extends Component {
         return (
             <>
                 <div id="projectSaveForm">
+        <div className="new-project-header">Edit Form</div>
+
                     <Form>
-                        <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" value={this.state.name} placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                            <Form.Label>Description:</Form.Label>
-                            <Form.Control type="text" id="description" value={this.state.description} onChange={this.handleFieldChange} />
-                            <Form.Label>GitHub Link:</Form.Label>
-                            <Form.Control type="text" id="githubUrl" value={this.state.githubUrl} onChange={this.handleFieldChange} />
-                        </Form.Group>
+                    <hr /><Form.Group>
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" value={this.state.name} className="new-project-form-input" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Description:</Form.Label> */}
+                            <Form.Control type="text" as="textarea" rows="5"  className="new-project-form-input" id="description" value={this.state.description} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>GitHub Link:</Form.Label> */}
+                            <Form.Control type="text" id="githubUrl" className="new-project-form-input" value={this.state.githubUrl} onChange={this.handleFieldChange} />
+                        </Form.Group><hr />
                         <Button
                             type="button"
                             disabled={this.state.loadingStatus}

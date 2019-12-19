@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Figure, Button } from 'react-bootstrap';
+import { Card, Figure, Button, Badge } from 'react-bootstrap';
 import './Erd.css'
 import Image from 'react-bootstrap/Image'
 export class WireframeCard extends Component {
@@ -9,7 +9,7 @@ export class WireframeCard extends Component {
             <div className="wireframeCard">
                     <div className="wireframe-card-content">
                         <Card.Body>
-                        <span className="card-wireframename"><h2>{this.props.wireframe.name} <img src={require('../Projects/EditSymbol.png')} width="25" height="25" className="erd-align-right symbols" alt="edit symbol" onClick={() => { this.props.history.push(`/wireframe/${this.props.wireframe.id}/edit`) }} /> <img src={require('../Projects/DeleteSymbol.png')} width="25" height="25" className="symbols" alt="delete symbol" onClick={() => this.props.deleteWireframe(this.props.wireframe.id, "wireframes")} /></h2><label className="Wireframe-label">Wireframe</label></span><hr />
+                        <span className="card-wireframename"><h2>{this.props.wireframe.name} <img src={require('../Projects/EditSymbol.png')} width="25" height="25" className="erd-align-right symbols" alt="edit symbol" onClick={() => { this.props.history.push(`/wireframe/${this.props.wireframe.id}/edit`) }} /> <img src={require('../Projects/DeleteSymbol.png')} width="25" height="25" className="symbols" alt="delete symbol" onClick={() => this.props.deleteWireframe(this.props.wireframe.id, "wireframes")} /></h2><Badge variant="secondary" className="Wireframe-label">Wireframe</Badge></span><hr />
 
 
 
