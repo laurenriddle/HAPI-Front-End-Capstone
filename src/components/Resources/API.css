@@ -1,16 +1,13 @@
 
-.card {
-    flex-basis: 40%;
- }
 .api-container-cards {
 display: flex;
-justify-content: space-around;
+justify-content: left;
 flex-wrap: wrap;
-
+margin-left: 30px;
 }
 
 .Api-label {
-    background-color: #86C232;
+    background-color: rgb(24, 31, 14);
     padding: 5px 10px 5px 10px;
     color: white;
     border-radius: 5px;
@@ -21,10 +18,18 @@ flex-wrap: wrap;
     margin: 10px;
     color: rgba(255, 255, 255, 0.781);
     text-align: center;
+    flex-basis: 31%;
+    border-radius: 10px;
 }
 
 .symbols {
     background-color: #86C232;
     padding: 2px;
     border-radius: 5px;
+}
+.symbols:hover {
+    background-color: white;
+    padding: 2px;
+    border-radius: 5px;
+    border: 2px solid #86C232;
 }

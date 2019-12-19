@@ -6,6 +6,10 @@ import ApiCard from './APICard';
 import WireframeCard from './WireframeCard';
 import TechnologyCard from './TechnologyCard';
 import "./API.css"
+import "./Erd.css"
+import "./Wireframe.css"
+import "./Technology.css"
+
 
 class ResourceList extends Component {
     state = {
@@ -169,8 +173,7 @@ class ResourceList extends Component {
                     
                 </div>
                 
-                <hr /><h2><span>Entity Relationship Diagrams
-                    </span></h2><hr />
+                <hr /><h2><span>Entity Relationship Diagrams</span></h2><hr />
                 <div className="erd-container-cards">
                     {this.state.erds.map((erd) => {
                         return <ErdCard

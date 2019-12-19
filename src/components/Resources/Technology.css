@@ -1,26 +1,25 @@
-.erd-align-right {
-    text-align: right;
-}
-.erdCard {
+
+.technologyCard {
     background-color: #474B4F;
     margin: 10px;
     color: rgba(255, 255, 255, 0.781);
     text-align: center;
     border-radius: 10px;
     flex-basis: 31%;
+    height: 100%;
 
 }
 
-.erd-container-cards {
+.technologies-container-cards {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
+    margin-bottom: 30px;
     margin-left: 30px;
-
 }
 
-.Erd-label {
-    background-color: rgb(76, 99, 44);
+.Technology-label {
+    background-color: rgba(160, 233, 16, 0.466);
     padding: 5px 10px 5px 10px;
     color: white;
     border-radius: 5px;

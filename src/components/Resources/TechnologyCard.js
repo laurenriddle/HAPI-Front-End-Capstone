@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import './Erd.css'
 
 export class TechnologyCard extends Component {
 
     render() {
             return (
-                <div className="technologyCard card">
-                    <Card>
-                        <div className="card-contentnext">
+                <div className="technologyCard ">
+                        <div className="technology-card-content">
                             <Card.Body>
-                                <h2><span className="card-technologyname">{this.props.technology.name} <img src={require('./EditSymbol.png')} width="20" height="20" className="erd-align-right crud" alt="edit symbol" onClick={() => { this.props.history.push(`/technology/${this.props.technology.id}/edit`) }} /> <img src={require('./DeleteSymbol.png')} width="20" height="20" className="crud" alt="delete symbol" onClick={() => this.props.deleteTechnology(this.props.technology.id, "technologies")} /></span></h2><hr />
+                            <span className="card-technology-name"><h2>{this.props.technology.name} <img src={require('../Projects/EditSymbol.png')} width="25" height="25" className="erd-align-right symbols" alt="edit symbol" onClick={() => { this.props.history.push(`/technology/${this.props.technology.id}/edit`) }} /> <img src={require('../Projects/DeleteSymbol.png')} width="25" height="25" className="symbols" alt="delete symbol" onClick={() => this.props.deleteTechnology(this.props.technology.id, "technologies")} /></h2><label className="Technology-label">Technology</label></span><hr />
                                 <p>Notes: {this.props.technology.notes}</p><hr />
-                                <a href={this.props.technology.link} rel="noopener noreferrer" target="_blank">+ View Resource</a>
+                                <a href={this.props.technology.link} rel="noopener noreferrer" target="_blank"><Button variant="light" className="newProjectBtn">View Resource</Button></a>
 
                             </Card.Body>
                         </div>
-                    </Card>
                 </div>
             );
         }

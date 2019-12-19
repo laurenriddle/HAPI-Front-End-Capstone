@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import './Erd.css'
 
 export class ErdCard extends Component {
@@ -7,16 +7,14 @@ export class ErdCard extends Component {
     render() {
                    return (
                 <div className="erdCard card">
-                    <Card>
-                        <div className="card-contentnext">
+                        <div className="erd-card-content">
                             <Card.Body>
-                                <h2><span className="card-erdname">{this.props.erd.name} <img src={require('./EditSymbol.png')} width="20" height="20" className="erd-align-right crud" alt="edit symbol" onClick={() => { this.props.history.push({ pathname: `/erds/${this.props.erd.id}/edit`, state: { project: this.props.projectId } }) }} /> <img src={require('./DeleteSymbol.png')} width="20" height="20" className="crud" alt="delete symbol" onClick={() => this.props.deleteErd(this.props.erd.id, "erds")} /></span></h2><hr />
+                            <span className="card-erd-name"><h2>{this.props.erd.name} <img src={require('../Projects/EditSymbol.png')} width="25" height="25" className="erd-align-right  symbols" alt="edit symbol" onClick={() => { this.props.history.push({ pathname: `/erds/${this.props.erd.id}/edit`, state: { project: this.props.projectId } }) }} /> <img src={require('../Projects/DeleteSymbol.png')} width="25" height="25" className="symbols" alt="delete symbol" onClick={() => this.props.deleteErd(this.props.erd.id, "erds")} /></h2><label className="Erd-label">ERD</label></span><hr />
                                 <p>Notes: {this.props.erd.notes}</p><hr />
-                                <a href={this.props.erd.link} rel="noopener noreferrer" target="_blank">+ View Resource</a>
+                                <a href={this.props.erd.link} rel="noopener noreferrer" target="_blank"><Button variant="light" className="newProjectBtn">View Resource</Button></a>
 
                             </Card.Body>
                         </div>
-                    </Card>
                 </div>
             );
         }

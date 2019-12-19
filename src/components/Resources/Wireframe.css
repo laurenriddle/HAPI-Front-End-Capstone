@@ -1,0 +1,54 @@
+.wireframe-align-right {
+    text-align: right;
+}
+.wireframeCard {
+    background-color: #474B4F;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.781);
+    text-align: center;
+    border-radius: 10px;
+    flex-basis: 47%;
+    height: 100%;
+
+}
+
+.wireframe-container-cards {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    margin-left: 30px;
+}
+
+.Wireframe-label {
+    background-color: rgba(218, 219, 216, 0.384);
+    padding: 5px 10px 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.img__wrap {
+    position: relative;
+   
+  }
+
+.img__description {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* background: rgba(94, 98, 102, 0.555); */
+    color: rgb(116, 115, 115);
+    visibility: hidden;
+    opacity: 0;
+    margin-top: 30%;
+  
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+}
+  
+.img__wrap:hover .img__description {
+    visibility: visible;
+    opacity: 1;
+}
