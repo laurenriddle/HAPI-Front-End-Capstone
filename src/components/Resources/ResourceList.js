@@ -157,7 +157,7 @@ class ResourceList extends Component {
 
                     </h1>  <p>{this.state.project.description} </p>
                     <p>
-                        <a href={this.state.project.githubUrl} rel="noopener noreferrer" target="_blank"><Button variant="secondary" type="button" className="newProjectBtn">View Github</Button></a>
+                        <a href={this.state.project.githubUrl} rel="noopener noreferrer" target="_blank"><Button variant="secondary" type="button" className="newProjectBtn">View GitHub</Button></a>
                     </p>
                 </Jumbotron>
                 <div className="ButtonGroup">

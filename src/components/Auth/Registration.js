@@ -151,9 +151,9 @@ class Register extends Component {
                                 </div>
                             </Form.Group>
                             <div className="register-button-container "><hr />
-                                <Button className="register-button" variant="light" type="submit">
+                                <button className="register-button" variant="light" type="submit">
                                     Register
-                            </Button>
+                            </button>
                                 <Link className="nav-link login-link" to="/Login">Already have an Account</Link>
                             </div>
                         </Form>

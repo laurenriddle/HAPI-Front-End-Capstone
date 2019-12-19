@@ -76,18 +76,21 @@ class WireframeEditForm extends Component {
         return (
             <>
                 <div id="wireframeEditForm">
-                    <Form>
+                <h2 className="new-project-header">Edit Wireframe</h2>
+
+                   <hr /> <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" value={this.state.name} onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" value={this.state.link} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Name" className="new-project-form-input" id="name" value={this.state.name} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            {/* <Form.Label>Link:</Form.Label> */}
+                            <Form.Control type="text" id="link" placeholder="Enter Link"  className="new-project-form-input" placeholder="Enter Link" value={this.state.link} onChange={this.handleFieldChange} />
+                            <Form.Control type="text" id="notes" as="textarea" placeholder="Enter Notes"  className="new-project-form-input" placeholder="Enter Notes" value={this.state.notes} onChange={this.handleFieldChange} />
                             <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Upload files</Button>
-                        </Form.Group>
+                        </Form.Group> <hr /> 
                         <Button
                             type="button"
+                            className="create-project-button"
                             disabled={this.state.loadingStatus}
                             onClick={this.updateExistingWireframe}
                         >Save</Button>

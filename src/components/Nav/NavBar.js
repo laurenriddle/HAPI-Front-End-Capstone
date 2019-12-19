@@ -14,7 +14,7 @@ class Navigation extends Component {
           <Navbar collapseOnSelect expand="lg" variant="dark" className="NavBarColor">
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
-                <Link className="nav-link logo-letters" to="/">
+                <Link className="nav-link logo-letters" to="/projects">
                   HAPI 
                   <img src={require('./Robot.png')} className="logo" width="30" height="50" alt="Hapi Logo" />
                 </Link>

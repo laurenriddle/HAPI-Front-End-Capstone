@@ -53,19 +53,21 @@ class WireframeForm extends Component {
         return (
             <>
                 <div id="newWireframeForm">
+                <h2 className="new-project-header">New Wireframe</h2><hr />
+
                     <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Name" id="name" className="new-project-form-input"  onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Link:</Form.Label> */}
+                            <Form.Control type="text" id="link" placeholder="Enter Link" className="new-project-form-input"  onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Notes" as="textarea" className="new-project-form-input"  placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
                             <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Upload files</Button>
 
                         </Form.Group>
                         <Button
-                        className="newWireframeBtn"
+                            className="create-project-button"
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewWireframe}

@@ -21,7 +21,9 @@
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
+    
 }
+
 .newProjectBtn {
     background-color: #86C232;
     border: 1px solid #86C232;
@@ -51,7 +53,7 @@
     background-color: transparent;
     width: 300px;
     height: 325px;
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0);
     perspective: 1000px; 
 
 }
@@ -62,12 +64,14 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+
 }
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+
 }
 .flip-card-back {
     color: rgba(255, 255, 255, 0.781);
@@ -75,6 +79,7 @@
     background-color: #474B4F;
     box-shadow: 0 4px 8px 0 #474B4F;
     border-radius: 10px;
+
 } 
 .flip-card-front {
     font-size: 40px;
@@ -82,7 +87,7 @@
     /* color: #61892F; */
     /* color: #86C232; */
     color: rgba(255, 255, 255, 0.753);
-    background-image: url('./RobotBackground.png');
+    background-image: url('./DarkRobot.png');
     background-color: #474B4F;
     background-repeat: no-repeat;
     background-size: cover;
@@ -90,7 +95,7 @@
 }
 .card-projectname {
     margin-top: 5%;
-    font-family: 'Inconsolata', monospace;
+    /* font-family: 'Inconsolata', monospace; */
     font-weight: 1px;
 }
 .projectCard-button-container {

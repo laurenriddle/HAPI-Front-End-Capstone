@@ -1,9 +1,9 @@
 .Jumbotron {
     background-color: #6B6E70;
-    border-radius: 10px;
-    margin: 5px;
+    border-radius: 0;
+    /* margin: 5px; */
     color: rgba(255, 255, 255, 0.781);
-    border: 1px #6B6E70;
+    /* border: 1px #6B6E70; */
 }
 
 .card-labels {

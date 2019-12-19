@@ -84,9 +84,9 @@ class LogIn extends Component {
 
                                 <div className="login-button-container"><hr />
 
-                                    <Button className="login-button" variant="light" type="submit">
+                                    <button className="login-button" variant="light" type="submit">
                                         Login
-                                </Button>
+                                </button>
                                     <Link className="nav-link register-link" to="/Register">Register a New Account</Link>
                                 </div>
                             </Form.Group>

@@ -43,18 +43,20 @@ class ErdForm extends Component {
         return (
             <>
                 <div id="newErdForm">
+                <h2 className="new-project-header">New ERD</h2><hr />
+
                     <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
-                        </Form.Group>
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Link:</Form.Label> */}
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter ERD Link" id="link" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            <Form.Control type="text" as="textarea" className="new-project-form-input" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
+                        </Form.Group><hr />
                         <Button
-                            className="newEventBtn"
-                            type="button"
+                        className="create-project-button"
+                        type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewErd}
                         >Create Erd</Button>

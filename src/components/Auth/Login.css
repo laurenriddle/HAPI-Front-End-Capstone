@@ -80,6 +80,8 @@ header h2 {
       background-color: #474B4F;
       border: 1px solid #474B4F;
       color: #61892F;
+      padding-top: 5px;
+      padding-bottom: 5px;
 
 }
 .register-button:hover, .login-button:hover {

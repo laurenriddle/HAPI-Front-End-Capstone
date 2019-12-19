@@ -35,17 +35,19 @@ class TechnologyForm extends Component {
         return (
             <>
                 <div id="newTechnologyForm">
+                <h2 className="new-project-header">New Technology</h2><hr />
+
                     <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
-                        </Form.Group>
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Name" id="name" className="new-project-form-input" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Link:</Form.Label> */}
+                            <Form.Control type="text" id="link" className="new-project-form-input" placeholder="Enter Link" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Notes" as="textarea" id="notes" className="new-project-form-input" onChange={this.handleFieldChange} />
+                        </Form.Group><hr />
                         <Button
-                        className="newEventBtn"
+                            className="create-project-button"
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewTechnology}
