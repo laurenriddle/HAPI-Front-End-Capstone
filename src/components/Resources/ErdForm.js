@@ -19,21 +19,23 @@ class ErdForm extends Component {
     constructNewErd = evt => {
         if (this.props.location.state.erd === undefined) {
             evt.preventDefault();
-            this.setState({ loadingStatus: true });
-            const currentUser = JSON.parse(localStorage.getItem("credentials"))
-            const erd = {
-                name: this.state.name,
-                link: this.state.link,
-                notes: this.state.notes,
-                userId: currentUser.id,
+            if (this.state.name === "") {
+                alert('Please enter a name.')
+            } else {
+                this.setState({ loadingStatus: true });
+                const currentUser = JSON.parse(localStorage.getItem("credentials"))
+                const erd = {
+                    name: this.state.name,
+                    link: this.state.link,
+                    notes: this.state.notes,
+                    userId: currentUser.id,
+                }
+                APIManager.post("erds", erd)
+                    .then((newErd) => {
+                        APIManager.patch(`projects/${this.props.location.state.project}`, { erdId: newErd.id })
+                            .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
+                    })
             }
-            APIManager.post("erds", erd)
-                .then((newErd) => {
-                    APIManager.patch(`projects/${this.props.location.state.project}`, {erdId: newErd.id})
-                    .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
-                })
-                
-
         } else {
             alert("This project already has an ERD. There can only be one ERD for each project. Please delete the existing ERD before you create a new one.")
             this.props.history.push(`/project/${this.props.location.state.project}`)
@@ -43,7 +45,7 @@ class ErdForm extends Component {
         return (
             <>
                 <div id="newErdForm">
-                <h2 className="new-project-header">New ERD</h2><hr />
+                    <h2 className="new-project-header">New ERD</h2><hr />
 
                     <Form>
                         <Form.Group>
@@ -54,9 +56,10 @@ class ErdForm extends Component {
                             {/* <Form.Label>Notes:</Form.Label> */}
                             <Form.Control type="text" as="textarea" className="new-project-form-input" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
                         </Form.Group><hr />
-                        <Button
-                        className="create-project-button"
-                        type="button"
+                        <Button variant="light"
+
+                            className="create-project-button"
+                            type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewErd}
                         >Create Erd</Button>

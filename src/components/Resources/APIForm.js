@@ -18,26 +18,31 @@ class ApiForm extends Component {
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange)
     }
+
     constructNewApi = evt => {
         evt.preventDefault();
-        this.setState({ loadingStatus: true });
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        if (this.state.name === "") {
+            alert('Please enter a name.')
+        } else {
+            this.setState({ loadingStatus: true });
+            const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
-        const Api = {
-            name: this.state.name,
-            notes: this.state.notes,
-            link: this.state.link,
-            userId: currentUser.id,
-            description: this.state.description,
-            apiKey: this.state.apiKey,
-            projectId: this.props.location.state.project
+            const Api = {
+                name: this.state.name,
+                notes: this.state.notes,
+                link: this.state.link,
+                userId: currentUser.id,
+                description: this.state.description,
+                apiKey: this.state.apiKey,
+                projectId: this.props.location.state.project
 
+            }
+
+            APIManager.post("apis", Api)
+                .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
         }
-
-        APIManager.post("apis", Api)
-            .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
-
     }
+
     render() {
         return (
 
@@ -50,15 +55,16 @@ class ApiForm extends Component {
                             {/* <Form.Label>Name:</Form.Label> */}
                             <Form.Control type="text" className="new-project-form-input" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
                             {/* <Form.Label>Link:</Form.Label> */}
-                            <Form.Control type="text" className="new-project-form-input"  placeholder="Enter Link" id="link" onChange={this.handleFieldChange} />
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter Link" id="link" onChange={this.handleFieldChange} />
                             {/* <Form.Label>Description:</Form.Label> */}
-                            <Form.Control type="text" className="new-project-form-input"  placeholder="Enter Description" as="textarea" id="description" onChange={this.handleFieldChange} />
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter Description" as="textarea" id="description" onChange={this.handleFieldChange} />
                             {/* <Form.Label>API Key:</Form.Label> */}
-                            <Form.Control type="text" className="new-project-form-input"  placeholder="Enter API Key" id="apiKey" onChange={this.handleFieldChange} />
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter API Key" id="apiKey" onChange={this.handleFieldChange} />
                             {/* <Form.Label>Notes:</Form.Label> */}
-                            <Form.Control type="text" className="new-project-form-input"  placeholder="Enter Notes" as="textarea" id="notes" onChange={this.handleFieldChange} />
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter Notes" as="textarea" id="notes" onChange={this.handleFieldChange} />
                         </Form.Group>
-                        <Button
+                        <Button variant="light"
+
                             className="create-project-button"
                             type="button"
                             disabled={this.state.loadingStatus}

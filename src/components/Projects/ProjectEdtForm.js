@@ -21,6 +21,9 @@ class ProjectEditForm extends Component {
 
     updateExistingProject = evt => {
         evt.preventDefault()
+        if(this.state.name === "") {
+            alert('Please enter a project name.')
+        } else {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
@@ -56,6 +59,7 @@ class ProjectEditForm extends Component {
                 }
                 })
         }
+    }
     }
 
     componentDidMount() {

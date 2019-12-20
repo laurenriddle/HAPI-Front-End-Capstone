@@ -38,6 +38,9 @@ class WireframeEditForm extends Component {
 
     updateExistingWireframe = evt => {
         evt.preventDefault()
+        if (this.state.name ==="") {
+            window.alert("Please enter a name.")
+        } else {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
@@ -54,7 +57,7 @@ class WireframeEditForm extends Component {
         }
         APIManager.update("wireframes", editedWireframe)
             .then(() => this.props.history.push(`/project/${this.state.projectId}`))
-    }
+    }}
 
     openCloudinaryWidget = () => {
         let widget = window.cloudinary.createUploadWidget({
@@ -90,6 +93,7 @@ class WireframeEditForm extends Component {
                         </Form.Group> <hr /> 
                         <Button
                             type="button"
+                            variant="light"
                             className="create-project-button"
                             disabled={this.state.loadingStatus}
                             onClick={this.updateExistingWireframe}

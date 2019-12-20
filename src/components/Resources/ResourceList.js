@@ -165,8 +165,8 @@ class ResourceList extends Component {
 
                         <Button type="button" variant="secondary" className="newAPIBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/api/new", state: { project: this.props.match.params.projectId } }) }}>New API</Button>
                         <Button type="button" variant="secondary" className="newErdBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/erd/new", state: { erd: this.state.erds[0], project: this.props.match.params.projectId } }) }}>New ERD</Button>
-                        <Button type="button" variant="secondary" className="newTechBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>New Technology</Button>
                         <Button type="button" variant="secondary" className="newWireframeBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/wireframe/new", state: { project: this.props.match.params.projectId } }) }}>New Wireframe</Button>
+                        <Button type="button" variant="secondary" className="newTechBtn newProjectBtn" onClick={() => { this.props.history.push({ pathname: "/technology/new", state: { project: this.props.match.params.projectId } }) }}>New Technology</Button>
                     </ButtonGroup>
                 </div>
                 {/* <Button onClick={() => this.props.history.push("/projects")}>Back to Projects List</Button> */}

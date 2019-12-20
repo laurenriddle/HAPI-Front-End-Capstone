@@ -23,23 +23,27 @@ class ApiEditForm extends Component {
 
     updateExistingApi = evt => {
         evt.preventDefault()
-        this.setState({ loadingStatus: true });
-        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        if (this.state.name === "") {
+            alert('Please enter a name.')
+        } else {
+            this.setState({ loadingStatus: true });
+            const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
 
-        const editedApi = {
-            name: this.state.name,
-            notes: this.state.notes,
-            link: this.state.link,
-            userId: currentUser.id,
-            description: this.state.description,
-            apiKey: this.state.apiKey,
-            id: this.props.match.params.apiId,
-            projectId: this.state.projectId
+            const editedApi = {
+                name: this.state.name,
+                notes: this.state.notes,
+                link: this.state.link,
+                userId: currentUser.id,
+                description: this.state.description,
+                apiKey: this.state.apiKey,
+                id: this.props.match.params.apiId,
+                projectId: this.state.projectId
+            }
+
+            APIManager.update("apis", editedApi)
+                .then(() => this.props.history.push(`/project/${this.state.projectId}`))
         }
-
-        APIManager.update("apis", editedApi)
-            .then(() => this.props.history.push(`/project/${this.state.projectId}`))
     }
 
     componentDidMount() {
@@ -76,7 +80,8 @@ class ApiEditForm extends Component {
                             {/* <Form.Label>Notes:</Form.Label> */}
                             <Form.Control type="text" as="textarea" rows="2" placeholder="Enter Notes" className="new-project-form-input" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
                         </Form.Group><hr />
-                        <Button
+                        <Button variant="light"
+
                             className="create-project-button"
                             type="button"
                             disabled={this.state.loadingStatus}

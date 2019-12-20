@@ -20,6 +20,9 @@ class ErdEditForm extends Component {
 
     updateExistingErd = evt => {
         evt.preventDefault()
+        if(this.state.name === "") {
+            alert('Please enter a name.')
+        } else {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
@@ -34,6 +37,7 @@ class ErdEditForm extends Component {
 
         APIManager.update("erds", editedErd)
             .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
+    }
     }
 
     componentDidMount() {
@@ -67,6 +71,7 @@ class ErdEditForm extends Component {
                         </Form.Group><hr />
                         <Button
                             className="create-project-button"
+                            variant="light"
 
                             type="button"
                             disabled={this.state.loadingStatus}

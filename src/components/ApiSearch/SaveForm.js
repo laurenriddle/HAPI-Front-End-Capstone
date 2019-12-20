@@ -87,7 +87,7 @@ class APISaveForm extends Component {
         return (
             <>
                 <div id="apiResultSaveForm">
-                <h3 className="save-result-header">Save API</h3><hr />
+                    <h3 className="save-result-header">Save API</h3><hr />
 
                     <Form>
                         <Form.Group>
@@ -102,7 +102,7 @@ class APISaveForm extends Component {
                             {/* <Form.Label className="save-result-form-labels">Notes:</Form.Label> */}
                             <Form.Control className="save-search-result-form-input" placeholder="Enter notes here..." type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
 
-                  
+
                             <select className="save-search-result-form-dropdown" id="projectId" onChange={this.handleFieldChange}>
                                 <option value="">Select a Project</option>
 
@@ -113,7 +113,8 @@ class APISaveForm extends Component {
 
                         </Form.Group><hr />
                         <Button
-                        className="save-result-form-button"
+                            className="save-result-form-button"
+                            variant="light"
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.saveApi}

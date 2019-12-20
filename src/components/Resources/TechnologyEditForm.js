@@ -22,8 +22,8 @@ class TechnologyEditForm extends Component {
     updateExistingTechnology = evt => {
         evt.preventDefault()
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if (this.state.name === "" && this.state.link === "" && this.state.notes === "") {
-            window.alert("Please fill out the input fields.")
+        if (this.state.name === "") {
+            window.alert("Please enter a name.")
         } else {
             
             this.setState({ loadingStatus: true });
@@ -73,6 +73,7 @@ class TechnologyEditForm extends Component {
                         </Form.Group><hr />
                         <Button
                             className="create-project-button"
+                            variant="light"
 
                             type="button"
                             // disabled={this.state.loadingStatus}

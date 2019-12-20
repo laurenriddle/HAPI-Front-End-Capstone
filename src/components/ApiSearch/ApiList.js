@@ -77,7 +77,8 @@ class ApiList extends Component {
     }
     handleFieldChange = evt => {
         const stateToChange = {}
-        stateToChange[evt.target.id] = evt.target.value
+        console.log(evt)
+        stateToChange[evt.target.id] = evt[0]
         this.setState(stateToChange)
         console.log(stateToChange)
     }
@@ -93,7 +94,7 @@ class ApiList extends Component {
     
 
     searchExternalApi = () => {
-        if (this.state.terms !== ""){
+        // if (this.state.terms !== ""){
         // set results to an empty array
         let results = []
         // search external API by description, using user's search terms
@@ -135,9 +136,9 @@ class ApiList extends Component {
                 })
 
             })
-        } else {
-            window.alert("Please enter search terms below.")
-        }
+        // } else {
+        //     window.alert("Please enter search terms below.")
+        // }
     }
 
     render() {
@@ -153,9 +154,13 @@ class ApiList extends Component {
                                 labelKey="api"
                                 placeholder="Search for an API"
                                 options={this.state.categories}
-                                onChange={input => {
-                                    this.setState({ terms: input });
-                                }}></Typeahead>
+                                onChange={(input) => {
+                                    // console.log("hello")
+                                    // console.log(input, evt)
+                                    this.setState({ terms: input});
+                                }
+                                // this.handleFieldChange
+                                }></Typeahead>
                             <Button className="terms-button" variant="light"
                                 disabled={this.state.loadingStatus} onClick={this.searchExternalApi}><img alt="Search Icon" src={require('./SearchIcon.png')} width="25" height="25"></img></Button>
                         </Form.Group>

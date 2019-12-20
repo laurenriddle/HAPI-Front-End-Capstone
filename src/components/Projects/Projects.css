@@ -87,7 +87,7 @@
     /* color: #61892F; */
     /* color: #86C232; */
     color: rgba(255, 255, 255, 0.753);
-    background-image: url('./DarkRobot.png');
+    background-image: url('./LightRobot.png');
     background-color: #474B4F;
     background-repeat: no-repeat;
     background-size: cover;
@@ -97,6 +97,7 @@
     margin-top: 5%;
     /* font-family: 'Inconsolata', monospace; */
     font-weight: 1px;
+    margin-top: 30px;
 }
 .projectCard-button-container {
     display: flex;

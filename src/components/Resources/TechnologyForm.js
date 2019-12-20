@@ -19,8 +19,8 @@ class TechnologyForm extends Component {
     constructNewTechnology = evt => {
         evt.preventDefault();
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-        if (this.state.name ==="" && this.state.link === "" && this.state.notes === "") {
-            window.alert("Please fill out the input fields.")
+        if (this.state.name === "") {
+            window.alert("Please enter a name.")
         } else {
             this.setState({ loadingStatus: true });
             const technology = {
@@ -32,13 +32,13 @@ class TechnologyForm extends Component {
             }
             APIManager.post("technologies", technology)
                 .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
-            }
+        }
     }
     render() {
         return (
             <>
                 <div id="newTechnologyForm">
-                <h2 className="new-project-header">New Technology</h2><hr />
+                    <h2 className="new-project-header">New Technology</h2><hr />
 
                     <Form>
                         <Form.Group>
@@ -49,7 +49,8 @@ class TechnologyForm extends Component {
                             {/* <Form.Label>Notes:</Form.Label> */}
                             <Form.Control type="text" placeholder="Enter Notes" as="textarea" id="notes" className="new-project-form-input" onChange={this.handleFieldChange} />
                         </Form.Group><hr />
-                        <Button
+                        <Button variant="light"
+
                             className="create-project-button"
                             type="button"
                             disabled={this.state.loadingStatus}
