@@ -53,7 +53,7 @@ class LogIn extends Component {
                         </div> */}
                         {/* <img src={require('./Robot head.png')} className="robot" width="200" height="200" alt="Hapi Logo" /> */}
 
-                        <p className="header">HAPI</p>
+                        <p className="header">HAPI <img width="150" height="250" src={require('./Robot transparent.png')}></img></p>
                         <h2 className="slogan">Filler. Text. Here.</h2>
                     </header>
                     <div className="formgrid body-element form-container">
