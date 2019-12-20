@@ -20,4 +20,4 @@ Hapi is a React App that was designed for software developers to use to keep tra
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![ Logo ](./Logo.png)
+![ Logo ](./HapiLogoRobot.png)
