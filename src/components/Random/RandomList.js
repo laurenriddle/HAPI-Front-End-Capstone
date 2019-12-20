@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import ExternalAPIManager from '../../modules/ExternalAPIManager';
 import RandomCard from './RandomCard';
+import "./Random.css"
 
 class RandomList extends Component {
     state = {
@@ -39,9 +40,11 @@ class RandomList extends Component {
     render() {
         return (
             <>
+                <div className="generate-random-button">
+                <Button variant="light" className="search-results-save-btn" disabled={this.state.loadingStatus} onClick={this.searchForRandomApi}>Generate Random API</Button>
+                </div>
 
                 <div className="random-container-cards">
-                    <hr /><h2>Random API:</h2><hr />
                     {
                         this.state.results.map((result, index) => {
                             return <RandomCard
@@ -52,8 +55,7 @@ class RandomList extends Component {
                             />
                         })}
                 </div>
-                <Button disabled={this.state.loadingStatus} onClick={this.searchForRandomApi}>Generate Random API</Button>
-            </>
+                 </>
         )
     }
 }

@@ -105,7 +105,8 @@ class RandomApiSaveForm extends Component {
 
                                 {this.state.projects.map((project) => {
                                     return <option key={project.id} value={project.id} >{project.name}</option>
-                                })}
+                                })
+                                }
                             </select>
 
                         </Form.Group>

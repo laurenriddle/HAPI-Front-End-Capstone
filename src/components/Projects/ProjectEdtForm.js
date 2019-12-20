@@ -21,6 +21,9 @@ class ProjectEditForm extends Component {
 
     updateExistingProject = evt => {
         evt.preventDefault()
+        if(this.state.name === "") {
+            alert('Please enter a project name.')
+        } else {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
@@ -57,6 +60,7 @@ class ProjectEditForm extends Component {
                 })
         }
     }
+    }
 
     componentDidMount() {
         APIManager.get(`projects/${this.props.match.params.projectId}`)
@@ -85,16 +89,20 @@ class ProjectEditForm extends Component {
         return (
             <>
                 <div id="projectSaveForm">
+        <div className="new-project-header">Edit Form</div>
+
                     <Form>
-                        <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" value={this.state.name} placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                            <Form.Label>Description:</Form.Label>
-                            <Form.Control type="text" id="description" value={this.state.description} onChange={this.handleFieldChange} />
-                            <Form.Label>GitHub Link:</Form.Label>
-                            <Form.Control type="text" id="githubUrl" value={this.state.githubUrl} onChange={this.handleFieldChange} />
-                        </Form.Group>
+                    <hr /><Form.Group>
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" value={this.state.name} className="new-project-form-input" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Description:</Form.Label> */}
+                            <Form.Control type="text" as="textarea" rows="5"  placeholder="Enter Description"  className="new-project-form-input" id="description" value={this.state.description} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>GitHub Link:</Form.Label> */}
+                            <Form.Control type="text" id="githubUrl" placeholder="Enter GitHub URL"  className="new-project-form-input" value={this.state.githubUrl} onChange={this.handleFieldChange} />
+                        </Form.Group><hr />
                         <Button
+                            className="create-project-button"
+
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.updateExistingProject}

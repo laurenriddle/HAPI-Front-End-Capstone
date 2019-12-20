@@ -21,6 +21,7 @@ export default {
   },
   // fetch calls for entire application
   get(route) {
+    const id = localStorage.getItem("credentials")
     return fetch(`${remoteURL}/${route}`).then(result => result.json());
   },
   delete(route) {

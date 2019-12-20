@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import { Button } from 'react-bootstrap';
 import { ProjectCard } from './ProjectCard';
+import './Projects.css'
 
 
 
@@ -40,11 +41,11 @@ class ProjectList extends Component {
     render() {
         return (
             <>
-                <section className="section-content">
-                    <Button type="button" className="newProjectBtn" onClick={() => { this.props.history.push("/project/new") }}>Create New Project</Button>
+                <section className="project-content">
+                    <Button type="button"  variant="light" className="newProjectBtn" onClick={() => { this.props.history.push("/project/new") }}>Create New Project</Button>
                 </section>
-                <hr /><h2><span>Projects</span></h2><hr />
-                <div className="api-container-cards">
+                {/* <hr /><h2><span>Projects</span></h2><hr /> */}
+                <div className="project-container-cards">
                     {
                         this.state.projects.map((project) => {
                             return <ProjectCard
@@ -57,6 +58,9 @@ class ProjectList extends Component {
                     }
                 </div>
 
+{/* <div>
+    <img src={require('./Robot transparent.png')} className="robototo" width="60" height="100"></img>
+</div> */}
 
             </>
         )

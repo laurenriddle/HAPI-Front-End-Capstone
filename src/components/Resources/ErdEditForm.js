@@ -20,6 +20,9 @@ class ErdEditForm extends Component {
 
     updateExistingErd = evt => {
         evt.preventDefault()
+        if(this.state.name === "") {
+            alert('Please enter a name.')
+        } else {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
@@ -35,6 +38,7 @@ class ErdEditForm extends Component {
         APIManager.update("erds", editedErd)
             .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
     }
+    }
 
     componentDidMount() {
         APIManager.get(`erds/${this.props.match.params.erdId}`)
@@ -47,23 +51,28 @@ class ErdEditForm extends Component {
 
                 })
             });
-           
+
     }
 
     render() {
         return (
             <>
                 <div id="erdEditForm">
-                    <Form>
+                <h2 className="new-project-header">Edit ERD</h2>
+
+                   <hr/> <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" value={this.state.name} onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" value={this.state.link} onChange={this.handleFieldChange} />
-                        </Form.Group>
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" className="new-project-form-input" placeholder="Enter Name" id="name" value={this.state.name} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            <Form.Control type="text" className="new-project-form-input"  placeholder="Enter Link" id="link" value={this.state.link} onChange={this.handleFieldChange} />
+                            <Form.Control type="text" className="new-project-form-input"  placeholder="Enter Notes" as="textarea" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Link:</Form.Label> */}
+                        </Form.Group><hr />
                         <Button
+                            className="create-project-button"
+                            variant="light"
+
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.updateExistingErd}

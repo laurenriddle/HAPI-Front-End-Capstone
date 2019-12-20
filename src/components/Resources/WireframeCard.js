@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Figure, Button, Badge } from 'react-bootstrap';
 import './Erd.css'
-
+import Image from 'react-bootstrap/Image'
 export class WireframeCard extends Component {
 
     render() {
-            return (
-                <div className="wireframeCard card">
-                    <Card>
-                        <div className="card-contentnext">
-                            <Card.Body>
-                                <h2><span className="card-wireframename">{this.props.wireframe.name} <img src={require('./EditSymbol.png')} width="20" height="20" className="erd-align-right crud" alt="edit symbol" onClick={() => { this.props.history.push(`/wireframe/${this.props.wireframe.id}/edit`) }} /> <img src={require('./DeleteSymbol.png')} width="20" height="20" className="crud" alt="delete symbol" onClick={() => this.props.deleteWireframe(this.props.wireframe.id, "wireframes")} /></span></h2><hr />
-                                <a href={this.props.wireframe.imageUrl} rel="noopener noreferrer" target="_blank"> <img src={this.props.wireframe.imageUrl} width="350" height="300" alt="wireframe" /></a>
-                                <p>Notes: {this.props.wireframe.notes}</p><hr />
-                                <a href={this.props.wireframe.link} rel="noopener noreferrer" target="_blank">+ View Resource</a>
+        return (
+            <div className="wireframeCard">
+                    <div className="wireframe-card-content">
+                        <Card.Body>
+                        <span className="card-wireframename"><h2>{this.props.wireframe.name} <img src={require('../Projects/EditSymbol.png')} width="25" height="25" className="erd-align-right symbols" alt="edit symbol" onClick={() => { this.props.history.push(`/wireframe/${this.props.wireframe.id}/edit`) }} /> <img src={require('../Projects/DeleteSymbol.png')} width="25" height="25" className="symbols" alt="delete symbol" onClick={() => this.props.deleteWireframe(this.props.wireframe.id, "wireframes")} /></h2><Badge variant="secondary" className="Wireframe-label">Wireframe</Badge></span><hr />
 
-                            </Card.Body>
-                        </div>
-                    </Card>
-                </div>
-            );
-        }
+
+
+                            <Figure className="img__wrap">
+                                <a href={this.props.wireframe.imageUrl} rel="noopener noreferrer" target="_blank">
+                                    <Image
+                                        className="img__img"
+                                        width={171}
+                                        height={180}
+                                        alt="wireframe"
+                                        src={this.props.wireframe.imageUrl}
+                                        thumbnail />
+                                          <p className="img__description">Click to Enlarge</p>
+
+                                </a>
+                            </Figure>
+                                    <section> {this.props.wireframe.notes}</section>
+                            <hr />
+                            <section>
+                                <a href={this.props.wireframe.link} rel="noopener noreferrer" target="_blank"><Button variant="light" className="newProjectBtn">View Resource</Button></a>
+                            </section>
+                        </Card.Body>
+                    </div>
+            </div>
+        );
     }
+}
 export default WireframeCard

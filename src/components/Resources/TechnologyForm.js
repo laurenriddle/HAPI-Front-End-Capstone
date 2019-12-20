@@ -18,8 +18,11 @@ class TechnologyForm extends Component {
     }
     constructNewTechnology = evt => {
         evt.preventDefault();
+        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        if (this.state.name === "") {
+            window.alert("Please enter a name.")
+        } else {
             this.setState({ loadingStatus: true });
-            const currentUser = JSON.parse(localStorage.getItem("credentials"))
             const technology = {
                 name: this.state.name,
                 link: this.state.link,
@@ -29,23 +32,26 @@ class TechnologyForm extends Component {
             }
             APIManager.post("technologies", technology)
                 .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
-        
+        }
     }
     render() {
         return (
             <>
                 <div id="newTechnologyForm">
+                    <h2 className="new-project-header">New Technology</h2><hr />
+
                     <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
-                        </Form.Group>
-                        <Button
-                        className="newEventBtn"
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Name" id="name" className="new-project-form-input" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Link:</Form.Label> */}
+                            <Form.Control type="text" id="link" className="new-project-form-input" placeholder="Enter Link" onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Notes" as="textarea" id="notes" className="new-project-form-input" onChange={this.handleFieldChange} />
+                        </Form.Group><hr />
+                        <Button variant="light"
+
+                            className="create-project-button"
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewTechnology}

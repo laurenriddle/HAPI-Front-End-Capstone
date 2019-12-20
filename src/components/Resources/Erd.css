@@ -1,7 +1,36 @@
 .erd-align-right {
     text-align: right;
 }
+.erdCard {
+    background-color: #474B4F;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.781);
+    text-align: center;
+    border-radius: 10px;
+    flex-basis: 31%;
+}
 
-.crud:hover {
-    background-color: lightgray;
+.erd-container-cards {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    margin-left: 30px;
+
+}
+
+.Erd-label {
+    background-color: rgb(76, 99, 44);
+    padding: 5px 10px 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+#newErdForm, #erdEditForm {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    background-color: #474B4F;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
 }

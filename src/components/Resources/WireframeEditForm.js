@@ -38,6 +38,9 @@ class WireframeEditForm extends Component {
 
     updateExistingWireframe = evt => {
         evt.preventDefault()
+        if (this.state.name ==="") {
+            window.alert("Please enter a name.")
+        } else {
         this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
@@ -54,7 +57,7 @@ class WireframeEditForm extends Component {
         }
         APIManager.update("wireframes", editedWireframe)
             .then(() => this.props.history.push(`/project/${this.state.projectId}`))
-    }
+    }}
 
     openCloudinaryWidget = () => {
         let widget = window.cloudinary.createUploadWidget({
@@ -76,18 +79,22 @@ class WireframeEditForm extends Component {
         return (
             <>
                 <div id="wireframeEditForm">
-                    <Form>
+                <h2 className="new-project-header">Edit Wireframe</h2>
+
+                   <hr /> <Form>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id="name" value={this.state.name} onChange={this.handleFieldChange} />
-                            <Form.Label>Notes:</Form.Label>
-                            <Form.Control type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
-                            <Form.Label>Link:</Form.Label>
-                            <Form.Control type="text" id="link" value={this.state.link} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Name:</Form.Label> */}
+                            <Form.Control type="text" placeholder="Enter Name" className="new-project-form-input" id="name" value={this.state.name} onChange={this.handleFieldChange} />
+                            {/* <Form.Label>Notes:</Form.Label> */}
+                            {/* <Form.Label>Link:</Form.Label> */}
+                            <Form.Control type="text" id="link" placeholder="Enter Link"  className="new-project-form-input" placeholder="Enter Link" value={this.state.link} onChange={this.handleFieldChange} />
+                            <Form.Control type="text" id="notes" as="textarea" placeholder="Enter Notes"  className="new-project-form-input" placeholder="Enter Notes" value={this.state.notes} onChange={this.handleFieldChange} />
                             <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Upload files</Button>
-                        </Form.Group>
+                        </Form.Group> <hr /> 
                         <Button
                             type="button"
+                            variant="light"
+                            className="create-project-button"
                             disabled={this.state.loadingStatus}
                             onClick={this.updateExistingWireframe}
                         >Save</Button>

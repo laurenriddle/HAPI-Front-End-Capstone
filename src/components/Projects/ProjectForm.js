@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
+import "./Projects.css"
 
 
 class ProjectForm extends Component {
@@ -18,6 +19,9 @@ class ProjectForm extends Component {
     }
     constructNewProject = evt => {
         evt.preventDefault();
+        if(this.state.name === "") {
+            alert('Please enter a project name.')
+        } else {
             this.setState({ loadingStatus: true });
             const currentUser = JSON.parse(localStorage.getItem("credentials"))
             
@@ -30,7 +34,7 @@ class ProjectForm extends Component {
             
             APIManager.post("projects", project)
                 .then(() => this.props.history.push("/projects"))
-        
+            }
     }
     render() {
         return (
@@ -38,16 +42,16 @@ class ProjectForm extends Component {
             <>
             <div id="projectSaveForm">
                 <Form>
+                    <div className="new-project-header">New Project</div><hr />
                     <Form.Group>
-                        <Form.Label>Name:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" id="name" onChange={this.handleFieldChange} />
-                        <Form.Label>Description:</Form.Label>
-                        <Form.Control type="text" id="description" onChange={this.handleFieldChange} />
-                        <Form.Label>GitHub Link:</Form.Label>
-                        <Form.Control type="text" id="githubUrl" onChange={this.handleFieldChange} />
-                    </Form.Group>
+                        <Form.Control type="text" maxLength = "70" className="new-project-form-input" placeholder="Project Name" id="name" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" as="textarea" rows="3" id="description" className="new-project-form-input"  placeholder="Project Description" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="githubUrl" className="new-project-form-input"   placeholder="Project GitHub URL" onChange={this.handleFieldChange} />
+                    </Form.Group><hr />
                     <Button
                         type="button"
+                        variant="light"
+                        className="create-project-button"
                         disabled={this.state.loadingStatus}
                         onClick={this.constructNewProject}
                     >Save</Button>

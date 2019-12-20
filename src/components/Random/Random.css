@@ -1,0 +1,18 @@
+.generate-random-button {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+
+.random {
+    flex-basis: 50%;
+    margin: 20px 20px ;
+
+}
+
+.random-container-cards {
+    display: flex;
+    justify-content: space-around;
+
+}

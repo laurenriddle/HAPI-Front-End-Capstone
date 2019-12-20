@@ -4,6 +4,7 @@ import ExternalAPIManager from '../../modules/ExternalAPIManager';
 import ListCard from './ListCards';
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
+import "./ApiSearch.css"
 
 
 class ApiList extends Component {
@@ -76,7 +77,8 @@ class ApiList extends Component {
     }
     handleFieldChange = evt => {
         const stateToChange = {}
-        stateToChange[evt.target.id] = evt.target.value
+        console.log(evt)
+        stateToChange[evt.target.id] = evt[0]
         this.setState(stateToChange)
         console.log(stateToChange)
     }
@@ -89,7 +91,10 @@ class ApiList extends Component {
         }
     }
 
+    
+
     searchExternalApi = () => {
+        // if (this.state.terms !== ""){
         // set results to an empty array
         let results = []
         // search external API by description, using user's search terms
@@ -131,29 +136,37 @@ class ApiList extends Component {
                 })
 
             })
+        // } else {
+        //     window.alert("Please enter search terms below.")
+        // }
     }
 
     render() {
         return (
             <>
-                <section className="section-content">
+                <section className="section-content api-search">
                     <Form>
-                        <Form.Group>
-                            <Form.Label><h3>Search for an API:</h3></Form.Label>
-                            <span><Typeahead
+                        <Form.Group className="search-form">
+                            <Typeahead
                                 //   ref="search-friends-typeahead"
                                 id="terms"
+                                className="terms"
                                 labelKey="api"
+                                placeholder="Search for an API"
                                 options={this.state.categories}
-                                onChange={input => {
-                                    this.setState({ terms: input });
-                                }}></Typeahead>                       
-                        <Button disabled={this.state.loadingStatus} onClick={this.searchExternalApi}>Search</Button></span>
+                                onChange={(input) => {
+                                    // console.log("hello")
+                                    // console.log(input, evt)
+                                    this.setState({ terms: input});
+                                }
+                                // this.handleFieldChange
+                                }></Typeahead>
+                            <Button className="terms-button" variant="light"
+                                disabled={this.state.loadingStatus} onClick={this.searchExternalApi}><img alt="Search Icon" src={require('./SearchIcon.png')} width="25" height="25"></img></Button>
                         </Form.Group>
                     </Form>
                 </section>
-                <div className="erd-container-cards">
-                    <hr /><h2>Search Results:</h2><hr />
+                <div className="api-search-container-cards">
                     {
                         this.state.results.map((result, index) => {
                             if (index < 50) {
@@ -164,7 +177,8 @@ class ApiList extends Component {
                                     keyId={index}
                                 />
                             }
-                        })}
+                        })
+                        }
                 </div>
             </>
         )
