@@ -33,7 +33,7 @@ class LogIn extends Component {
                     const user = existingUser[0]
                     if (user.password === this.state.password) {
                         this.props.setUser(user)
-                        this.props.history.push("/")
+                        this.props.history.push("/projects")
                     } else {
                         alert("Incorrect Password, Try Again.")
                     }

@@ -18,8 +18,11 @@ class TechnologyForm extends Component {
     }
     constructNewTechnology = evt => {
         evt.preventDefault();
+        const currentUser = JSON.parse(localStorage.getItem("credentials"))
+        if (this.state.name ==="" && this.state.link === "" && this.state.notes === "") {
+            window.alert("Please fill out the input fields.")
+        } else {
             this.setState({ loadingStatus: true });
-            const currentUser = JSON.parse(localStorage.getItem("credentials"))
             const technology = {
                 name: this.state.name,
                 link: this.state.link,
@@ -29,7 +32,7 @@ class TechnologyForm extends Component {
             }
             APIManager.post("technologies", technology)
                 .then(() => this.props.history.push(`/project/${this.props.location.state.project}`))
-        
+            }
     }
     render() {
         return (

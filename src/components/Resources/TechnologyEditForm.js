@@ -21,11 +21,13 @@ class TechnologyEditForm extends Component {
 
     updateExistingTechnology = evt => {
         evt.preventDefault()
-        this.setState({ loadingStatus: true });
         const currentUser = JSON.parse(localStorage.getItem("credentials"))
-
-
-        const editedTechnology = {
+        if (this.state.name === "" && this.state.link === "" && this.state.notes === "") {
+            window.alert("Please fill out the input fields.")
+        } else {
+            
+            this.setState({ loadingStatus: true });
+            const editedTechnology = {
             name: this.state.name,
             notes: this.state.notes,
             link: this.state.link,
@@ -36,6 +38,7 @@ class TechnologyEditForm extends Component {
 
         APIManager.update("technologies", editedTechnology)
             .then(() => this.props.history.push(`/project/${this.state.projectId}`))
+    }
     }
 
     componentDidMount() {
@@ -72,7 +75,7 @@ class TechnologyEditForm extends Component {
                             className="create-project-button"
 
                             type="button"
-                            disabled={this.state.loadingStatus}
+                            // disabled={this.state.loadingStatus}
                             onClick={this.updateExistingTechnology}
                         >Save</Button>
                     </Form>

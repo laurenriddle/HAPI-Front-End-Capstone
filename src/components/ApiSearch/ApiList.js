@@ -90,12 +90,7 @@ class ApiList extends Component {
         }
     }
 
-    pushEntry = (array1, array2, item) => {
-        // if the object does not already exist in the array, push the object into the array
-        if (!array1.find(({ userId }) => userId === item.id)) {
-            array2.push(item);
-        }
-    }
+    
 
     searchExternalApi = () => {
         if (this.state.terms !== ""){
