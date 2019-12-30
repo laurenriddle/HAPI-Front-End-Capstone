@@ -20,6 +20,8 @@ margin-left: 30px;
     text-align: center;
     flex-basis: 31%;
     border-radius: 10px;
+    height: 100%;
+
 }
 
 .symbols {
