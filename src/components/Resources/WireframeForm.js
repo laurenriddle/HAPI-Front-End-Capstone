@@ -67,8 +67,9 @@ class WireframeForm extends Component {
                             <Form.Control type="text" id="link" placeholder="Enter Link" className="new-project-form-input" onChange={this.handleFieldChange} />
                             {/* <Form.Label>Notes:</Form.Label> */}
                             <Form.Control type="text" placeholder="Enter Notes" as="textarea" className="new-project-form-input" placeholder="Enter Notes" id="notes" onChange={this.handleFieldChange} />
-                            <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Upload files</Button>
-
+                           <div className="upload_widget_container">
+                            <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Choose File</Button>
+                            </div>
                         </Form.Group>
                         <Button
                             variant="light"

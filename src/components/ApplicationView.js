@@ -69,15 +69,15 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
-        {/* <Route
+        <Route
           exact path="/" render={props => {
             if (this.props.user) {
-              return <Home />
+              return <Home {...props} />
             } else {
               return <Redirect to="/login" />
             }
           }}
-        /> */}
+        />
         <Route
           exact path="/random" render={props => {
             if (this.props.user) {
