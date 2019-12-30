@@ -42,7 +42,7 @@ export default class ApplicationViews extends Component {
           exact path="/Register" render={props => {
             if (this.props.user) {
 
-              return <Redirect to="/" />
+              return <Redirect to="/projects" />
             } else {
               return <Register setUser={this.props.setUser} searchUsers={this.props.searchUsers}
                 {...props} {...this.props} />
@@ -52,12 +52,24 @@ export default class ApplicationViews extends Component {
 
 
         <Route path="/erd/new" render={(props) => {
-          return <ErdForm {...props} {...this.props} />
+          if (this.props.user) {
+            return <ErdForm {...props} {...this.props} />
+          }
+          else {
+
+            return <Redirect to="/login" />
+          }
 
         }} />
         <Route
           path="/erds/:erdId(\d+)/edit" render={props => {
-            return <ErdEditForm {...props} {...this.props} />
+            if (this.props.user) {
+
+              return <ErdEditForm {...props} {...this.props} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
@@ -90,65 +102,126 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/apisearch/:name/save" render={(props, link) => {
-            return <APISaveForm {...props} {...this.props} {...link} />
+            if (this.props.user) {
+              return <APISaveForm {...props} {...this.props} {...link} />
+            }
+            else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
 
         <Route
           path="/random/:name/save" render={(props, link) => {
-            return <RandomApiSaveForm {...props} {...this.props} {...link} />
+            if (this.props.user) {
+              return <RandomApiSaveForm {...props} {...this.props} {...link} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
           path="/apis/:apiId(\d+)/edit" render={props => {
-            return <ApiEditForm {...props} {...this.props} />
+            if (this.props.user) {
+              return <ApiEditForm {...props} {...this.props} />
+            }
+            else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
           path="/api/new" render={props => {
-            return <ApiForm {...props} {...this.props} />
+            if (this.props.user) {
+
+              return <ApiForm {...props} {...this.props} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route path="/wireframe/new" render={(props) => {
-          return <WireframeForm {...props} {...this.props} />
+          if (this.props.user) {
+            return <WireframeForm {...props} {...this.props} />
+          } else {
 
+            return <Redirect to="/login" />
+          }
         }} />
         <Route
           path="/wireframe/:wireframeId(\d+)/edit" render={props => {
-            return <WireframeEditForm {...props} {...this.props} />
+
+            if (this.props.user) {
+              return <WireframeEditForm {...props} {...this.props} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route path="/technology/new" render={(props) => {
-          return <TechnologyForm {...props} {...this.props} />
+          if (this.props.user) {
 
+            return <TechnologyForm {...props} {...this.props} />
+          } else {
+
+            return <Redirect to="/login" />
+          }
         }} />
         <Route
           path="/technology/:technologyId(\d+)/edit" render={props => {
-            return <TechnologyEditForm {...props} {...this.props} />
+            if (this.props.user) {
+              return <TechnologyEditForm {...props} {...this.props} />
+            }
+            else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
           path="/projects" render={props => {
             if (this.props.user) {
 
-            return <ProjectList {...props} {...this.props} />} else {
+              return <ProjectList {...props} {...this.props} />
+            } else {
+
               return <Redirect to="/login" />
             }
           }}
         />
         <Route
           path="/project/new" render={props => {
-            return <ProjectForm {...props} {...this.props} />
+            if (this.props.user) {
+              return <ProjectForm {...props} {...this.props} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
           path="/project/:projectId(\d+)/edit" render={props => {
-            return <ProjectEditForm {...props} {...this.props} />
+            if (this.props.user) {
+              return <ProjectEditForm {...props} {...this.props} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route exact
           path="/project/:projectId(\d+)" render={props => {
-            return <ResourceList {...props} {...this.props} />
+            if (this.props.user) {
+              return <ResourceList {...props} {...this.props} />
+            } else {
+
+              return <Redirect to="/login" />
+            }
           }}
         />
 
