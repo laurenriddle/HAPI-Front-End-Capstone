@@ -170,11 +170,7 @@ class ResourceList extends Component {
                     </ButtonGroup>
                 </div>
                 {/* <Button onClick={() => this.props.history.push("/projects")}>Back to Projects List</Button> */}
-                <div>
-                    {/* <hr /><span ></span><hr /> */}
-
-                </div>
-
+             
                 <Tabs defaultactivekey="First" className="Tabs" id="uncontrolled-tab-example">
                     <Tab  className="Tab" eventKey="First" title="APIs" >
                         <div className="api-container-cards slideshow-container">

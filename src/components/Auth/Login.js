@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
 import { Link } from "react-router-dom"
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, InputGroup } from "react-bootstrap"
+import { Form, InputGroup } from "react-bootstrap"
 import "./Login.css"
 
 

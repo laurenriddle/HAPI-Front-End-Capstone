@@ -77,10 +77,8 @@ class ApiList extends Component {
     }
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt)
         stateToChange[evt.target.id] = evt[0]
         this.setState(stateToChange)
-        console.log(stateToChange)
     }
 
     // this function searches the array to make sure the object does not already exist
@@ -96,6 +94,7 @@ class ApiList extends Component {
     searchExternalApi = () => {
         // if (this.state.terms !== ""){
         // set results to an empty array
+        console.log("This is not a test", this.props)
         let results = []
         // search external API by description, using user's search terms
         ExternalAPIManager.searchByDescription(this.state.terms)
@@ -155,8 +154,6 @@ class ApiList extends Component {
                                 placeholder="Search for an API"
                                 options={this.state.categories}
                                 onChange={(input) => {
-                                    // console.log("hello")
-                                    // console.log(input, evt)
                                     this.setState({ terms: input});
                                 }
                                 // this.handleFieldChange
