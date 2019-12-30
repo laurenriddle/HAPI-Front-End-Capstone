@@ -84,7 +84,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/" render={props => {
             if (this.props.user) {
-              return <Home {...props} />
+              return <Redirect to="/projects" />
             } else {
               return <Redirect to="/login" />
             }
