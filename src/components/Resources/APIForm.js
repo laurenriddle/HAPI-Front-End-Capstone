@@ -69,7 +69,7 @@ class ApiForm extends Component {
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewApi}
-                        >Save</Button>
+                        >Create API</Button>
                     </Form>
                 </div>
 

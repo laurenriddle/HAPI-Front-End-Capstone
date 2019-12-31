@@ -62,7 +62,7 @@ class ErdForm extends Component {
                             type="button"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewErd}
-                        >Create Erd</Button>
+                        >Create ERD</Button>
                     </Form>
                 </div>
             </>
