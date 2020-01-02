@@ -1,8 +1,9 @@
 # Welcome to Hapi! 
-Have you ever come across a resource that would be great to use in a future project, but when you finally get to where you want to use that resource, you can't because you either wrote it down and lost the note, or you simply forgot the name of the technology? Would you like a way to keep track of these technologies when you find them, so that you can use them later on down the road? If you answered yes, look no futher than HAPI. The Hapi App eliminates these issues by giving users a central place to log the technologies that they might possibly want to use in future projects. 
+Have you ever been working on a project and found yourself spending a huge amount of time navigating to several different places over and over again to find technology documentation, the project github account, wireframes, or entity relationship diagrams? Would you like a way to keep the resources and documentation for your project in one place so that they are quickly accessible? If you answered yes, look no futher than HAPI.
 
 ## What does Hapi offer?
-Hapi is a React App that was designed for software developers to use to keep track of APIs that they would like to use in future projects. This app gives users the ability to search through a list of public APIs and save any API from their search to their favorites list. It also allows users to keep track of all of their ERDs as well by saving links to them in their favorites list. 
+Hapi is a single page, React App that was designed to give software developers a means to keep track of the APIs, ERDs, Wireframes, Technologies, documentation, and notes that they are using in specific projects so that these resources are easily accessible in one central place. With Hapi, users have the ability to create project boards and log APIs, ERDs, Wireframes, Technologies under the different projects that they are working on. This app also gives users the ability to search through a list of public APIs and save any API from their search to one of their project boards.
+
 
 ## Want to use Hapi? Follow the instructions bellow to run the application.
 
