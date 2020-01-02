@@ -44,8 +44,10 @@ class APISaveForm extends Component {
                     }
                 });
             });
-        APIManager.get("projects")
-            .then((projects) => {
+            const currentUser = JSON.parse(localStorage.getItem("credentials"))
+            APIManager.get(`projects?userId=${currentUser.id}`)            
+             .then((projects) => {
+                console.log(projects)
                 this.setState({
                     projects: projects
                 })
@@ -59,6 +61,7 @@ class APISaveForm extends Component {
     }
 
     saveApi = evt => {
+        console.log(this.state.projects)
         evt.preventDefault()
 
         if (this.state.projectId !== "") {
@@ -78,7 +81,11 @@ class APISaveForm extends Component {
 
             APIManager.post("apis", api)
                 .then(() => this.props.history.push(`/project/${this.state.projectId}`))
-        } else {
+        } else if (this.state.projects.length === 0) {
+            alert("Please create a project to assign this API.")
+
+        }
+        else {
             alert("Please assign this API to a project.")
         }
     }
@@ -100,7 +107,7 @@ class APISaveForm extends Component {
                             {/* <Form.Label className="save-result-form-labels">API Key:</Form.Label> */}
                             <Form.Control className="save-search-result-form-input" type="text" id="apiKey" value={this.state.apiKey} onChange={this.handleFieldChange} />
                             {/* <Form.Label className="save-result-form-labels">Notes:</Form.Label> */}
-                            <Form.Control className="save-search-result-form-input" placeholder="Enter notes here..." type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
+                            <Form.Control className="save-search-result-form-input" as="textarea" rows="3" placeholder="Enter notes here..." type="text" id="notes" value={this.state.notes} onChange={this.handleFieldChange} />
 
 
                             <select className="save-search-result-form-dropdown" id="projectId" onChange={this.handleFieldChange}>

@@ -33,9 +33,14 @@ export class WireframeCard extends Component {
 
                         <section> {this.props.wireframe.notes}</section>
                         <hr />
+                        {(this.props.wireframe.link !== "") ?
+                        <>
                         <section>
                             <a href={this.props.wireframe.link} rel="noopener noreferrer" target="_blank"><Button variant="light" className="newProjectBtn">View Resource</Button></a>
-                        </section>
+                        </section> 
+                        </>:
+                        <></>}
+
                     </Card.Body>
                 </div>
             </div>

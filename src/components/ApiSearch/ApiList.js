@@ -94,7 +94,6 @@ class ApiList extends Component {
     searchExternalApi = () => {
         // if (this.state.terms !== ""){
         // set results to an empty array
-        console.log("This is not a test", this.props)
         let results = []
         // search external API by description, using user's search terms
         ExternalAPIManager.searchByDescription(this.state.terms)
