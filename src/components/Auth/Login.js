@@ -54,7 +54,7 @@ class LogIn extends Component {
                         {/* <img src={require('./Robot head.png')} className="robot" width="200" height="200" alt="Hapi Logo" /> */}
 
                         <p className="header">HAPI</p>
-                        <h2 className="slogan">Your Project Organizantion Solution</h2>
+                        {/* <h2 className="slogan">Your Project Organizantion Solution</h2> */}
                     </header>
                     <div className="formgrid body-element form-container">
                         <Form className="login-form" onSubmit={this.handleLogin}>
