@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
 import { Link } from "react-router-dom"
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, InputGroup } from "react-bootstrap"
+import { Form, InputGroup } from "react-bootstrap"
 import "./Login.css"
 
 
@@ -53,8 +53,8 @@ class LogIn extends Component {
                         </div> */}
                         {/* <img src={require('./Robot head.png')} className="robot" width="200" height="200" alt="Hapi Logo" /> */}
 
-                        <p className="header">HAPI <img width="150" height="250" src={require('./Robot transparent.png')}></img></p>
-                        <h2 className="slogan">Filler. Text. Here.</h2>
+                        <p className="header">HAPI</p>
+                        {/* <h2 className="slogan">Your Project Organizantion Solution</h2> */}
                     </header>
                     <div className="formgrid body-element form-container">
                         <Form className="login-form" onSubmit={this.handleLogin}>

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
 import { Link } from "react-router-dom"
-import { Button, Form, InputGroup } from "react-bootstrap"
+import { Form, InputGroup } from "react-bootstrap"
 import "./Login.css"
 
 
@@ -91,7 +91,7 @@ class Register extends Component {
                         </div> */}
                         {/* <img src={require('../Nav/Logo.png')} className="header" width="330" height="150" alt="Hapi Logo" /> */}
                         <p className="header">HAPI</p>
-                        <h2 className="slogan"><span>Filler. Text. Here.</span></h2>
+                        {/* <h2 className="slogan"><span>Filler. Text. Here.</span></h2> */}
                     </header>
                     <div className="formgrid body-element form-container">
                         <Form className="register-form" onSubmit={this.handleRegistration}>

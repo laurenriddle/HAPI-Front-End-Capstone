@@ -8,6 +8,8 @@
     text-align: center;
     border-radius: 10px;
     flex-basis: 31%;
+    height: 100%;
+
 }
 
 .erd-container-cards {

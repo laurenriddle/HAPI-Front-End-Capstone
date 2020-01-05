@@ -89,7 +89,10 @@ class WireframeEditForm extends Component {
                             {/* <Form.Label>Link:</Form.Label> */}
                             <Form.Control type="text" id="link" placeholder="Enter Link"  className="new-project-form-input" placeholder="Enter Link" value={this.state.link} onChange={this.handleFieldChange} />
                             <Form.Control type="text" id="notes" as="textarea" placeholder="Enter Notes"  className="new-project-form-input" placeholder="Enter Notes" value={this.state.notes} onChange={this.handleFieldChange} />
-                            <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Upload files</Button>
+                            <div className="upload_widget_container">
+
+                            <Button type="button" id="upload_widget" className="cloudinary-button" onClick={this.openCloudinaryWidget}>Choose File</Button>
+                       </div>
                         </Form.Group> <hr /> 
                         <Button
                             type="button"

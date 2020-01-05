@@ -63,6 +63,18 @@
     border-radius: 10px;
 }
 
+.upload_widget_container
+{
+    text-align: left;
+}
+
 #upload_widget {
-    background-color: rgb(143, 138, 138);
+    /* background-color: rgb(143, 138, 138); */
+    padding: 1px 10px;
+    background-color: white;
+    border: 1px solid #474B4F;
+    margin-top: 15px;
+    margin-left: 55px;
+    color: black;
+    font-size: small;
 }

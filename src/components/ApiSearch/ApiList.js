@@ -77,10 +77,8 @@ class ApiList extends Component {
     }
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt)
         stateToChange[evt.target.id] = evt[0]
         this.setState(stateToChange)
-        console.log(stateToChange)
     }
 
     // this function searches the array to make sure the object does not already exist
@@ -155,8 +153,6 @@ class ApiList extends Component {
                                 placeholder="Search for an API"
                                 options={this.state.categories}
                                 onChange={(input) => {
-                                    // console.log("hello")
-                                    // console.log(input, evt)
                                     this.setState({ terms: input});
                                 }
                                 // this.handleFieldChange
