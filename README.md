@@ -2,7 +2,7 @@
 Have you ever been working on a project and found yourself spending a huge amount of time navigating to several different places over and over again to find technology documentation, the project github account, wireframes, or entity relationship diagrams? Would you like a way to keep the resources and documentation for your project in one place so that they are quickly accessible? If you answered yes, look no futher than HAPI.
 
 ## What does Hapi offer?
-Hapi is a single page, React App that was designed to give software developers a means to keep track of the APIs, ERDs, Wireframes, Technologies, documentation, and notes that they are using in specific projects so that these resources are easily accessible in one central place. With Hapi, users have the ability to create project boards and log APIs, ERDs, Wireframes, Technologies under the different projects that they are working on. This app also gives users the ability to search through a list of public APIs and save any API from their search to one of their project boards.
+Hapi is a single page, React App that was designed to give software developers a means to keep track of the APIs, ERDs, Wireframes, Technologies, documentation, and notes that they are using in specific projects so that these resources are easily accessible in one central place. With Hapi, users have the ability to create project boards and log APIs, ERDs, Wireframes, and Technologies under the different projects that they are working on. This app also gives users the ability to search through a list of public APIs and save any API from their search to one of their project boards.
 
 
 ## Want to use Hapi? Follow the instructions bellow to run the application.
