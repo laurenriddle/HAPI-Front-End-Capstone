@@ -19,6 +19,4 @@ Hapi is a single page, React App that was designed to give software developers a
 1. Go to http://localhost:3000/ to view the app. 
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ![ Logo ](./HapiLogoRobot.png)
