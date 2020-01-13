@@ -18,5 +18,14 @@ Hapi is a single page, React App that was designed to give software developers a
 1. In the api folder, run `json-server -p 5002 -w database.json`.
 1. Go to http://localhost:3000/ to view the app. 
 
-
+## Tech Stack
+1. React
+1. HTML
+1. CSS 
+1. Javascript
+1. Cloudinary 
+1. JSX
+1. React Bootstrap 
+1. Public API for Public APIs 
+1. json-server 
 ![ Logo ](./HapiLogoRobot.png)
