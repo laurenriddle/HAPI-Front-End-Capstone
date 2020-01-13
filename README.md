@@ -1,5 +1,5 @@
 # Welcome to Hapi! 
-Have you ever been working on a project and found yourself spending a huge amount of time navigating to several different places over and over again to find technology documentation, the project github account, wireframes, or entity relationship diagrams? Would you like a way to keep the resources and documentation for your project in one place so that they are quickly accessible? If you answered yes, look no futher than HAPI.
+Have you ever been developing an app and found yourself spending a huge amount of time navigating to several different places over and over again to find technology documentation, the project github account, wireframes, or entity relationship diagrams? Would you like a way to keep the resources and documentation for your project in one place so that they are quickly accessible? If you answered yes, look no futher than HAPI.
 
 ## Why was Hapi created?
 As a software developer, I spend a large amount of time navigating to the same URLs over and over again to find API and technology documentation, project GitHub accounts, wireframes, and entity relationship diagrams. Remembering exactly where the documentation was found or trying to go back and find the URL to a specific resource can become a time consuming process when working on a project. 
