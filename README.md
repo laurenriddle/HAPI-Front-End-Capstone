@@ -28,4 +28,5 @@ Hapi is a single page, React App that was designed to give software developers a
 1. React Bootstrap 
 1. Public API for Public APIs 
 1. json-server 
+
 ![ Logo ](./HapiLogoRobot.png)
