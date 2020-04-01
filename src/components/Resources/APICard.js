@@ -1,6 +1,7 @@
+// Purpose: To create the API card 
 import React, { Component } from 'react';
 import { Card, Button, Badge } from 'react-bootstrap';
-// import './Erd.css'
+
 
 export class ApiCard extends Component {
 

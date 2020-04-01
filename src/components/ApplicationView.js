@@ -19,6 +19,7 @@ import ProjectForm from "./Projects/ProjectForm";
 import ProjectEditForm from "./Projects/ProjectEdtForm";
 import RandomList from "./Random/RandomList";
 import RandomApiSaveForm from "./Random/RandomForm"
+// Purpose: To render all app views
 
 export default class ApplicationViews extends Component {
 
