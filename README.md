@@ -30,9 +30,24 @@ Hapi is a single page, React application that was designed to save software deve
 
 ![ Demo ](./readmeimg/HapiLogin.png)
 
-4. Once you have logged into the app, you will be taken to you personal projects page where you can see all of the projects that you have created so far. To add another project, click the "Create Project" button. To edit or delete a project, hover over the project card and click the appropriate icon. If you wish to view the project's GitHub account, click "View Resource" and if you wish to view the technologies being used on a project, click "View Project". 
+4. Once you have logged into the app, you will be taken to your personal projects page where you can see all of the projects that you have created so far. To add another project, click the "Create Project" button. To edit or delete a project, hover over the project card and click the appropriate icon. If you wish to view the project's GitHub account, click "View Resource" and if you wish to view the technologies being used on a project, click "View Project". 
 
 ![ Demo ](./readmeimg/hapiProjects.png)
+
+5. If you choose to view a project, you will be taken to the project details page. From here you can see the project name, description, and a button that will take you to the project's GitHub account. You also have the ability to view the technologies for the project by clicking the different APIs, Wireframes, ERDs, and technologies tabs. If you want to add a new resource, click the appropriate button to add a new technology to your list. 
+
+![ Demo ](./readmeimg/hapi.jpg)
+
+6. If you choose the "API Search" option from the navigation bar. You will be taken to a page where you can type search terms into an input box, and select a category from the dropdown that populates as you type. Once you have selected a category, press the search button and your search results will populate below. 
+
+7. Once the search results populate, if you wish view the website for a certain API, select the "View Resource" button. If you wish to save any of the search results to one of your project boards, click the "Save to Project" button. 
+
+![ Demo ](./readmeimg/HapiAPISearch.png)
+
+8. If you click the "Save to Project" button, you will be taken to another page with a form where you can select the project to which you want to save the API from a dropdown. Once you have selected a project, click "Save" and then you will be redirected to the project board where you will see your new API. 
+
+![ Demo ](./readmeimg/HapiForm.png)
+
 
 ## Tech Stack
 1. React
