@@ -1,3 +1,5 @@
+// Purpose: To create the API edit form and handle the logic associated
+
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager";
 import { Form, Button } from 'react-bootstrap';
@@ -22,6 +24,7 @@ class ApiEditForm extends Component {
     }
 
     updateExistingApi = evt => {
+        // this function handles the update of an API in the DB
         evt.preventDefault()
         if (this.state.name === "") {
             alert('Please enter a name.')
@@ -29,7 +32,7 @@ class ApiEditForm extends Component {
             this.setState({ loadingStatus: true });
             const currentUser = JSON.parse(localStorage.getItem("credentials"))
 
-
+            // define the object to be sent to the DB
             const editedApi = {
                 name: this.state.name,
                 notes: this.state.notes,
@@ -41,12 +44,15 @@ class ApiEditForm extends Component {
                 projectId: this.state.projectId
             }
 
+            // perform the PUT to the DB
             APIManager.update("apis", editedApi)
+            // push user back to the project page
                 .then(() => this.props.history.push(`/project/${this.state.projectId}`))
         }
     }
 
     componentDidMount() {
+        // upon component mount, get the API that the user wants to edit and set it in state
         APIManager.get(`apis/${this.props.match.params.apiId}`)
             .then(api => {
 

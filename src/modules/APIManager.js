@@ -21,14 +21,17 @@ export default {
   },
   // fetch calls for entire application
   get(route) {
+    // fetch call for GET requests
     return fetch(`${remoteURL}/${route}`).then(result => result.json());
   },
   delete(route) {
+    // fetch call for DELETE requests
     return fetch(`${remoteURL}/${route}`, {
       method: "DELETE"
     }).then(result => result.json());
   },
   post(route, newItem) {
+    // fetch call for POST requests
     return fetch(`${remoteURL}/${route}`, {
       method: "POST",
       headers: {
@@ -38,6 +41,7 @@ export default {
     }).then(data => data.json());
   },
   update(route, editedItem) {
+    // fetch call for PUT requests
     return fetch(`${remoteURL}/${route}/${editedItem.id}`, {
       method: "PUT",
       headers: {
@@ -47,6 +51,7 @@ export default {
     }).then(data => data.json());
   },
   patch(route, newItem) {
+    // fetch call for PATCH requests
     return fetch(`${remoteURL}/${route}`, {
       method: "PATCH",
       headers: {
