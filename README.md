@@ -1,3 +1,5 @@
+![ Logo ](./HapiLogoRobot.png)
+
 # Welcome to Hapi! 
 Have you ever been developing an app and found yourself spending a huge amount of time navigating to several different places over and over again to find technology documentation, the project github account, wireframes, or entity relationship diagrams? Would you like a way to keep the resources and documentation for your project in one place so that they are quickly accessible? If you answered yes, look no futher than HAPI.
 
@@ -22,11 +24,15 @@ Hapi is a single page, React application that was designed to save software deve
 1. Go to http://localhost:3000/ to view the app. 
 
 ## What can you do with Hapi?
-![ Demo ](./HAPI_Final_Demo.mov)
+1. After completing the setup above, in the browser, navigate to http://localhost:3000.
+2. If you are a returning user, login to Hapi with your account information.
+3. Never signed up for Hapi before? No problem! Click the register a new account link and complete your registration.
 
-<video width="320" height="240" controls>
-  <source src="./HAPI_Final_Demo.mov" type="video/mp4">
-</video>
+![ Demo ](./readmeimg/HapiLogin.png)
+
+4. Once you have logged into the app, you will be taken to you personal projects page where you can see all of the projects that you have created so far. To add another project, click the "Create Project" button. To edit or delete a project, hover over the project card and click the appropriate icon. If you wish to view the project's GitHub account, click "View Resource" and if you wish to view the technologies being used on a project, click "View Project". 
+
+![ Demo ](./readmeimg/hapiProjects.png)
 
 ## Tech Stack
 1. React
@@ -39,4 +45,4 @@ Hapi is a single page, React application that was designed to save software deve
 1. Public API for Public APIs 
 1. Json-Server 
 
-![ Logo ](./HapiLogoRobot.png)
+
