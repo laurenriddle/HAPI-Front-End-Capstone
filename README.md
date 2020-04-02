@@ -54,11 +54,11 @@ Hapi is a single page, React application that was designed to save software deve
 
 ## Hapi Tech Stack
 
-1. Public API for Public APIs 
+
+<div align="center"><img src="./readmeimg/react.png" alt="React.js" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/reactBootstrap.svg" alt="React Bootstrap" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/javascriptyellow.png" alt="Javascript" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/cloudinary.png" alt="Cloudinary" width="75" height="75" /></div>
 
 
-
-<div align="center"><img src="./readmeimg/react.png" alt="React.js" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/reactBootstrap.svg" alt="React Bootstrap" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/javascriptyellow.png" alt="Javascript" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/cloudinary.png" alt="Cloudinary" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/css3.png" alt="CSS" width="75" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/json.png" alt="JSON" width="75" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/html.png" alt="HTML" width="75" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/api.png" alt="API" width="75" height="100" /></div>
+<div align="center"><img src="./readmeimg/css3.png" alt="CSS" width="75" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/json.png" alt="JSON" width="75" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/html.png" alt="HTML" width="75" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/api.png" alt="API" width="75" height="100" /></div>
 
 
 
