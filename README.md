@@ -24,6 +24,10 @@ Hapi is a single page, React application that was designed to save software deve
 ## What can you do with Hapi?
 ![ Demo ](./HAPI_Final_Demo.mov)
 
+<video width="320" height="240" controls>
+  <source src="./HAPI_Final_Demo.mov" type="video/mp4">
+</video>
+
 ## Tech Stack
 1. React
 1. HTML
