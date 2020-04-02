@@ -34,7 +34,7 @@ Hapi is a single page, React application that was designed to save software deve
 
 ![ Demo ](./readmeimg/hapiProjects.png)
 
-5. If you choose to view a project, you will be taken to the project details page. From here you can see the project name, description, and a button that will take you to the project's GitHub account. You also have the ability to view the technologies for the project by clicking the different APIs, Wireframes, ERDs, and technologies tabs. If you want to add a new resource, click the appropriate button to add a new technology to your list. 
+5. If you choose to view a project, you will be taken to the project details page. From here you can see the project name, description, and a button that will take you to the project's GitHub account. You also have the ability to view the technologies for the project by clicking the different APIs, Wireframes, ERDs, and Other Technologies tabs. If you want to add a new resource, click the appropriate button to add a new technology to your list. 
 
 ![ Demo ](./readmeimg/hapi.jpg)
 
@@ -48,7 +48,7 @@ Hapi is a single page, React application that was designed to save software deve
 
 ![ Demo ](./readmeimg/HapiForm.png)
 
-9. If you choose the "Random" option from the navigation bar, you will be taken to a page where a random API is generated for you. You can click the "Generate Random API" button to generate a new API. If you wish view the website for the API, select the "View Resource" button. If you wish to save the API to one of your project boards, click the "Save to Project" button. 
+9. If you choose the "Random" option from the navigation bar, you will be taken to a page where a random API is generated for you. You can click the "Generate Random API" button to generate a new API. If you wish to view the website for the API, select the "View Resource" button. If you wish to save the API to one of your project boards, click the "Save to Project" button. 
 
 ![ Demo ](./readmeimg/HAPIRandom.png)
 
