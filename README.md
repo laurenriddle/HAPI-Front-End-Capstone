@@ -38,7 +38,7 @@ Hapi is a single page, React application that was designed to save software deve
 
 ![ Demo ](./readmeimg/hapi.jpg)
 
-6. If you choose the "API Search" option from the navigation bar. You will be taken to a page where you can type search terms into an input box, and select a category from the dropdown that populates as you type. Once you have selected a category, press the search button and your search results will populate below. 
+6. If you choose the "API Search" option from the navigation bar, you will be taken to a page where you can type search terms into an input box, and select a category from the dropdown that populates as you type. Once you have selected a category, press the search button and your search results will populate below. 
 
 7. Once the search results populate, if you wish view the website for a certain API, select the "View Resource" button. If you wish to save any of the search results to one of your project boards, click the "Save to Project" button. 
 
@@ -48,6 +48,9 @@ Hapi is a single page, React application that was designed to save software deve
 
 ![ Demo ](./readmeimg/HapiForm.png)
 
+9. If you choose the "Random" option from the navigation bar, you will be taken to a page where a random API is generated for you. You can click the "Generate Random API" button to generate a new API. If you wish view the website for the API, select the "View Resource" button. If you wish to save the API to one of your project boards, click the "Save to Project" button. 
+
+![ Demo ](./readmeimg/HAPIRandom.png)
 
 ## Tech Stack
 1. React
