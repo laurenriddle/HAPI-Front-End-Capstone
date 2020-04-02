@@ -105,14 +105,14 @@ class ApiList extends Component {
                 }
             }).then(() => ExternalAPIManager.searchByCategory(this.state.terms))
             .then(response => {
-
+            // search external API by category, using user's search terms
                 if (response.entries !== null) {
                     response.entries.forEach(entry => {
                         this.pushEntry(results, entry)
                     })
                 }
             })
-
+            // search external API by title, using user's search terms
             .then(() => ExternalAPIManager.searchByTitle(this.state.terms))
             .then(response => {
                 if (response.entries !== null) {
@@ -124,9 +124,6 @@ class ApiList extends Component {
 
             })
 
-
-
-            // search external API by title, using user's search terms
             // after search results come back and have been put in the results array, set the results key in state equal to the results array
             .then(() => {
                 this.setState({
