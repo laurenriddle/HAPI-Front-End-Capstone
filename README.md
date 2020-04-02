@@ -22,7 +22,7 @@ Hapi is a single page, React application that was designed to save software deve
 1. Go to http://localhost:3000/ to view the app. 
 
 ## What can you do with Hapi?
-![ Demo ](./HAPI Final Demo.mov)
+![ Demo ](./HAPI_Final_Demo.mov)
 
 ## Tech Stack
 1. React
